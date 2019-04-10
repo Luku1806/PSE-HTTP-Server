@@ -10,9 +10,10 @@
 
 /**
  * Converts a path with /../ etc to an absolute path.
+ * If file is not found, an empty string is returned. (Length = 0)
  *
  * @param path The path to convert.
- * @return The converted, absolute path.
+ * @return The converted, absolute path. Returns an empty string if path is not found.
  */
 string *toRealPath(string *path);
 
