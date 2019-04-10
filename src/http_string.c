@@ -52,3 +52,15 @@ string *cat_str(string *dest, const char *src) {
 
     return newString;
 }
+
+
+string * sub_str(string *str, int start, size_t len) {
+    if (start + len > str->len) return NULL;
+
+    string *substring = new_string(len);
+    for (int i = 0; i < len; i++) {
+        substring->str[i] = str->str[start + i];
+    }
+
+    return substring;
+}
