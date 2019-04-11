@@ -54,7 +54,7 @@ string *cat_str(string *dest, const char *src) {
 }
 
 
-string * sub_str(string *str, int start, size_t len) {
+string * sub_str(string *str, size_t start, size_t len) {
     if (start + len > str->len) return NULL;
 
     string *substring = new_string(len);
