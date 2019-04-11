@@ -73,3 +73,61 @@ string * sub_str(string *str, size_t start, size_t len) {
 
     return substring;
 }
+
+
+
+char equals_str(string *str1, string *str2) {
+    if (str1->pos != str2->pos) return 0;
+    for (int i = 0; i < str1->pos; ++i) {
+        if (str1->str[i] != str2->str[i]) return 0;
+    }
+    return 1;
+}
+
+
+char chars_equal_str(string *str, char *chars) {
+    if (strlen(chars) != str->pos) return 0;
+    for (int i = 0; i < str->pos; ++i) {
+        if (str->str[i] != chars[i]) return 0;
+    }
+    return 1;
+}
+
+
+int find_str(string *str1, string *str2) {
+    int len1 = str1->pos;
+    int len2 = str2->pos;
+
+    for (int i = 0; i <= len1 - len2; i++) {
+        int j;
+
+        // For current index i, check for pattern match
+        for (j = 0; j < len2; j++) {
+            if (str1->str[i + j] != str2->str[j]) break;
+        }
+
+        if (j == len2) return i;
+    }
+
+    return -1;
+}
+
+
+int find_chars(string *str1, char *chars) {
+    int len1 = str1->pos;
+    int len2 = strlen(chars);
+
+    for (int i = 0; i <= len1 - len2; i++) {
+        int j;
+
+        // For current index i, check for pattern match
+        for (j = 0; j < len2; j++) {
+            if (str1->str[i + j] != chars[j]) break;
+        }
+
+        if (j == len2) return i;
+    }
+
+    return -1;
+}
+
