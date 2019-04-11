@@ -22,8 +22,8 @@ Es handelt sich hierbei um das Repository der Gruppe 09, welche aus den Mitglied
 | http_fileIO.c: Implementierung der **toRealPath** Funktion  | Lukas Reining     | 20.04.2019  | ✔ |
 | http_fileIO.c: Implementierung der **isInDocumentRoot** Funktion  | Florian Galz     | 20.04.2019  | ❌ |
 | http_fileIO.c: Implementierung der **getFilesize** Funktion  | Florian Galz     | 20.04.2019  | ❌ |
-| http_fileIO.c: Implementierung der **loadFileToBuffer** Funktion  | Lukas Reining     | 20.04.2019  | ❌ |
-| http_parser.c: Implementierung von **http_parser** | FG, LF, LR    | 20.04.2019  | ❌ |
+| http_fileIO.c: Implementierung der **loadFileToBuffer** Funktion  | Lukas Reining     | 20.04.2019  | ✔ |
+| http_parser.c: Implementierung von **http_parser** | FG, LF, LR    | 20.04.2019  | 🔨 |
 | http_status.c: Implementierung von **http_status** | Leon Franke   | 20.04.2019  | ❌ |
 
 Legende: 
