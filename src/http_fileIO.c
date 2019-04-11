@@ -1,6 +1,7 @@
 #include "../include/http_fileIO.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
 
 string *toRealPath(string *path) {
@@ -18,4 +19,25 @@ string *toRealPath(string *path) {
     free(realPath);
 
     return realPathString;
+}
+
+
+void *loadFileToBuffer(string *filepath) {
+    FILE *file = fopen(filepath->str, "rb");
+
+    if (!file) {
+        fprintf(stderr,"Could not find file\n");
+        return NULL;
+    }
+
+    fseek(file, 0, SEEK_END);
+    long fsize = ftell(file);
+    rewind(file);
+
+    void *fcontent = malloc(fsize);
+    fread(fcontent, 1, fsize, file);
+
+    fclose(file);
+
+    return fcontent;
 }
