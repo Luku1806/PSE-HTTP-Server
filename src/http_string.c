@@ -77,8 +77,8 @@ string * sub_str(string *str, size_t start, size_t len) {
 
 
 char equals_str(string *str1, string *str2) {
-    if (str1->pos != str2->pos) return 0;
-    for (int i = 0; i < str1->pos; ++i) {
+    if (str1->len != str2->len) return 0;
+    for (int i = 0; i < str1->len; ++i) {
         if (str1->str[i] != str2->str[i]) return 0;
     }
     return 1;
@@ -86,8 +86,8 @@ char equals_str(string *str1, string *str2) {
 
 
 char chars_equal_str(string *str, char *chars) {
-    if (strlen(chars) != str->pos) return 0;
-    for (int i = 0; i < str->pos; ++i) {
+    if (strlen(chars) != str->len) return 0;
+    for (int i = 0; i < str->len; ++i) {
         if (str->str[i] != chars[i]) return 0;
     }
     return 1;
@@ -95,8 +95,8 @@ char chars_equal_str(string *str, char *chars) {
 
 
 int find_str(string *str1, string *str2) {
-    int len1 = str1->pos;
-    int len2 = str2->pos;
+    int len1 = str1->len;
+    int len2 = str2->len;
 
     for (int i = 0; i <= len1 - len2; i++) {
         int j;
@@ -114,7 +114,7 @@ int find_str(string *str1, string *str2) {
 
 
 int find_chars(string *str1, char *chars) {
-    int len1 = str1->pos;
+    int len1 = str1->len;
     int len2 = strlen(chars);
 
     for (int i = 0; i <= len1 - len2; i++) {
