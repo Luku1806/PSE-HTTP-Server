@@ -1,6 +1,7 @@
 #include "../include/http_server.h"
 #include "../include/http_string.h"
 #include "../include/http_error.h"
+#include "../include/http_parser.h"
 
 /* Version: 2.1.2 */
 #include <errno.h>      // errno
@@ -163,11 +164,20 @@ static void main_loop(int sockfd) {
             error("ERROR reading from socket");
         }
 
+
+        string requestString;
+        requestString.str = buffer;
+        requestString.len = (size_t) length; //TODO SSIZE_T oder SIZE_T?
+
+        http_request *request = parseRequest(&requestString);
+        http_response *response = generateResponse(request);
+        string *sendString = httpResponseToString(response);
+
 /*
  * Schreibe die ausgehenden Daten auf den Socket.
  */
 #ifndef STDIN_ONLY
-        length = write(newsockfd, buffer, (size_t) length);
+        length = write(newsockfd, sendString->str, sendString->len);
         if (length < 0) {
             error("ERROR writing to socket");
         }
@@ -175,7 +185,7 @@ static void main_loop(int sockfd) {
         /*
          * Gib die eingegangenen Daten auf der Kommandozeile aus.
          */
-        if (write(STDOUT_FILENO, buffer, length) < 0) {
+        if (write(STDOUT_FILENO, sendString->str, sendString->len) < 0) {
           error("ERROR writing to STDOUT");
         }
 #endif
