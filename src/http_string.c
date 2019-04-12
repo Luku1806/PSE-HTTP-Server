@@ -114,8 +114,8 @@ int find_str(string *str1, string *str2) {
 
 
 int find_chars(string *str1, char *chars) {
-    int len1 = str1->len;
-    int len2 = strlen(chars);
+    size_t len1 = str1->len;
+    size_t len2 = strlen(chars);
 
     for (int i = 0; i <= len1 - len2; i++) {
         int j;
