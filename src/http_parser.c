@@ -51,3 +51,97 @@ void free_httpResponse(http_response *response) {
     free(response);
     response = NULL;
 }
+
+http_request *parseRequest(string *strRequest) {
+    http_request *request = new_httpRequest();
+
+    // Extract Headerline from whole message
+    size_t end_headerline;
+    for (end_headerline = 0; end_headerline < strRequest->len; end_headerline++) {
+        char current = strRequest->str[end_headerline];
+        if (current == '\r' || current == '\n') break;
+    }
+
+    string *headerline = sub_str(strRequest, 0, end_headerline);
+
+    int tokenIndex = 0;
+    for (size_t i = 0; i < headerline->len; i++) {
+        char current = headerline->str[i];
+        if (current == ' ') continue;
+
+        size_t j;
+        for (j = i; j < headerline->len; j++) {
+            current = headerline->str[j];
+            if (current == ' ') break;
+        }
+
+        string *token = sub_str(headerline, i, j - i);
+        i = j;
+
+        switch (tokenIndex) {
+            case 0:
+                request->method = token;
+                break;
+            case 1:
+                request->resource = token;
+                break;
+            case 2:
+                request->http_version = token;
+                break;
+            default:
+                break;
+        }
+        tokenIndex++;
+    }
+
+    free_str(headerline);
+
+    // Extract all other headers
+    for (size_t i = end_headerline; i < strRequest->len; i++) {
+        char current = strRequest->str[i];
+
+        //Jump over any linebreak or whitespace
+        if (current == '\r' || current == '\n' || current == ' ') continue;
+
+        //Get header name
+        size_t end_headerName;
+        for (end_headerName = i; end_headerName < strRequest->len; end_headerName++) {
+            current = strRequest->str[end_headerName];
+            if (current == ':') break;
+        }
+        string *header_name = sub_str(strRequest, i, end_headerName - i);
+
+        size_t j, k;
+
+        //Jump over any whitespace after the ':'
+        for (j = end_headerName + 1; j < strRequest->len; j++) {
+            current = strRequest->str[j];
+            if (current != ' ') break;
+        }
+
+        // Find index where linebreak comes --> header content is over
+        for (k = j; k < strRequest->len; k++) {
+            current = strRequest->str[k];
+            if (current == '\r' || current == '\n') break;
+        }
+        string *header_content = sub_str(strRequest, j, k - j);
+        i = k;
+
+        //Fill request fields with content
+        string *header_name_cap = toUpper_str(header_name);
+
+        if (chars_equal_str(header_name_cap, "HOST")) {
+            request->host = header_content;
+        } else if (chars_equal_str(header_name_cap, "USER-AGENT")) {
+            request->user_agent = header_content;
+        } else {
+            // No header to store content in
+            free_str(header_content);
+        }
+
+        free_str(header_name);
+        free_str(header_name_cap);
+    }
+
+    return request;
+}
