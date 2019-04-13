@@ -1,8 +1,10 @@
+#include "../include/http_string.h"
+
+#include "../include/http_error.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../include/http_string.h"
-#include "../include/http_error.h"
 
 
 string *new_string(size_t len) {
@@ -131,3 +133,27 @@ int find_chars(string *str1, char *chars) {
     return -1;
 }
 
+
+char *toCString_str(string *str) {
+    char *chars = calloc(str->len + 1, 1);
+    if (chars == NULL) error("Error allocating memory for char pointer");
+    memcpy(chars, str->str, str->len);
+    chars[str->len] = '\0';
+    return chars;
+}
+
+
+string *toUpper_str(string *str) {
+    string *strCapital = new_string(str->len);
+    strCapital->len = str->len;
+
+    for (int i = 0; i < str->len; i++) {
+        char current = str->str[i];
+        if (96 < current && current < 123) {
+            strCapital->str[i] = current - (char) 32;
+        } else {
+            strCapital->str[i] = current;
+        }
+    }
+    return strCapital;
+}
