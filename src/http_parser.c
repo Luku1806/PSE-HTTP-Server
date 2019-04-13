@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "../include/http_parser.h"
 #include "../include/http_error.h"
 
@@ -51,6 +52,42 @@ void free_httpResponse(http_response *response) {
     free(response);
     response = NULL;
 }
+
+
+void printRequest(http_request *request) {
+    if (request == NULL) return;
+
+    printf("Reqest:\n");
+
+    if (request->method != NULL) {
+        printf("Method: ");
+        print_string(request->method);
+        printf("\n");
+    }
+    if (request->resource != NULL) {
+        printf("Resource: ");
+        print_string(request->resource);
+        printf("\n");
+    }
+    if (request->http_version != NULL) {
+        printf("Http-version: ");
+        print_string(request->http_version);
+        printf("\n");
+    }
+    if (request->host != NULL) {
+        printf("Host: ");
+        print_string(request->host);
+        printf("\n");
+    }
+    if (request->user_agent != NULL) {
+        printf("User-Agent: ");
+        print_string(request->user_agent);
+        printf("\n");
+    }
+
+    fflush(stdout);
+}
+
 
 http_request *parseRequest(string *strRequest) {
     http_request *request = new_httpRequest();
