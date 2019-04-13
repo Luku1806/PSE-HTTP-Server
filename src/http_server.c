@@ -62,9 +62,6 @@ static void register_signal() {
  * angenommen werden.
  */
 static int setup_socket() {
-#ifdef STDIN_ONLY
-    return STDOUT_FILENO;
-#endif
 
     int opt = 1;
     int sockfd = 0;
@@ -118,10 +115,8 @@ static void main_loop(int sockfd) {
     int newsockfd;
     ssize_t length;
 
-#ifndef STDIN_ONLY
     struct sockaddr_in cli_addr;
     socklen_t clilen = sizeof(cli_addr);
-#endif
 
     void *const buffer = malloc(BUFFER_SIZE);
     if (buffer == NULL) {
@@ -133,7 +128,6 @@ static void main_loop(int sockfd) {
      */
     while (run) {
 
-#ifndef STDIN_ONLY
         /*
          * Der accept()-Aufruf blockiert, bis eine neue Verbindung rein kommt.
          */
@@ -148,9 +142,6 @@ static void main_loop(int sockfd) {
             }
             error("ERROR on accept");
         }
-#else
-        newsockfd = STDIN_FILENO;
-#endif
 
         /*
          * Lies die ankommenden Daten von dem Socket in das Array buffer.
@@ -170,34 +161,32 @@ static void main_loop(int sockfd) {
         requestString.len = (size_t) length; //TODO SSIZE_T oder SIZE_T?
 
         http_request *request = parseRequest(&requestString);
-        http_response *response = generateResponse(request);
-        string *sendString = httpResponseToString(response);
+        printRequest(request);
+        //http_response *response = generateResponse(request);
+        //string *sendString = httpResponseToString(response);
+        string *sendString = new_string(1);
 
-/*
- * Schreibe die ausgehenden Daten auf den Socket.
- */
-#ifndef STDIN_ONLY
+        /*
+         * Schreibe die ausgehenden Daten auf den Socket.
+         */
         length = write(newsockfd, sendString->str, sendString->len);
         if (length < 0) {
             error("ERROR writing to socket");
         }
-#else
-        /*
-         * Gib die eingegangenen Daten auf der Kommandozeile aus.
-         */
-        if (write(STDOUT_FILENO, sendString->str, sendString->len) < 0) {
-          error("ERROR writing to STDOUT");
-        }
-#endif
 
-/*
- * Schließe die Verbindung.
- */
-#ifndef STDIN_ONLY
+        /*
+         * Schließe die Verbindung.
+         */
         if (close(newsockfd) < 0) {
             error("ERROR on close");
         }
-#endif
+
+        /*
+         * Free everything up
+         */
+        free_httpRequest(request);
+        free_str(sendString);
+
     }
 
     /*
@@ -205,11 +194,11 @@ static void main_loop(int sockfd) {
      * Endlosschleife niemals ausgeführt werden.
      */
     free(buffer);
-#ifndef STDIN_ONLY
+
     if (close(sockfd) < 0) {
         error("ERROR on close");
     }
-#endif
+
 }
 
 int main(int argc, char *argv[]) {

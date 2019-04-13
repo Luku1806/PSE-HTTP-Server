@@ -99,13 +99,17 @@ http_request *parseRequest(string *strRequest) {
         if (current == '\r' || current == '\n') break;
     }
 
+    //TODO Decide if headerline is set or valid
+
     string *headerline = sub_str(strRequest, 0, end_headerline);
 
     int tokenIndex = 0;
     for (size_t i = 0; i < headerline->len; i++) {
+        //Jump over any leading whitespace
         char current = headerline->str[i];
         if (current == ' ') continue;
 
+        // Search for end of current token
         size_t j;
         for (j = i; j < headerline->len; j++) {
             current = headerline->str[j];
@@ -126,6 +130,7 @@ http_request *parseRequest(string *strRequest) {
                 request->http_version = token;
                 break;
             default:
+                free_str(token);
                 break;
         }
         tokenIndex++;
@@ -167,12 +172,13 @@ http_request *parseRequest(string *strRequest) {
         //Fill request fields with content
         string *header_name_cap = toUpper_str(header_name);
 
+        //Find fitting header or ignore
         if (chars_equal_str(header_name_cap, "HOST")) {
             request->host = header_content;
         } else if (chars_equal_str(header_name_cap, "USER-AGENT")) {
             request->user_agent = header_content;
         } else {
-            // No header to store content in
+            // No header to store content in, so free it
             free_str(header_content);
         }
 

@@ -1,8 +1,10 @@
+#include "../include/http_string.h"
+
+#include "../include/http_error.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../include/http_string.h"
-#include "../include/http_error.h"
 
 
 string *new_string(size_t len) {
@@ -130,4 +132,3 @@ int find_chars(string *str1, char *chars) {
 
     return -1;
 }
-
