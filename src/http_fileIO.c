@@ -1,5 +1,4 @@
 #include "../include/http_fileIO.h"
-#include "../include/http_error.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,9 +11,9 @@ string *toRealPath(string *path) {
     char *realPath = realpath(pathAsChars, NULL);
     string *realPathString;
 
-    if (realPath == NULL) {
+    if(realPath == NULL){
         realPathString = new_string(0);
-    } else {
+    }else{
         realPathString = cpy_str(realPath);
     }
 
@@ -29,7 +28,7 @@ void *loadFileToBuffer(string *filepath) {
     FILE *file = fopen(filepath->str, "rb");
 
     if (!file) {
-        fprintf(stderr, "Could not find file\n");
+        fprintf(stderr,"Could not find file\n");
         return NULL;
     }
 
@@ -43,6 +42,33 @@ void *loadFileToBuffer(string *filepath) {
     fclose(file);
 
     return fcontent;
+}
+
+char isInDocumentRoot(string *filepath){
+
+    if (startsWith_str(filepath, DOCUMENT_ROOT)){
+
+        return 1;
+
+    } else{
+
+        return 0;
+    }
+
+}
+
+size_t getFilesize(string *filepath) {
+    FILE *file = fopen(filepath->str, "rb");
+
+    if (!file) {
+        fprintf(stderr,"Could not find file\n");
+        return 0;
+    }
+
+    fseek(file, 0, SEEK_END);
+    size_t fsize = ftell(file);
+    fclose(file);
+    return fsize;
 }
 
 

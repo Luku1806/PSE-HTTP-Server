@@ -62,10 +62,10 @@ char *toCString_str(string *str);
 
 
 /**
- *
- * @param dest
- * @param src
- * @return
+ * Combines two strings to a new string
+ * @param dest String 1 to combine
+ * @param src String 2 to combine
+ * @return Either Returns a new String or NULL depending on whether the condition is met or not.
  */
 string *cat_str(string *dest, const char *src);
 
@@ -87,6 +87,7 @@ char equals_str(string *str1, string *str2);
  * @return Returns 0 if the strings are different, 1 if they are equal.
  */
 char chars_equal_str(string *str, char *chars);
+
 
 /**
  * Return a substring with the length len of str starting at start.
@@ -127,6 +128,16 @@ int find_chars(string *str1, char *chars);
  * @return 1 if the string ends with the chars. 0 if not.
  */
 char endsWith_str(string *str, char *ending);
+
+
+/**
+ * Returns if a string starts with a set of chars(c-string).
+ *
+ * @param str The string to see if it start with the chars.
+ * @param starting The chars to see if the string start with them.
+ * @return 1 if the string starts with the chars. 0 if not.
+ */
+char startsWith_str(string *str, char *starting);
 
 
 /**

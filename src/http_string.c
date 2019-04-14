@@ -44,7 +44,7 @@ string *cpy_str(const char *src) {
 
 string *cat_str(string *dest, const char *src) {
 
-    if ((dest != NULL) || (src != NULL)){
+    if ((dest != NULL) && (src != NULL)){
 
         size_t size1 = dest->len;
         size_t size2 = strlen(src);
@@ -162,3 +162,28 @@ string *toUpper_str(string *str) {
     return strCapital;
 }
 
+char endsWith_str(string *str, char *ending) {
+
+    size_t ending_length = strlen(ending);
+    int strFirstIndex = str->len - ending_length;
+
+    for (int i = 0; i < ending_length; i++) {
+
+        if (str->str[strFirstIndex + i] != ending[i]) return 0;
+    }
+
+    return 1;
+}
+
+char startsWith_str(string *str, char *starting){
+
+    size_t starting_length = strlen(starting);
+
+    for (int i = 0; i < starting_length; i++) {
+
+        if (str->str[i] != starting[i]) return 0;
+    }
+
+    return 1;
+
+}
