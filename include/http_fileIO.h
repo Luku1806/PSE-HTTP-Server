@@ -45,4 +45,24 @@ size_t getFilesize(string *filepath);
 void *loadFileToBuffer(string *filepath);
 
 
+/**
+ * Returns the string containing the content/mime type of the resource.
+ * Returns an empty string with lenth 0, if information could not be found.
+ *
+ * @param path The path to the resource.
+ * @return A string containing the MIME-Type of the resource. Empty string if information was not found.
+ */
+string *getMimeType(string *path);
+
+
+/**
+ * Returns the string containing the content/mime encoding of the resource.
+ * Returns an empty string with lenth 0, if information could not be found.
+ *
+ * @param path The path to the resource.
+ * @return A string containing the MIME-Encoding of the resource. Empty string if information was not found.
+ */
+string *getMimeEncoding(string *path);
+
+
 #endif //HTTP_SERVER_09_HTTP_FILEIO_H
