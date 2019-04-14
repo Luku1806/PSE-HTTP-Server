@@ -132,3 +132,11 @@ int find_chars(string *str1, char *chars) {
 
     return -1;
 }
+
+char *toCString_str(string *str) {
+    char *chars = calloc(str->len + 1, 1);
+    if (chars == NULL) error("Error allocating memory for char pointer");
+    memcpy(chars, str->str, str->len);
+    chars[str->len] = '\0';
+    return chars;
+}
