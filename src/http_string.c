@@ -44,7 +44,7 @@ string *cpy_str(const char *src) {
 
 string *cat_str(string *dest, const char *src) {
 
-    if ((dest != NULL) || (src != NULL)){
+    if ((dest != NULL) && (src != NULL)){
 
         size_t size1 = dest->len;
         size_t size2 = strlen(src);
