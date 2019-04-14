@@ -207,18 +207,8 @@ int main(int argc, char *argv[]) {
     (void) argv;
 
     register_signal();
-    //const int sockfd = setup_socket();
-    //main_loop(sockfd);
-
-    char *path = "/var/www/default/images/tuxen";
-    string *str1 = cpy_str(path);
-
-    string *type = getMimeType(str1);
-    string *encoding = getMimeEncoding(str1);
-
-    print_string(type);
-    putchar('\n');
-    print_string(encoding);
+    const int sockfd = setup_socket();
+    main_loop(sockfd);
 
     return 0;
 }
