@@ -54,3 +54,17 @@ char isInDocumentRoot(string *filepath){
     }
 
 }
+
+size_t getFilesize(string *filepath) {
+    FILE *file = fopen(filepath->str, "rb");
+
+    if (!file) {
+        fprintf(stderr,"Could not find file\n");
+        return 0;
+    }
+
+    fseek(file, 0, SEEK_END);
+    size_t fsize = ftell(file);
+    fclose(file);
+    return fsize;
+}
