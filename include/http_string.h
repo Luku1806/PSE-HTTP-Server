@@ -88,6 +88,7 @@ char equals_str(string *str1, string *str2);
  */
 char chars_equal_str(string *str, char *chars);
 
+
 /**
  * Return a substring with the length len of str starting at start.
  *
@@ -127,6 +128,16 @@ int find_chars(string *str1, char *chars);
  * @return 1 if the string ends with the chars. 0 if not.
  */
 char endsWith_str(string *str, char *ending);
+
+
+/**
+ * Returns if a string starts with a set of chars(c-string).
+ *
+ * @param str The string to see if it start with the chars.
+ * @param starting The chars to see if the string start with them.
+ * @return 1 if the string starts with the chars. 0 if not.
+ */
+char startsWith_str(string *str, char *starting);
 
 
 /**

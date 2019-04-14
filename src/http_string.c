@@ -175,5 +175,15 @@ char endsWith_str(string *str, char *ending) {
     return 1;
 }
 
+char startsWith_str(string *str, char *starting){
 
+    size_t starting_length = strlen(starting);
 
+    for (int i = 0; i < starting_length; i++) {
+
+        if (str->str[i] != starting[i]) return 0;
+    }
+
+    return 1;
+
+}
