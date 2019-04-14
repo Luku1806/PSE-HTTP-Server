@@ -41,3 +41,16 @@ void *loadFileToBuffer(string *filepath) {
 
     return fcontent;
 }
+
+char isInDocumentRoot(string *filepath){
+
+    if (startsWith_str(filepath, DOCUMENT_ROOT)){
+
+        return 1;
+
+    } else{
+
+        return 0;
+    }
+
+}
