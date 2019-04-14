@@ -12,9 +12,9 @@ string *toRealPath(string *path) {
     char *realPath = realpath(pathAsChars, NULL);
     string *realPathString;
 
-    if(realPath == NULL){
+    if (realPath == NULL) {
         realPathString = new_string(0);
-    }else{
+    } else {
         realPathString = cpy_str(realPath);
     }
 
@@ -29,7 +29,7 @@ size_t getFilesize(string *filepath) {
     FILE *file = fopen(filepath->str, "rb");
 
     if (!file) {
-        fprintf(stderr,"Could not find file\n");
+        fprintf(stderr, "Could not find file\n");
         return 0;
     }
 
@@ -44,7 +44,7 @@ void *loadFileToBuffer(string *filepath) {
     FILE *file = fopen(filepath->str, "rb");
 
     if (!file) {
-        fprintf(stderr,"Could not find file\n");
+        fprintf(stderr, "Could not find file\n");
         return NULL;
     }
 
@@ -60,13 +60,13 @@ void *loadFileToBuffer(string *filepath) {
     return fcontent;
 }
 
-char isInDocumentRoot(string *filepath){
+char isInDocumentRoot(string *filepath) {
 
-    if (startsWith_str(filepath, DOCUMENT_ROOT)){
+    if (startsWith_str(filepath, DOCUMENT_ROOT)) {
 
         return 1;
 
-    } else{
+    } else {
 
         return 0;
     }
@@ -83,7 +83,7 @@ char isInDocumentRoot(string *filepath){
  * @return A c-string containing the information found. NULL if nothing was found or an error occured.
  */
 char *getMimeInformation(string *path, int flag) {
-    magic_t magic = magic_open(flag);
+    magic_t magic = magic_open(flag | MAGIC_ERROR);
 
     if (magic == NULL) {
         error("unable to initialize magic library\n");
@@ -98,8 +98,10 @@ char *getMimeInformation(string *path, int flag) {
     char *pathAsChars = toCString_str(path);
     char *mimeAsChars = (char *) magic_file(magic, pathAsChars);
 
+    if(mimeAsChars == NULL) return NULL; // File was not found!!!!
+
     // Copy string, because magic frees returned values
-    char *information;
+    char *information = calloc(strlen(mimeAsChars) + 1, 1);
     strcpy(information, mimeAsChars);
 
     free(pathAsChars);
