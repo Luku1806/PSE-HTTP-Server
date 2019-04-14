@@ -140,3 +140,26 @@ char *toCString_str(string *str) {
     chars[str->len] = '\0';
     return chars;
 }
+
+string *toUpper_str(string *str) {
+
+    string *strCapital = new_string(str->len);
+    strCapital->len = str->len;
+
+    for (int i = 0; i < str->len; i++) {
+
+        char current = str->str[i];
+
+        if ((current > 96) && (current < 123)) {
+
+            strCapital->str[i] = current - 32;
+
+        } else {
+
+            strCapital->str[i] = current;
+        }
+    }
+
+    return strCapital;
+}
+
