@@ -162,3 +162,18 @@ string *toUpper_str(string *str) {
     return strCapital;
 }
 
+char endsWith_str(string *str, char *ending) {
+
+    size_t ending_length = strlen(ending);
+    int strFirstIndex = str->len - ending_length;
+
+    for (int i = 0; i < ending_length; i++) {
+
+        if (str->str[strFirstIndex + i] != ending[i]) return 0;
+    }
+
+    return 1;
+}
+
+
+
