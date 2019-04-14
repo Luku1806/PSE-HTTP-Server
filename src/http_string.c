@@ -44,11 +44,12 @@ string *cpy_str(const char *src) {
 
 
 string *cat_str(string *dest, const char *src) {
-    size_t size1 = dest->len;
-    size_t size2 = strlen(src);
-    size_t newSize = size1 + size2;
 
     if ((dest != NULL) || (src != NULL)){
+
+        size_t size1 = dest->len;
+        size_t size2 = strlen(src);
+        size_t newSize = size1 + size2;
 
         string *newString = new_string(newSize);
         memcpy(newString->str, dest->str, size1);
@@ -58,7 +59,7 @@ string *cat_str(string *dest, const char *src) {
 
     } else{
 
-        return 0;
+        return NULL;
     }
 
 }
