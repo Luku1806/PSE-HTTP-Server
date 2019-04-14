@@ -2,6 +2,7 @@
 #include "../include/http_string.h"
 #include "../include/http_error.h"
 #include "../include/http_parser.h"
+#include "../include/http_fileIO.h"
 
 /* Version: 2.1.2 */
 #include <errno.h>      // errno

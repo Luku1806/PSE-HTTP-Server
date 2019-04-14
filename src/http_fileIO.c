@@ -1,4 +1,5 @@
 #include "../include/http_fileIO.h"
+#include "../include/http_error.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -21,6 +22,21 @@ string *toRealPath(string *path) {
     free(realPath);
 
     return realPathString;
+}
+
+
+size_t getFilesize(string *filepath) {
+    FILE *file = fopen(filepath->str, "rb");
+
+    if (!file) {
+        fprintf(stderr,"Could not find file\n");
+        return 0;
+    }
+
+    fseek(file, 0, SEEK_END);
+    size_t fsize = ftell(file);
+    fclose(file);
+    return fsize;
 }
 
 
@@ -55,20 +71,6 @@ char isInDocumentRoot(string *filepath){
         return 0;
     }
 
-}
-
-size_t getFilesize(string *filepath) {
-    FILE *file = fopen(filepath->str, "rb");
-
-    if (!file) {
-        fprintf(stderr,"Could not find file\n");
-        return 0;
-    }
-
-    fseek(file, 0, SEEK_END);
-    size_t fsize = ftell(file);
-    fclose(file);
-    return fsize;
 }
 
 
