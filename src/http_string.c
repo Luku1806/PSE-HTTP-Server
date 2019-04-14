@@ -24,7 +24,6 @@ void free_str(string *str) {
     if (str == NULL) return;
     free(str->str);
     free(str);
-    str = NULL;
 }
 
 

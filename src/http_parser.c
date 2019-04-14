@@ -25,7 +25,6 @@ void free_httpRequest(http_request *request) {
     }
 
     free(request);
-    request = NULL;
 }
 
 
@@ -50,7 +49,6 @@ void free_httpResponse(http_response *response) {
     }
 
     free(response);
-    response = NULL;
 }
 
 
