@@ -1,5 +1,4 @@
 #include "../include/http_string.h"
-
 #include "../include/http_error.h"
 
 #include <stdio.h>
@@ -49,7 +48,7 @@ string *cat_str(string *dest, const char *src) {
     size_t size2 = strlen(src);
     size_t newSize = size1 + size2;
 
-    if (newSize != NULL){
+    if ((dest != NULL) || (src != NULL)){
 
         string *newString = new_string(newSize);
         memcpy(newString->str, dest->str, size1);
@@ -59,7 +58,7 @@ string *cat_str(string *dest, const char *src) {
 
     } else{
 
-        error("cat_str: Strings are empty");
+        return 0;
     }
 
 }
