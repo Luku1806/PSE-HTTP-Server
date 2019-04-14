@@ -10,7 +10,7 @@ Es handelt sich hierbei um das Repository der Gruppe 09, welche aus den Mitglied
 | ------------- | -------------    | ------------- | ------------- |
 | Implementierung des vorgegebenen Codes   | Gruppe     | 10.04.2019  | ✔ |
 | http_string.c: Anpassung des vorgegebenen Codes   | Gruppe     | 10.04.2019  | ✔ |
-| http_string.c: Anpassung der **cat_string** Funktion  | Florian Galz     | 15.04.2019  | 🔨|
+| http_string.c: Anpassung der **cat_string** Funktion  | Florian Galz     | 15.04.2019  | ✔ |
 | http_string.c: Implementierung der **equals_str** Funktion  | Leon Franke     | 15.04.2019  | ✔ |
 | http_string.c: Implementierung der **chars_equal_str** Funktion  | Leon Franke     | 15.04.2019  | ✔ |
 | http_string.c: Implementierung der **sub_str** Funktion  | Lukas Reining     | 15.04.2019  | ✔ |
