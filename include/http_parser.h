@@ -19,6 +19,7 @@ typedef struct http_response {
     string *status;
     string *server;
     string *content_type;
+    string *content_encoding;
     size_t content_length;
     void *content;
 } http_response;

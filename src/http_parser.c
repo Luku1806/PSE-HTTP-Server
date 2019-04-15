@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include "../include/http_parser.h"
 #include "../include/http_error.h"
+#include "../include/http_status.h"
+#include "../include/http_server.h"
+#include "../include/http_fileIO.h"
 
 
 http_request *new_httpRequest() {
@@ -187,3 +190,62 @@ http_request *parseRequest(string *strRequest) {
     return request;
 }
 
+
+http_response *generateStandardResponse(int statusCode) {
+    http_response *response = new_httpResponse();
+
+    response->status = getStatusString(statusCode);
+    response->http_version = cpy_str(HTTP_VERSION);
+    response->server = cpy_str(SERVER_NAME);
+
+    return response;
+}
+
+
+http_response *generateResponse(http_request *request){
+
+    // Missing required information
+    if(request->method == NULL | request->resource == NULL){
+        return generateStandardResponse(HTTP_STATUS_BAD_REQUEST);
+    }
+
+    // Wrong/unsupported method
+    string *methodCap = toUpper_str(request->method);
+    if(!chars_equal_str(methodCap, "GET")){
+        free_str(methodCap);
+        return generateStandardResponse(HTTP_STATUS_NOT_IMPLEMENTED);
+    }
+    free_str(methodCap);
+
+
+    string *documentRoot = cpy_str(DOCUMENT_ROOT);
+    string *absolutePath;
+
+    if(chars_equal_str(request->resource, "/")){
+        absolutePath = cat_str(documentRoot, "/index.html");
+    }else{
+        char *pathAsCString = toCString_str(request->resource);
+        absolutePath = cat_str(documentRoot, pathAsCString);
+        free(pathAsCString);
+    }
+
+    free_str(documentRoot);
+    free_str(absolutePath);
+
+    string *realPath = toRealPath(absolutePath);
+
+    // Path is forbidden (out of the document root)
+    if(!isInDocumentRoot(realPath)){
+        return generateStandardResponse(HTTP_STATUS_FORBIDDEN);
+    }
+
+    http_response *response = generateStandardResponse(HTTP_STATUS_OK);
+    void *payload = loadFileToBuffer(absolutePath);
+
+    if(payload != NULL){
+        response->content = payload;
+        response->content_length = getFilesize(absolutePath);
+        response->content_type = getMimeType(absolutePath);
+        response->content_encoding= getMimeEncoding(absolutePath);
+    }
+}
