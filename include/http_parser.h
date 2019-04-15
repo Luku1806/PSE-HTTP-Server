@@ -87,15 +87,6 @@ http_response *generateResponse(http_request *request);
 
 
 /**
- * Returns the string containing the content/mime type of the resource.
- *
- * @param path The path to the resource.
- * @return A string containing the MIME-Type of the resource.
- */
-string *getMimeType(string *path);
-
-
-/**
  * Generates a string representing the gven response to be sent to the client.
  *
  * @param response The response to be converted to the string.
@@ -103,5 +94,14 @@ string *getMimeType(string *path);
  */
 string *httpResponseToString(http_response *response);
 
+
+
+/**
+ * Returns the string containing the content/mime type of the resource.
+ *
+ * @param path The path to the resource.
+ * @return A string containing the MIME-Type of the resource.
+ */
+string *getMimeType(string *path);
 
 #endif //HTTP_SERVER_09_HTTP_PARSER_H
