@@ -5,7 +5,7 @@
 
 #include <stddef.h>
 
-#define DOCUMENT_ROOT "/var/www/"
+#define DOCUMENT_ROOT "/var/www"
 
 
 /**
