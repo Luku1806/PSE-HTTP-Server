@@ -122,7 +122,7 @@ string *getMimeType(string *path) {
     string *typeStr = cpy_str(type);
     free(type);
 
-    return cpy_str(type);
+    return typeStr;
 }
 
 
