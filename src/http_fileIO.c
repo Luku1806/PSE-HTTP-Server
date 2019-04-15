@@ -119,6 +119,9 @@ string *getMimeType(string *path) {
         return new_string(0);
     }
 
+    string *typeStr = cpy_str(type);
+    free(type);
+
     return cpy_str(type);
 }
 
@@ -131,5 +134,8 @@ string *getMimeEncoding(string *path) {
         return new_string(0);
     }
 
-    return cpy_str(encoding);
+    string *encodingStr = cpy_str(encoding);
+    free(encoding);
+
+    return encodingStr;
 }
