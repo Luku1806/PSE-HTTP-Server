@@ -45,6 +45,7 @@ void free_httpResponse(http_response *response) {
     free_str(response->status);
     free_str(response->server);
     free_str(response->content_type);
+    free_str(response->content_encoding);
 
     if (response->content) {
         free(response->content);
@@ -202,16 +203,16 @@ http_response *generateStandardResponse(int statusCode) {
 }
 
 
-http_response *generateResponse(http_request *request){
+http_response *generateResponse(http_request *request) {
 
     // Missing required information
-    if(request->method == NULL | request->resource == NULL){
+    if (request->method == NULL || request->resource == NULL) {
         return generateStandardResponse(HTTP_STATUS_BAD_REQUEST);
     }
 
     // Wrong/unsupported method
     string *methodCap = toUpper_str(request->method);
-    if(!chars_equal_str(methodCap, "GET")){
+    if (!chars_equal_str(methodCap, "GET")) {
         free_str(methodCap);
         return generateStandardResponse(HTTP_STATUS_NOT_IMPLEMENTED);
     }
@@ -221,31 +222,41 @@ http_response *generateResponse(http_request *request){
     string *documentRoot = cpy_str(DOCUMENT_ROOT);
     string *absolutePath;
 
-    if(chars_equal_str(request->resource, "/")){
+    if (chars_equal_str(request->resource, "/")) {
         absolutePath = cat_str(documentRoot, "/index.html");
-    }else{
+    } else {
         char *pathAsCString = toCString_str(request->resource);
         absolutePath = cat_str(documentRoot, pathAsCString);
         free(pathAsCString);
     }
 
     free_str(documentRoot);
-    free_str(absolutePath);
 
     string *realPath = toRealPath(absolutePath);
 
+    //TODO Decide if document is not available or if its not allowed
+
     // Path is forbidden (out of the document root)
-    if(!isInDocumentRoot(realPath)){
+    if (!isInDocumentRoot(realPath)) {
+        free_str(absolutePath);
+        free_str(realPath);
         return generateStandardResponse(HTTP_STATUS_FORBIDDEN);
     }
 
     http_response *response = generateStandardResponse(HTTP_STATUS_OK);
-    void *payload = loadFileToBuffer(absolutePath);
+    void *payload = loadFileToBuffer(realPath);
 
-    if(payload != NULL){
+    if (payload != NULL) {
         response->content = payload;
-        response->content_length = getFilesize(absolutePath);
-        response->content_type = getMimeType(absolutePath);
-        response->content_encoding= getMimeEncoding(absolutePath);
+        response->content_length = getFilesize(realPath);
+        response->content_type = getMimeType(realPath);
+        response->content_encoding = getMimeEncoding(realPath);
+    } else {
+        return generateStandardResponse(HTTP_STATUS_NOT_FOUND);
     }
+
+    free_str(absolutePath);
+    free_str(realPath);
+
+    return response;
 }

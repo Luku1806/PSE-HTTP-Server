@@ -163,7 +163,7 @@ static void main_loop(int sockfd) {
 
         http_request *request = parseRequest(&requestString);
         printRequest(request);
-        //http_response *response = generateResponse(request);
+        http_response *response = generateResponse(request);
         //string *sendString = httpResponseToString(response);
         string *sendString = new_string(1);
 
@@ -186,6 +186,7 @@ static void main_loop(int sockfd) {
          * Free everything up
          */
         free_httpRequest(request);
+        free_httpResponse(response);
         free_str(sendString);
 
     }
