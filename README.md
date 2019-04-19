@@ -27,6 +27,7 @@ Es handelt sich hierbei um das Repository der Gruppe 09, welche aus den Mitglied
 | http_fileIO.c: Implementierung der **getMimeType und getMimeEncoding** Funktionen  | Lukas Reining     | 15.04.2019  | ✔ |
 | http_parser.c: Implementierung von **http_parser** | FG, LF, LR    | 20.04.2019  | 🔨 |
 | http_status.c: Implementierung von **http_status** | Leon Franke   | 20.04.2019  | ✔ |
+| Implementierung von **HTTP Status pages** | Florian Galz  | 20.04.2019  | 🔨 |
 
 Legende: 
 - Erledigt: ✔
