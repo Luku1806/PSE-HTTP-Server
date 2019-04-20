@@ -162,10 +162,10 @@ static void main_loop(int sockfd) {
         requestString.len = (size_t) length; //TODO SSIZE_T oder SIZE_T?
 
         http_request *request = parseRequest(&requestString);
-        printRequest(request);
+        //printRequest(request);
         http_response *response = generateResponse(request);
-        //string *sendString = httpResponseToString(response);
-        string *sendString = new_string(1);
+        string *sendString = httpResponseToString(response);
+        //print_string(sendString);
 
         /*
          * Schreibe die ausgehenden Daten auf den Socket.
