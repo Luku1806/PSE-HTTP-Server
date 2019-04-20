@@ -203,18 +203,51 @@ http_response *generateStandardResponse(int statusCode) {
 }
 
 
+http_response *generateStatusResponse(int statusCode) {
+    char codeBuffer[5];
+    sprintf(codeBuffer, "%i", statusCode);
+
+    // Build path from status code
+    string *path = cpy_str(STATUS_SITE_PATH);
+    string *path2 = cat_str(path, "/");
+    string *path3 = cat_str(path2, codeBuffer);
+    string *fullPath = cat_str(path3, ".html");
+
+    free_str(path);
+    free_str(path2);
+    free_str(path3);
+
+    //Load status page to buffer and see if its found
+    void *payload = loadFileToBuffer(fullPath);
+
+    if (payload != NULL) {
+        http_response *response = generateStandardResponse(statusCode);
+        response->content = payload;
+        response->content_length = getFilesize(fullPath);
+        response->content_type = getMimeType(fullPath);
+        response->content_encoding = getMimeEncoding(fullPath);
+        
+        free_str(fullPath);
+        return response;
+    }else{
+        fprintf(stderr,"Status Pages could not be loaded.\nDo they exist on this system?\n");
+        free_str(fullPath);
+        return generateStandardResponse(statusCode);
+    }
+}
+
 http_response *generateResponse(http_request *request) {
 
     // Missing required information
     if (request->method == NULL || request->resource == NULL) {
-        return generateStandardResponse(HTTP_STATUS_BAD_REQUEST);
+        return generateStatusResponse(HTTP_STATUS_BAD_REQUEST);
     }
 
     // Wrong/unsupported method
     string *methodCap = toUpper_str(request->method);
     if (!chars_equal_str(methodCap, "GET")) {
         free_str(methodCap);
-        return generateStandardResponse(HTTP_STATUS_NOT_IMPLEMENTED);
+        return generateStatusResponse(HTTP_STATUS_NOT_IMPLEMENTED);
     }
     free_str(methodCap);
 
@@ -240,13 +273,13 @@ http_response *generateResponse(http_request *request) {
     // Path is forbidden (out of the document root)
     if (!isInDocumentRoot(realPath)) {
         free_str(realPath);
-        return generateStandardResponse(HTTP_STATUS_FORBIDDEN);
+        return generateStatusResponse(HTTP_STATUS_FORBIDDEN);
     }
 
     void *payload = loadFileToBuffer(realPath);
 
     if (payload != NULL) {
-        http_response *response = generateStandardResponse(HTTP_STATUS_OK);
+        http_response *response = generateStatusResponse(HTTP_STATUS_OK);
 
         response->content = payload;
         response->content_length = getFilesize(realPath);
@@ -257,7 +290,7 @@ http_response *generateResponse(http_request *request) {
         return response;
     } else {
         free_str(realPath);
-        return generateStandardResponse(HTTP_STATUS_NOT_FOUND);
+        return generateStatusResponse(HTTP_STATUS_NOT_FOUND);
     }
 
 }

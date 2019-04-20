@@ -79,6 +79,16 @@ http_response *generateStandardResponse(int statusCode);
 
 
 /**
+ * Returns a pointer to a response with servername, http-version, status, and the corresponding html-site already set.
+ *
+ * @param statusCode The status code for the request.
+ * @return The generated and pre-initialized http-response.
+ */
+http_response *generateStatusResponse(int statusCode);
+
+
+
+/**
  * Creates a response for the given request.
  *
  * @param request The request to respond to.
