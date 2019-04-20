@@ -279,7 +279,7 @@ http_response *generateResponse(http_request *request) {
     void *payload = loadFileToBuffer(realPath);
 
     if (payload != NULL) {
-        http_response *response = generateStatusResponse(HTTP_STATUS_OK);
+        http_response *response = generateStandardResponse(HTTP_STATUS_OK);
 
         response->content = payload;
         response->content_length = getFilesize(realPath);
