@@ -261,3 +261,67 @@ http_response *generateResponse(http_request *request) {
     }
 
 }
+
+string *httpResponseToString(http_response *response) {
+    // Headerline
+    string *version = cpy_str(HTTP_VERSION);
+    string *header1 = cat_str(version, " ");
+    string *header2 = str_cat_str(header1, response->status);
+    string *fullHeader = cat_str(header2, "\n");
+
+    free_str(version);
+    free_str(header1);
+    free_str(header2);
+
+    // Servername
+    string *server1 = cat_str(fullHeader, "Server: ");
+    string *server2 = cat_str(server1, SERVER_NAME);
+    string *fullServer = cat_str(server2, "\n");
+
+    free_str(fullHeader);
+    free_str(server1);
+    free_str(server2);
+
+    if (response->content != NULL) {
+        // Content-Type
+        string *type1 = cat_str(fullServer, "Content-Type: ");
+        string *type2 = str_cat_str(type1, response->content_type);
+        string *fullType = cat_str(type2, "\n");
+
+        free_str(fullServer);
+        free_str(type1);
+        free_str(type2);
+
+        // Content-Encoding
+        string *encoding1 = cat_str(fullType, "Content-Encoding: ");
+        string *encoding2 = str_cat_str(encoding1, response->content_encoding);
+        string *fullEncoding = cat_str(encoding2, "\n");
+
+        free_str(fullType);
+        free_str(encoding1);
+        free_str(encoding2);
+
+        // Content-Length
+        char lengthBuffer[256];
+        sprintf(lengthBuffer, "%zu", response->content_length);
+
+        string *length1 = cat_str(fullServer, "Content-Length: ");
+        string *length2 = cat_str(length1, lengthBuffer);
+        string *fullLength = cat_str(length2, "\n");
+
+        free_str(fullEncoding);
+        free_str(length1);
+        free_str(length2);
+
+        //Content
+        string *content1 = cat_str(fullLength, "\n");
+        string *fullContent = cat_str_len(content1, response->content, response->content_length);
+
+        free_str(fullLength);
+        free_str(content1);
+
+        return fullContent;
+    }
+
+    return fullServer;
+}
