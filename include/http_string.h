@@ -62,12 +62,21 @@ char *toCString_str(string *str);
 
 
 /**
+ * Combines a string and a c-string to a new string
+ * @param dest String 1 to combine
+ * @param src char-pointer to combine
+ * @return Either Returns a new String or NULL depending on whether the condition is met or not.
+ */
+string *cat_str(string *dest, const char *src);
+
+
+/**
  * Combines two strings to a new string
  * @param dest String 1 to combine
  * @param src String 2 to combine
  * @return Either Returns a new String or NULL depending on whether the condition is met or not.
  */
-string *cat_str(string *dest, const char *src);
+string *str_cat_str(string *dest, string *src);
 
 
 /**

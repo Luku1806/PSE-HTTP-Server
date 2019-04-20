@@ -64,6 +64,21 @@ string *cat_str(string *dest, const char *src) {
 }
 
 
+string *str_cat_str(string *dest, string *src){
+    if ((dest != NULL) && (src != NULL)){
+        size_t newSize = dest->len + src->len;
+        string *newString = new_string(newSize);
+
+        memcpy(newString->str, dest->str, dest->len);
+        memcpy(newString->str + dest->len, src->str, src->len);
+
+        return newString;
+    }
+
+    return NULL;
+}
+
+
 string * sub_str(string *str, size_t start, size_t len) {
     if (start + len > str->len) return NULL;
 
