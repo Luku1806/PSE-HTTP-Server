@@ -64,6 +64,21 @@ string *cat_str(string *dest, const char *src) {
 }
 
 
+string *cat_str_len(string *dest, void *src, size_t len){
+    if ((dest != NULL) && (src != NULL)){
+        size_t newSize = dest->len + len;
+        string *newString = new_string(newSize);
+
+        memcpy(newString->str, dest->str, dest->len);
+        memcpy(newString->str + dest->len, src, len);
+
+        return newString;
+    }
+
+    return NULL;
+}
+
+
 string *str_cat_str(string *dest, string *src){
     if ((dest != NULL) && (src != NULL)){
         size_t newSize = dest->len + src->len;

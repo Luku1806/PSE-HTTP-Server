@@ -71,6 +71,16 @@ string *cat_str(string *dest, const char *src);
 
 
 /**
+ * Combines a string and a generic pointer with a given length
+ * @param dest String 1 to combine
+ * @param src pointer to combine
+ * @param len lenth of the pointer to concat
+ * @return Either Returns a new String or NULL depending on whether the condition is met or not.
+ */
+string *cat_str_len(string *dest, void *src, size_t len);
+
+
+/**
  * Combines two strings to a new string
  * @param dest String 1 to combine
  * @param src String 2 to combine
