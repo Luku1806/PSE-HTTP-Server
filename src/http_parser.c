@@ -233,30 +233,31 @@ http_response *generateResponse(http_request *request) {
     free_str(documentRoot);
 
     string *realPath = toRealPath(absolutePath);
+    free_str(absolutePath);
 
     //TODO Decide if document is not available or if its not allowed
 
     // Path is forbidden (out of the document root)
     if (!isInDocumentRoot(realPath)) {
-        free_str(absolutePath);
         free_str(realPath);
         return generateStandardResponse(HTTP_STATUS_FORBIDDEN);
     }
 
-    http_response *response = generateStandardResponse(HTTP_STATUS_OK);
     void *payload = loadFileToBuffer(realPath);
 
     if (payload != NULL) {
+        http_response *response = generateStandardResponse(HTTP_STATUS_OK);
+
         response->content = payload;
         response->content_length = getFilesize(realPath);
         response->content_type = getMimeType(realPath);
         response->content_encoding = getMimeEncoding(realPath);
+
+        free_str(realPath);
+        return response;
     } else {
+        free_str(realPath);
         return generateStandardResponse(HTTP_STATUS_NOT_FOUND);
     }
 
-    free_str(absolutePath);
-    free_str(realPath);
-
-    return response;
 }
