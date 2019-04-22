@@ -203,18 +203,51 @@ http_response *generateStandardResponse(int statusCode) {
 }
 
 
+http_response *generateStatusResponse(int statusCode) {
+    char codeBuffer[5];
+    sprintf(codeBuffer, "%i", statusCode);
+
+    // Build path from status code
+    string *path = cpy_str(STATUS_SITE_PATH);
+    string *path2 = cat_str(path, "/");
+    string *path3 = cat_str(path2, codeBuffer);
+    string *fullPath = cat_str(path3, ".html");
+
+    free_str(path);
+    free_str(path2);
+    free_str(path3);
+
+    //Load status page to buffer and see if its found
+    void *payload = loadFileToBuffer(fullPath);
+
+    if (payload != NULL) {
+        http_response *response = generateStandardResponse(statusCode);
+        response->content = payload;
+        response->content_length = getFilesize(fullPath);
+        response->content_type = getMimeType(fullPath);
+        response->content_encoding = getMimeEncoding(fullPath);
+        
+        free_str(fullPath);
+        return response;
+    }else{
+        fprintf(stderr,"Status Pages could not be loaded.\nDo they exist on this system?\n");
+        free_str(fullPath);
+        return generateStandardResponse(statusCode);
+    }
+}
+
 http_response *generateResponse(http_request *request) {
 
     // Missing required information
     if (request->method == NULL || request->resource == NULL) {
-        return generateStandardResponse(HTTP_STATUS_BAD_REQUEST);
+        return generateStatusResponse(HTTP_STATUS_BAD_REQUEST);
     }
 
     // Wrong/unsupported method
     string *methodCap = toUpper_str(request->method);
     if (!chars_equal_str(methodCap, "GET")) {
         free_str(methodCap);
-        return generateStandardResponse(HTTP_STATUS_NOT_IMPLEMENTED);
+        return generateStatusResponse(HTTP_STATUS_NOT_IMPLEMENTED);
     }
     free_str(methodCap);
 
@@ -233,30 +266,95 @@ http_response *generateResponse(http_request *request) {
     free_str(documentRoot);
 
     string *realPath = toRealPath(absolutePath);
+    free_str(absolutePath);
 
     //TODO Decide if document is not available or if its not allowed
 
     // Path is forbidden (out of the document root)
     if (!isInDocumentRoot(realPath)) {
-        free_str(absolutePath);
         free_str(realPath);
-        return generateStandardResponse(HTTP_STATUS_FORBIDDEN);
+        return generateStatusResponse(HTTP_STATUS_FORBIDDEN);
     }
 
-    http_response *response = generateStandardResponse(HTTP_STATUS_OK);
     void *payload = loadFileToBuffer(realPath);
 
     if (payload != NULL) {
+        http_response *response = generateStandardResponse(HTTP_STATUS_OK);
+
         response->content = payload;
         response->content_length = getFilesize(realPath);
         response->content_type = getMimeType(realPath);
         response->content_encoding = getMimeEncoding(realPath);
+
+        free_str(realPath);
+        return response;
     } else {
-        return generateStandardResponse(HTTP_STATUS_NOT_FOUND);
+        free_str(realPath);
+        return generateStatusResponse(HTTP_STATUS_NOT_FOUND);
     }
 
-    free_str(absolutePath);
-    free_str(realPath);
+}
 
-    return response;
+string *httpResponseToString(http_response *response) {
+    // Headerline
+    string *version = cpy_str(HTTP_VERSION);
+    string *header1 = cat_str(version, " ");
+    string *header2 = str_cat_str(header1, response->status);
+    string *fullHeader = cat_str(header2, "\n");
+
+    free_str(version);
+    free_str(header1);
+    free_str(header2);
+
+    // Servername
+    string *server1 = cat_str(fullHeader, "Server: ");
+    string *server2 = cat_str(server1, SERVER_NAME);
+    string *fullServer = cat_str(server2, "\n");
+
+    free_str(fullHeader);
+    free_str(server1);
+    free_str(server2);
+
+    if (response->content != NULL) {
+        // Content-Type
+        string *type1 = cat_str(fullServer, "Content-Type: ");
+        string *type2 = str_cat_str(type1, response->content_type);
+        string *fullType = cat_str(type2, "\n");
+
+        free_str(fullServer);
+        free_str(type1);
+        free_str(type2);
+
+        // Content-Encoding
+        string *encoding1 = cat_str(fullType, "Content-Encoding: ");
+        string *encoding2 = str_cat_str(encoding1, response->content_encoding);
+        string *fullEncoding = cat_str(encoding2, "\n");
+
+        free_str(fullType);
+        free_str(encoding1);
+        free_str(encoding2);
+
+        // Content-Length
+        char lengthBuffer[256];
+        sprintf(lengthBuffer, "%zu", response->content_length);
+
+        string *length1 = cat_str(fullServer, "Content-Length: ");
+        string *length2 = cat_str(length1, lengthBuffer);
+        string *fullLength = cat_str(length2, "\n");
+
+        free_str(fullEncoding);
+        free_str(length1);
+        free_str(length2);
+
+        //Content
+        string *content1 = cat_str(fullLength, "\n");
+        string *fullContent = cat_str_len(content1, response->content, response->content_length);
+
+        free_str(fullLength);
+        free_str(content1);
+
+        return fullContent;
+    }
+
+    return fullServer;
 }

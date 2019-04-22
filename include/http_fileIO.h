@@ -6,6 +6,7 @@
 #include <stddef.h>
 
 #define DOCUMENT_ROOT "/var/www/default"
+#define STATUS_SITE_PATH "/var/www/default/status"
 
 
 /**

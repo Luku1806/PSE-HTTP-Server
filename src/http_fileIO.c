@@ -26,7 +26,9 @@ string *toRealPath(string *path) {
 
 
 size_t getFilesize(string *filepath) {
-    FILE *file = fopen(filepath->str, "rb");
+    char *pathAsChars = toCString_str(filepath);
+    FILE *file = fopen(pathAsChars, "rb");
+    free(pathAsChars);
 
     if (!file) {
         fprintf(stderr, "Could not find file\n");
@@ -41,7 +43,9 @@ size_t getFilesize(string *filepath) {
 
 
 void *loadFileToBuffer(string *filepath) {
-    FILE *file = fopen(filepath->str, "rb");
+    char *pathAsChars = toCString_str(filepath);
+    FILE *file = fopen(pathAsChars, "rb");
+    free(pathAsChars);
 
     if (!file) {
         fprintf(stderr, "Could not find file\n");
@@ -98,7 +102,7 @@ char *getMimeInformation(string *path, int flag) {
     char *pathAsChars = toCString_str(path);
     char *mimeAsChars = (char *) magic_file(magic, pathAsChars);
 
-    if(mimeAsChars == NULL) return NULL; // File was not found!!!!
+    if (mimeAsChars == NULL) return NULL; // File was not found!!!!
 
     // Copy string, because magic frees returned values
     char *information = calloc(strlen(mimeAsChars) + 1, 1);
