@@ -270,7 +270,7 @@ http_response *generateResponse(http_request *request) {
     free_str(absolutePath);
 
     string *realPath = toRealPath(decodedURL);
-    free(decodedURL);
+    free_str(decodedURL);
 
     //TODO Decide if document is not available or if its not allowed
 
