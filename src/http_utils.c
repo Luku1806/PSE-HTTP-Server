@@ -1,38 +1,34 @@
 #include "../include/http_utils.h"
 
 
+string *decodeURL(string *url) {
+    char *decodedChars = calloc(url->len + 1, sizeof(char));
+    size_t copyIndex = 0;
 
-int hexToDec(string *hex){
+    for (size_t i = 0; i < url->len; i++) {
 
-    unsigned int val = 0;
+        if (url->str[i] == '%') {
+            string *numbers = sub_str(url, i + 1, 2);
 
-    for(unsigned int i=0;i<hex->len;i++)
-        if(hex->str[i] <= 57)
-            val += (hex->str[i]-48)*(1<<(4*(hex->len-1-i)));
-        else
-            val += (hex->str[i]-55)*(1<<(4*(hex->len-1-i)));
+            if (chars_equal_str(numbers, "20")) {
+                decodedChars[copyIndex++] = ' ';
+            }else{
+                decodedChars[copyIndex++] = '?';
+            }
 
-    return val;
-
-
-}
-
-
-string *decodeURL(string *url){
-
-
-    for(int i = 0; i < url->len; i++){
-
-        if(url->str[i] == '%'){
-
-            //TODO wenn str replace done ist
-
-
-
+            free_str(numbers);
+            i += 2;
+            continue;
         }
 
-
+        decodedChars[copyIndex++] = url->str[i];
     }
+    decodedChars[copyIndex] = '\0';
+
+    string *decoded = cpy_str(decodedChars);
+    free(decodedChars);
+    return decoded;
+}
 
 
 }
