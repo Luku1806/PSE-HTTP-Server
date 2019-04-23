@@ -5,6 +5,7 @@
 #include "../include/http_status.h"
 #include "../include/http_server.h"
 #include "../include/http_fileIO.h"
+#include "../include/http_utils.h"
 
 
 http_request *new_httpRequest() {
@@ -265,8 +266,11 @@ http_response *generateResponse(http_request *request) {
 
     free_str(documentRoot);
 
-    string *realPath = toRealPath(absolutePath);
+    string *decodedURL = decodeURL(absolutePath);
     free_str(absolutePath);
+
+    string *realPath = toRealPath(decodedURL);
+    free(decodedURL);
 
     //TODO Decide if document is not available or if its not allowed
 
