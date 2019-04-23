@@ -87,6 +87,15 @@ http_response *generateStandardResponse(int statusCode);
 http_response *generateStatusResponse(int statusCode);
 
 
+/**
+ * Creates a response with an HTML site containing the information contained in the request.
+ * This is used for debug an can be called by requesting /debug as path.
+ *
+ * @param request The request to show.
+ * @return The debug response to the given request.
+ */
+http_response *generateDebugResponse(http_request *request);
+
 
 /**
  * Creates a response for the given request.

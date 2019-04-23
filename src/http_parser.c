@@ -227,15 +227,106 @@ http_response *generateStatusResponse(int statusCode) {
         response->content_length = getFilesize(fullPath);
         response->content_type = getMimeType(fullPath);
         response->content_encoding = getMimeEncoding(fullPath);
-        
+
         free_str(fullPath);
         return response;
-    }else{
-        fprintf(stderr,"Status Pages could not be loaded.\nDo they exist on this system?\n");
+    } else {
+        fprintf(stderr, "Status Pages could not be loaded.\nDo they exist on this system?\n");
         free_str(fullPath);
         return generateStandardResponse(statusCode);
     }
 }
+
+
+http_response *generateDebugResponse(http_request *request) {
+    http_response *response = generateStandardResponse(HTTP_STATUS_OK);
+
+    string *htmlSite = cpy_str("<html>\n<body>\n<h1>Willkommen im externen Bereich!</h1>\n<pre>\n");
+
+    if (request->method) {
+        string *htmlMethod1 = cpy_str("HTTP-Methode: ");
+        string *htmlMethod2 = str_cat_str(htmlMethod1, request->method);
+        string *htmlMethodFull = cat_str(htmlMethod2, "\n");
+
+        string *newSite = str_cat_str(htmlSite, htmlMethodFull);
+        free_str(htmlSite);
+        htmlSite = newSite;
+
+        free_str(htmlMethod1);
+        free_str(htmlMethod2);
+        free_str(htmlMethodFull);
+    }
+
+    if (request->http_version) {
+        string *htmlVersion1 = cpy_str("HTTP-Version: ");
+        string *htmlVersion2 = str_cat_str(htmlVersion1, request->http_version);
+        string *htmlVersionFull = cat_str(htmlVersion2, "\n");
+
+        string *newSite = str_cat_str(htmlSite, htmlVersionFull);
+        free_str(htmlSite);
+        htmlSite = newSite;
+
+        free_str(htmlVersion1);
+        free_str(htmlVersion2);
+        free_str(htmlVersionFull);
+    }
+
+    if (request->resource) {
+        string *htmlResource1 = cpy_str("HTTP-Resource: ");
+        string *htmlResource2 = str_cat_str(htmlResource1, request->resource);
+        string *htmlResourceFull = cat_str(htmlResource2, "\n");
+
+        string *newSite = str_cat_str(htmlSite, htmlResourceFull);
+        free_str(htmlSite);
+        htmlSite = newSite;
+
+        free_str(htmlResource1);
+        free_str(htmlResource2);
+        free_str(htmlResourceFull);
+    }
+
+    if (request->user_agent) {
+        string *htmlAgent1 = cpy_str("HTTP-User-Agent: ");
+        string *htmlAgent2 = str_cat_str(htmlAgent1, request->user_agent);
+        string *htmlAgentFull = cat_str(htmlAgent2, "\n");
+
+        string *newSite = str_cat_str(htmlSite, htmlAgentFull);
+        free_str(htmlSite);
+        htmlSite = newSite;
+
+        free_str(htmlAgent1);
+        free_str(htmlAgent2);
+        free_str(htmlAgentFull);
+    }
+
+    if (request->host) {
+        string *htmlHost1 = cpy_str("HTTP-Host: ");
+        string *htmlHost2 = str_cat_str(htmlHost1, request->host);
+        string *htmlHostFull = cat_str(htmlHost2, "\n");
+
+        string *newSite = str_cat_str(htmlSite, htmlHostFull);
+        free_str(htmlSite);
+        htmlSite = newSite;
+
+        free_str(htmlHost1);
+        free_str(htmlHost2);
+        free_str(htmlHostFull);
+    }
+
+
+    string *htmlSiteFull = cat_str(htmlSite, "</pre>\n</body>\n</html>");
+    free_str(htmlSite);
+
+    response->content = toCString_str(htmlSiteFull);
+    response->content_length = htmlSiteFull->len;
+    response->content_type = cpy_str("text/html");
+    response->content_encoding = cpy_str("us-ascii");
+
+    free_str(htmlSiteFull);
+
+    return response;
+}
+
 
 http_response *generateResponse(http_request *request) {
 

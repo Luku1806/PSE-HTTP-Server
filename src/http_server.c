@@ -156,16 +156,22 @@ static void main_loop(int sockfd) {
             error("ERROR reading from socket");
         }
 
-
         string requestString;
         requestString.str = buffer;
         requestString.len = (size_t) length; //TODO SSIZE_T oder SIZE_T?
 
         http_request *request = parseRequest(&requestString);
-        //printRequest(request);
-        http_response *response = generateResponse(request);
+
+        // Decide if request is for a special site (at the moment only debug) and generate response
+        http_response *response;
+
+        if(chars_equal_str(request->resource,"/debug")){
+            response = generateDebugResponse(request);
+        }else{
+            response = generateResponse(request);
+        }
+
         string *sendString = httpResponseToString(response);
-        //print_string(sendString);
 
         /*
          * Schreibe die ausgehenden Daten auf den Socket.
