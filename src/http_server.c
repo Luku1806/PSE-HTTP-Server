@@ -165,7 +165,8 @@ static void main_loop(int sockfd) {
         // Decide if request is for a special site (at the moment only debug) and generate response
         http_response *response;
 
-        if(chars_equal_str(request->resource,"/debug")){
+        //TODO Better solution
+        if(request->resource != NULL && chars_equal_str(request->resource,"/debug")){
             response = generateDebugResponse(request);
         }else{
             response = generateResponse(request);

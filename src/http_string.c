@@ -118,7 +118,7 @@ char equals_str(string *str1, string *str2) {
 
 char chars_equal_str(string *str, char *chars) {
     if (strlen(chars) != str->len) return 0;
-    for (int i = 0; i < str->len; ++i) {
+    for (int i = 0; i < str->len; i++) {
         if (str->str[i] != chars[i]) return 0;
     }
     return 1;
