@@ -55,8 +55,12 @@ string *getStatusString(int statusCode){
         case HTTP_STATUS_SERVICE_UNAVAILABLE:
             return cpy_str("503 SERVICE UNAVAILABLE");
             break;
+        default:
+            return NULL;
+            break;
     }
 
+    return NULL;
 
 };
 

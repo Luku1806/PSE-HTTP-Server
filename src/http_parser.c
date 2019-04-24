@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <zconf.h>
 #include "../include/http_parser.h"
 #include "../include/http_error.h"
 #include "../include/http_status.h"
@@ -361,9 +363,27 @@ http_response *generateResponse(http_request *request) {
     free_str(absolutePath);
 
     string *realPath = toRealPath(decodedURL);
-    free_str(decodedURL);
 
-    //TODO Decide if document is not available or if its not allowed
+    // If file doesn't exist, decide if it lays in document root to prevent information leak
+    if (realPath == NULL) {
+        char *test = toCString_str(decodedURL);
+        char *old = calloc(1, PATH_MAX);
+
+        free_str(decodedURL);
+
+        realpath(test, old);
+        if (strncmp(DOCUMENT_ROOT, old, strlen(DOCUMENT_ROOT)) == 0) {
+            free(test);
+            free(old);
+            return generateStatusResponse(HTTP_STATUS_NOT_FOUND);
+        } else {
+            free(test);
+            free(old);
+            return generateStatusResponse(HTTP_STATUS_FORBIDDEN);
+        }
+    }
+
+    free_str(decodedURL);
 
     // Path is forbidden (out of the document root)
     if (!isInDocumentRoot(realPath)) {
@@ -387,8 +407,8 @@ http_response *generateResponse(http_request *request) {
         free_str(realPath);
         return generateStatusResponse(HTTP_STATUS_NOT_FOUND);
     }
-
 }
+
 
 string *httpResponseToString(http_response *response) {
     // Headerline
@@ -433,7 +453,7 @@ string *httpResponseToString(http_response *response) {
         char lengthBuffer[256];
         sprintf(lengthBuffer, "%zu", response->content_length);
 
-        string *length1 = cat_str(fullServer, "Content-Length: ");
+        string *length1 = cat_str(fullEncoding, "Content-Length: ");
         string *length2 = cat_str(length1, lengthBuffer);
         string *fullLength = cat_str(length2, "\n");
 

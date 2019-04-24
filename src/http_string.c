@@ -7,7 +7,7 @@
 
 
 string *new_string(size_t len) {
-    string *str = calloc(sizeof(string), 1);
+    string *str = calloc(1, sizeof(string));
     if (str == NULL) {
         exit(2);
     }

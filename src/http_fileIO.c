@@ -13,7 +13,7 @@ string *toRealPath(string *path) {
     string *realPathString;
 
     if (realPath == NULL) {
-        realPathString = new_string(0);
+        realPathString = NULL;
     } else {
         realPathString = cpy_str(realPath);
     }
