@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <zconf.h>
+#include <limits.h>
 #include "../include/http_parser.h"
 #include "../include/http_error.h"
 #include "../include/http_status.h"

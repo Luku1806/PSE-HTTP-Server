@@ -5,8 +5,8 @@
 
 #include <stddef.h>
 
-#define DOCUMENT_ROOT "/home/lab4inf/lr413680/Dokumente/HTTP/default"
-#define STATUS_SITE_PATH "/home/lab4inf/lr413680/Dokumente/HTTP/status"
+#define DOCUMENT_ROOT "/var/www/default"
+#define STATUS_SITE_PATH "/var/www/default/status"
 
 
 /**
