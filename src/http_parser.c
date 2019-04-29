@@ -333,7 +333,7 @@ http_response *generateDebugResponse(http_request *request) {
 http_response *generateResponse(http_request *request) {
 
     // Missing required information
-    if (request->method == NULL || request->resource == NULL) {
+    if (request->method == NULL || request->resource == NULL || request->http_version == NULL) {
         return generateStatusResponse(HTTP_STATUS_BAD_REQUEST);
     }
 
