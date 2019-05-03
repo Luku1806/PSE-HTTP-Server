@@ -104,8 +104,6 @@ http_request *parseRequest(string *strRequest) {
         if (current == '\r' || current == '\n') break;
     }
 
-    //TODO Decide if headerline is set or valid
-
     string *headerline = sub_str(strRequest, 0, end_headerline);
 
     int tokenIndex = 0;
@@ -345,7 +343,7 @@ http_response *generateResponse(http_request *request) {
     }
     free_str(methodCap);
 
-
+    //Create absolute path
     string *documentRoot = cpy_str(DOCUMENT_ROOT);
     string *absolutePath;
 
@@ -385,7 +383,7 @@ http_response *generateResponse(http_request *request) {
 
     free_str(decodedURL);
 
-    // Path is forbidden (out of the document root)
+    // Check if path access is forbidden (out of the document root)
     if (!isInDocumentRoot(realPath)) {
         free_str(realPath);
         return generateStatusResponse(HTTP_STATUS_FORBIDDEN);
@@ -405,7 +403,7 @@ http_response *generateResponse(http_request *request) {
         return response;
     } else {
         free_str(realPath);
-        return generateStatusResponse(HTTP_STATUS_NOT_FOUND);
+        return generateStatusResponse(HTTP_STATUS_INTERNAL_SERVER_ERROR);
     }
 }
 

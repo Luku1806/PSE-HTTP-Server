@@ -216,6 +216,10 @@ int main(int argc, char *argv[]) {
 
     register_signal();
     const int sockfd = setup_socket();
+
+    printf("Server started listening for connections on port %i...", PORT);
+    fflush(stdout);
+
     main_loop(sockfd);
 
     return 0;
