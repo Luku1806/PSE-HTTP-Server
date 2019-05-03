@@ -42,6 +42,13 @@ string *cpy_str(const char *src) {
 }
 
 
+string *clone_str(string *src) {
+    string *dest = new_string(src->len);
+    memcpy(dest->str, src->str, src->len);
+    return dest;
+}
+
+
 string *cat_str(string *dest, const char *src) {
 
     if ((dest != NULL) && (src != NULL)){
