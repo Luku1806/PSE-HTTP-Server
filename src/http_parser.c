@@ -343,8 +343,34 @@ http_response *generateResponse(http_request *request) {
     }
     free_str(methodCap);
 
-    //Create absolute path
-    string *documentRoot = cpy_str(DOCUMENT_ROOT);
+    // Check which host (document root) to use in order to implement VIRTUAL HOSTING
+    string *documentRoot = NULL;
+
+    if (request->host != NULL) {
+        int portBegin = find_chars(request->host, ":");
+        string *host;
+
+        // Filter port out
+        if (portBegin != -1) {
+            host = sub_str(request->host, 0, portBegin);
+        } else {
+            host = clone_str(request->host);
+        }
+
+        // VIRTUAL HOSTING: Look what host and corresponding document root to serve
+        if (chars_equal_str(host, "extern")) {
+            documentRoot = cpy_str(EXTERN_DOCUMENT_ROOT);
+        } else if (chars_equal_str(host, "intern")) {
+            free_str((host));
+            return generateStatusResponse(HTTP_STATUS_UNAUTHORIZED);
+        } else {
+            documentRoot = cpy_str(DEFAULT_DOCUMENT_ROOT);
+        }
+
+        free_str((host));
+    }
+
+    //Create absolute path (document-root + relative path)
     string *absolutePath;
 
     if (chars_equal_str(request->resource, "/")) {
@@ -354,8 +380,6 @@ http_response *generateResponse(http_request *request) {
         absolutePath = cat_str(documentRoot, pathAsCString);
         free(pathAsCString);
     }
-
-    free_str(documentRoot);
 
     string *decodedURL = decodeURL(absolutePath);
     free_str(absolutePath);
@@ -370,13 +394,15 @@ http_response *generateResponse(http_request *request) {
         free_str(decodedURL);
 
         realpath(test, old);
-        if (strncmp(DOCUMENT_ROOT, old, strlen(DOCUMENT_ROOT)) == 0) {
+        if (strncmp(documentRoot->str, old, documentRoot->len) == 0) {
             free(test);
             free(old);
+            free_str(documentRoot);
             return generateStatusResponse(HTTP_STATUS_NOT_FOUND);
         } else {
             free(test);
             free(old);
+            free_str(documentRoot);
             return generateStatusResponse(HTTP_STATUS_FORBIDDEN);
         }
     }
@@ -384,10 +410,13 @@ http_response *generateResponse(http_request *request) {
     free_str(decodedURL);
 
     // Check if path access is forbidden (out of the document root)
-    if (!isInDocumentRoot(realPath)) {
+    if (!isInDocumentRoot(realPath, documentRoot)) {
+        free_str(documentRoot);
         free_str(realPath);
         return generateStatusResponse(HTTP_STATUS_FORBIDDEN);
     }
+
+    free_str(documentRoot);
 
     void *payload = loadFileToBuffer(realPath);
 
