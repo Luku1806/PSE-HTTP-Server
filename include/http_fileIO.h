@@ -5,7 +5,10 @@
 
 #include <stddef.h>
 
-#define DOCUMENT_ROOT "/var/www/default"
+#define DEFAULT_DOCUMENT_ROOT "/var/www/default"
+#define EXTERN_DOCUMENT_ROOT "/var/www/extern"
+#define INTERN_DOCUMENT_ROOT "/var/www/intern"
+
 #define STATUS_SITE_PATH "/var/www/default/status"
 
 
@@ -23,9 +26,10 @@ string *toRealPath(string *path);
  * Checks if a path lays in the document root.
  *
  * @param filepath The path to check if it lays in the document root.
+ * @param root The document path root to check.
  * @return 0 if the path is not in the document root, 1 if it is in document root.
  */
-char isInDocumentRoot(string *filepath);
+char isInDocumentRoot(string *filepath, string *root);
 
 
 /**
