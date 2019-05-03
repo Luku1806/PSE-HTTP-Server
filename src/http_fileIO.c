@@ -64,17 +64,15 @@ void *loadFileToBuffer(string *filepath) {
     return fcontent;
 }
 
-char isInDocumentRoot(string *filepath) {
-
-    if (startsWith_str(filepath, DOCUMENT_ROOT)) {
-
+char isInDocumentRoot(string *filepath, string *root) {
+    char *rootChars = toCString_str(root);
+    if (startsWith_str(filepath, rootChars)) {
+        free(rootChars);
         return 1;
-
     } else {
-
+        free(rootChars);
         return 0;
     }
-
 }
 
 
