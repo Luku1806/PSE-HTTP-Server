@@ -31,7 +31,6 @@ size_t getFilesize(string *filepath) {
     free(pathAsChars);
 
     if (!file) {
-        fprintf(stderr, "Could not find file\n");
         return 0;
     }
 
@@ -48,7 +47,6 @@ void *loadFileToBuffer(string *filepath) {
     free(pathAsChars);
 
     if (!file) {
-        fprintf(stderr, "Could not find file\n");
         return NULL;
     }
 
