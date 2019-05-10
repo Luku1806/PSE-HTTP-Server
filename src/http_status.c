@@ -55,7 +55,7 @@ string *getStatusString(int statusCode){
         case HTTP_STATUS_SERVICE_UNAVAILABLE:
             return cpy_str("503 SERVICE UNAVAILABLE");
             break;
-        case HTTP_STATUS_SERVICE_VERSION_UNSSUPORTED:
+        case HTTP_STATUS_SERVICE_VERSION_NOT_SUPPORTED:
             return cpy_str("505 HTTP VERSION NOT SUPPORTED");
             break;
         default:
