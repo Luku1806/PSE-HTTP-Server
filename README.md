@@ -29,7 +29,7 @@ Es handelt sich hierbei um das Repository der Gruppe 09, welche aus den Mitglied
 | http_status.c: Implementierung von **http_status** | Leon Franke   | 20.04.2019  | ✔ |
 | Implementierung von **HTTP Status pages** | Florian Galz  | 20.04.2019  | ✔ |
 | Implementierung von **Virtual Hosting** | Lukas Reining | 8.05.2019  | ✔ |
-| Erstellen der Python Tests | Florian Galz | 10.05.2019  | 🔨 |
+| Erstellen der Python Tests | Florian Galz | 10.05.2019  | ✔ |
 | Erstellen der Dokumentation | Leon Franke | 10.05.2019  | 🔨 |
 
 Legende: 
