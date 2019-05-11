@@ -345,7 +345,7 @@ http_response *generateResponse(http_request *request) {
 
     // Wrong/unsupported http version
     string *httpVersion = toUpper_str(request->http_version);
-    if ((!chars_equal_str(httpVersion, "HTTP/1.0")) && (!chars_equal_str(httpVersion, "HTTP/1.1")) && (!chars_equal_str(httpVersion, "HTTP/2.0"))) {
+    if ((!chars_equal_str(httpVersion, "HTTP/1.0")) && (!chars_equal_str(httpVersion, "HTTP/1.1"))) {
         free_str(httpVersion);
         return generateStatusResponse(HTTP_STATUS_SERVICE_VERSION_NOT_SUPPORTED);
     }
