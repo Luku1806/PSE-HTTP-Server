@@ -43,6 +43,9 @@ string *getStatusString(int statusCode){
         case HTTP_STATUS_NOT_FOUND:
             return cpy_str("404 NOT FOUND");
             break;
+        case HTTP_STATUS_URI_TOO_LONG:
+            return cpy_str("414 URI TOO LONG");
+            break;
         case HTTP_STATUS_INTERNAL_SERVER_ERROR:
             return cpy_str("500 INTERNAL SERVER ERROR");
             break;

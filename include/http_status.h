@@ -16,6 +16,7 @@
 #define HTTP_STATUS_UNAUTHORIZED                    401
 #define HTTP_STATUS_FORBIDDEN                       403
 #define HTTP_STATUS_NOT_FOUND                       404
+#define HTTP_STATUS_URI_TOO_LONG                    414
 
 #define HTTP_STATUS_INTERNAL_SERVER_ERROR           500
 #define HTTP_STATUS_NOT_IMPLEMENTED                 501
