@@ -13,6 +13,13 @@
  */
 
 
+/**
+ * Decodes the link to normal characters.
+ *
+ * @param string *url The coded string.
+ * @return The new decoded string.
+ */
+
 string *decodeURL(string *url);
 
 #endif //HTTP_SERVER_09_HTTP_UTILS_H
