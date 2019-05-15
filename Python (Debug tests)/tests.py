@@ -18,7 +18,7 @@ __version__ = '2.0.0'
 # Read the target IP address and port from the command line arguments.
 # If there are no command line arguments, use the following default values.
 host = 'localhost'
-port = 31337
+port = 31338
 
 # Overwrite host and port (if specified)
 if len(sys.argv) == 3:
@@ -74,14 +74,14 @@ cannon += Beam(
 cannon += Beam(
     description='Request with http version 2.0',
     request='GET /index.html HTTP/2.0\r\nHost: {host}\r\nConnection: close\r\n\r\n',
-    response=['HTTP/2.0 200']
+    response=['HTTP/1.1 505']
 )
 
 # Case 8:
 cannon += Beam(
     description='Request with http version 1.0',
     request='GET /index.html HTTP/1.0\r\nHost: {host}\r\nConnection: close\r\n\r\n',
-    response=['HTTP/1.0 200']
+    response=['HTTP/1.1 200']
 )
 
 # Case 9:
@@ -137,7 +137,7 @@ cannon += Beam(
 cannon += Beam(
     description='Spaces in request',
     request='         GET /../index.html HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\n\r\n',
-    response=['HTTP/1.1 400']
+    response=['HTTP/1.1 200']
 )
 
 
