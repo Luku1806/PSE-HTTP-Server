@@ -41,14 +41,3 @@ string *decodeURL(string *url) {
     free(decodedChars);
     return decoded;
 }
-
-
-}
-
-
-
-
-
-
-
-
