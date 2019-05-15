@@ -136,7 +136,7 @@ cannon += Beam(
 # Case 16:
 cannon += Beam(
     description='Spaces in request',
-    request='         GET /../index.html HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\n\r\n',
+    request='         GET /index.html HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\n\r\n',
     response=['HTTP/1.1 200']
 )
 
