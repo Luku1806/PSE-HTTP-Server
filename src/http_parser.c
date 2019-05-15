@@ -354,7 +354,7 @@ http_response *generateResponse(http_request *request) {
     // Check which host (document root) to use in order to implement VIRTUAL HOSTING
     string *documentRoot = NULL;
 
-    if (request->host != NULL) {
+    if (request->host != NULL && request->host->len != 0) {
         int portBegin = find_chars(request->host, ":");
         string *host;
 
@@ -376,7 +376,10 @@ http_response *generateResponse(http_request *request) {
         }
 
         free_str((host));
+    } else {
+        documentRoot = cpy_str(DEFAULT_DOCUMENT_ROOT);
     }
+
 
     //Create absolute path (document-root + relative path)
     string *absolutePath;
@@ -440,7 +443,7 @@ http_response *generateResponse(http_request *request) {
         return response;
     } else {
         free_str(realPath);
-        return generateStatusResponse(HTTP_STATUS_INTERNAL_SERVER_ERROR);
+        return generateStatusResponse(HTTP_STATUS_FORBIDDEN);
     }
 }
 
