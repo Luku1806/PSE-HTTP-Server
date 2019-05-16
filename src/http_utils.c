@@ -1,6 +1,21 @@
 #include "../include/http_utils.h"
 
 
+char hexStringToChar(string *hex) {
+    char val = 0;
+
+    for (size_t i = 0; i < hex->len; i++) {
+        if (hex->str[i] <= 57) {
+            val += (hex->str[i] - 48) * (1 << (4 * (hex->len - 1 - i)));
+        }else {
+            val += (hex->str[i] - 55) * (1 << (4 * (hex->len - 1 - i)));
+        }
+    }
+
+    return val;
+}
+
+
 string *decodeURL(string *url) {
     char *decodedChars = calloc(url->len + 1, sizeof(char));
     size_t copyIndex = 0;
@@ -10,11 +25,8 @@ string *decodeURL(string *url) {
         if (url->str[i] == '%') {
             string *numbers = sub_str(url, i + 1, 2);
 
-            if (chars_equal_str(numbers, "20")) {
-                decodedChars[copyIndex++] = ' ';
-            }else{
-                decodedChars[copyIndex++] = '?';
-            }
+            int numbersDecimal = hexStringToChar(numbers);
+            decodedChars[copyIndex++] = numbersDecimal;
 
             free_str(numbers);
             i += 2;
