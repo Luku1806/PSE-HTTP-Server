@@ -152,8 +152,14 @@ http_request *parseRequest(string *strRequest) {
         size_t end_headerName;
         for (end_headerName = i; end_headerName < strRequest->len; end_headerName++) {
             current = strRequest->str[end_headerName];
-            if (current == ':') break;
+            if (current == ':') {
+                break; // Headername found
+            } else if (current == '\r' || current == '\n') {
+                i = end_headerName; // No Headername found in this line, continue in next line
+                continue;
+            }
         }
+
         string *header_name = sub_str(strRequest, i, end_headerName - i);
 
         size_t j, k;
@@ -330,26 +336,20 @@ http_response *generateDebugResponse(http_request *request) {
 
 http_response *generateResponse(http_request *request) {
 
-    // Missing required information
-    if (request->method == NULL || request->resource == NULL || request->http_version == NULL) {
+    // Missing required information or something is pretty bad about the request
+    if (request == NULL || request->method == NULL || request->resource == NULL || request->http_version == NULL) {
         return generateStatusResponse(HTTP_STATUS_BAD_REQUEST);
     }
 
     // Wrong/unsupported method
-    string *methodCap = toUpper_str(request->method);
-    if (!chars_equal_str(methodCap, "GET")) {
-        free_str(methodCap);
+    if (!chars_equal_str(request->method, "GET")) {
         return generateStatusResponse(HTTP_STATUS_NOT_IMPLEMENTED);
     }
-    free_str(methodCap);
 
     // Wrong/unsupported http version
-    string *httpVersion = toUpper_str(request->http_version);
-    if ((!chars_equal_str(httpVersion, "HTTP/1.0")) && (!chars_equal_str(httpVersion, "HTTP/1.1"))) {
-        free_str(httpVersion);
+    if ((!chars_equal_str(request->http_version, "HTTP/1.0")) && (!chars_equal_str(request->http_version, "HTTP/1.1"))) {
         return generateStatusResponse(HTTP_STATUS_SERVICE_VERSION_NOT_SUPPORTED);
     }
-    free_str(httpVersion);
 
     // Check which host (document root) to use in order to implement VIRTUAL HOSTING
     string *documentRoot = NULL;
