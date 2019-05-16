@@ -178,20 +178,15 @@ char *toCString_str(string *str) {
 }
 
 string *toUpper_str(string *str) {
-
     string *strCapital = new_string(str->len);
     strCapital->len = str->len;
 
     for (int i = 0; i < str->len; i++) {
-
         char current = str->str[i];
 
         if ((current > 96) && (current < 123)) {
-
             strCapital->str[i] = current - 32;
-
         } else {
-
             strCapital->str[i] = current;
         }
     }
@@ -200,12 +195,12 @@ string *toUpper_str(string *str) {
 }
 
 char endsWith_str(string *str, char *ending) {
-
     size_t ending_length = strlen(ending);
     int strFirstIndex = str->len - ending_length;
 
-    for (int i = 0; i < ending_length; i++) {
+    if(str->len < ending_length) return 0;
 
+    for (int i = 0; i < ending_length; i++) {
         if (str->str[strFirstIndex + i] != ending[i]) return 0;
     }
 
@@ -213,11 +208,11 @@ char endsWith_str(string *str, char *ending) {
 }
 
 char startsWith_str(string *str, char *starting){
-
     size_t starting_length = strlen(starting);
 
-    for (int i = 0; i < starting_length; i++) {
+    if(str->len < starting_length) return 0;
 
+    for (int i = 0; i < starting_length; i++) {
         if (str->str[i] != starting[i]) return 0;
     }
 
