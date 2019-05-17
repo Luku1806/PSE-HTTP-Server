@@ -347,7 +347,8 @@ http_response *generateResponse(http_request *request) {
     }
 
     // Wrong/unsupported http version
-    if ((!chars_equal_str(request->http_version, "HTTP/1.0")) && (!chars_equal_str(request->http_version, "HTTP/1.1"))) {
+    if ((!chars_equal_str(request->http_version, "HTTP/1.0")) &&
+        (!chars_equal_str(request->http_version, "HTTP/1.1"))) {
         return generateStatusResponse(HTTP_STATUS_SERVICE_VERSION_NOT_SUPPORTED);
     }
 
@@ -394,6 +395,12 @@ http_response *generateResponse(http_request *request) {
 
     string *decodedURL = decodeURL(absolutePath);
     free_str(absolutePath);
+
+    // URL encoding is invalid --> bad request
+    if (decodedURL == NULL) {
+        free_str(documentRoot);
+        return generateStatusResponse(HTTP_STATUS_BAD_REQUEST);
+    }
 
     string *realPath = toRealPath(decodedURL);
 
