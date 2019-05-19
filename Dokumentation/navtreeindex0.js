@@ -86,6 +86,8 @@ var NAVTREEINDEX0 =
 "http__string_8h.html#afc9a1f3e37baae2ffb223507331a9ae8":[1,0,0,5,17],
 "http__string_8h_source.html":[1,0,0,5],
 "http__utils_8h.html":[1,0,0,6],
+"http__utils_8h.html#a4d45503148b34f9d3529751a8c14904a":[1,0,0,6,3],
+"http__utils_8h.html#a563d42bbe08f6ee493dc980ed10c988d":[1,0,0,6,2],
 "http__utils_8h.html#a91e38e4f0f5cace4ea78ddcfbb7207fa":[1,0,0,6,1],
 "http__utils_8h.html#ab3630a23c872f3b4613a7acfb65a9093":[1,0,0,6,0],
 "http__utils_8h_source.html":[1,0,0,6],

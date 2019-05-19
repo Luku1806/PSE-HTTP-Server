@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PSE09 Dokumentation: include/http_fileIO.h File Reference</title>
+<title>Dokumentation: include/http_fileIO.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,8 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="b_home.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">PSE09 Dokumentation
+   <div id="projectname">Dokumentation
    </div>
   </td>
  </tr>
@@ -100,13 +99,14 @@ $(document).ready(function(){initNavTree('http__file_i_o_8h.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a72f9f22aef4ab236591c511f905228da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__file_i_o_8h.html#a72f9f22aef4ab236591c511f905228da">DEFAULT_DOCUMENT_ROOT</a>&#160;&#160;&#160;&quot;/var/www/default&quot;</td></tr>
+<tr class="memitem:a72f9f22aef4ab236591c511f905228da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__file_i_o_8h.html#a72f9f22aef4ab236591c511f905228da">DEFAULT_DOCUMENT_ROOT</a>&#160;&#160;&#160;&quot;/var/www/default/&quot;</td></tr>
+<tr class="memdesc:a72f9f22aef4ab236591c511f905228da"><td class="mdescLeft">&#160;</td><td class="mdescRight">All file functions required for reading, writing, etc. are accommodated here.  <a href="#a72f9f22aef4ab236591c511f905228da">More...</a><br /></td></tr>
 <tr class="separator:a72f9f22aef4ab236591c511f905228da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad93185b751edb7e3743de15d867b1cc6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__file_i_o_8h.html#ad93185b751edb7e3743de15d867b1cc6">EXTERN_DOCUMENT_ROOT</a>&#160;&#160;&#160;&quot;/var/www/extern&quot;</td></tr>
+<tr class="memitem:ad93185b751edb7e3743de15d867b1cc6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__file_i_o_8h.html#ad93185b751edb7e3743de15d867b1cc6">EXTERN_DOCUMENT_ROOT</a>&#160;&#160;&#160;&quot;/var/www/extern/&quot;</td></tr>
 <tr class="separator:ad93185b751edb7e3743de15d867b1cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55f744c0f9d9d2575e486cd4d0fc061d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__file_i_o_8h.html#a55f744c0f9d9d2575e486cd4d0fc061d">INTERN_DOCUMENT_ROOT</a>&#160;&#160;&#160;&quot;/var/www/intern&quot;</td></tr>
+<tr class="memitem:a55f744c0f9d9d2575e486cd4d0fc061d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__file_i_o_8h.html#a55f744c0f9d9d2575e486cd4d0fc061d">INTERN_DOCUMENT_ROOT</a>&#160;&#160;&#160;&quot;/var/www/intern/&quot;</td></tr>
 <tr class="separator:a55f744c0f9d9d2575e486cd4d0fc061d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07ac8a76cb8c4b8f9baf93b02d52f719"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__file_i_o_8h.html#a07ac8a76cb8c4b8f9baf93b02d52f719">STATUS_SITE_PATH</a>&#160;&#160;&#160;&quot;/var/www/status&quot;</td></tr>
+<tr class="memitem:a07ac8a76cb8c4b8f9baf93b02d52f719"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__file_i_o_8h.html#a07ac8a76cb8c4b8f9baf93b02d52f719">STATUS_SITE_PATH</a>&#160;&#160;&#160;&quot;/var/www/status/&quot;</td></tr>
 <tr class="separator:a07ac8a76cb8c4b8f9baf93b02d52f719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -132,10 +132,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DEFAULT_DOCUMENT_ROOT&#160;&#160;&#160;&quot;/var/www/default&quot;</td>
+          <td class="memname">#define DEFAULT_DOCUMENT_ROOT&#160;&#160;&#160;&quot;/var/www/default/&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>All file functions required for reading, writing, etc. are accommodated here. </p>
 
 </div>
 </div>
@@ -146,7 +148,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define EXTERN_DOCUMENT_ROOT&#160;&#160;&#160;&quot;/var/www/extern&quot;</td>
+          <td class="memname">#define EXTERN_DOCUMENT_ROOT&#160;&#160;&#160;&quot;/var/www/extern/&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -160,7 +162,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define INTERN_DOCUMENT_ROOT&#160;&#160;&#160;&quot;/var/www/intern&quot;</td>
+          <td class="memname">#define INTERN_DOCUMENT_ROOT&#160;&#160;&#160;&quot;/var/www/intern/&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -174,7 +176,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define STATUS_SITE_PATH&#160;&#160;&#160;&quot;/var/www/status&quot;</td>
+          <td class="memname">#define STATUS_SITE_PATH&#160;&#160;&#160;&quot;/var/www/status/&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
