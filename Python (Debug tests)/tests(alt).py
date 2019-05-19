@@ -290,7 +290,12 @@ cannon += Beam(
     response=['HTTP/1.1 505']
 )
 
-
+#24 host: intern mit Port
+cannon += Beam(
+    description= "host: intern",
+    request='GET / HTTP/1.1\r\nHost: intern:31337\r\n\r\n',
+    response=['HTTP/1.1 401']
+)
 
 #25 URL zu lang
 #cannon += Beam(
