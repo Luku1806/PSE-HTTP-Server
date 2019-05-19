@@ -231,6 +231,7 @@ http_request *parseRequest(string *strRequest) {
         }
     }
 
+    free_httpRequest(request);
     return NULL;
 }
 
@@ -247,14 +248,15 @@ http_response *generateStandardResponse(int statusCode) {
 
 
 http_response *generateStatusResponse(int statusCode) {
-    char codeBuffer[5];
-    sprintf(codeBuffer, "%i", statusCode);
+    char *codeBuffer = calloc(5, sizeof(char));
+    intToString(statusCode, codeBuffer, 10);
 
     // Build path from status code
     string *path = cpy_str(STATUS_SITE_PATH);
     string *path2 = cat_str(path, codeBuffer);
     string *fullPath = cat_str(path2, ".html");
 
+    free(codeBuffer);
     free_str(path);
     free_str(path2);
 
@@ -531,13 +533,14 @@ string *httpResponseToString(http_response *response) {
         free_str(encoding2);
 
         // Content-Length
-        char lengthBuffer[256];
-        sprintf(lengthBuffer, "%zu", response->content_length);
+        char *lengthBuffer = calloc(256, sizeof(char));
+        intToString(response->content_length, lengthBuffer, 10);
 
         string *length1 = cat_str(fullEncoding, "Content-Length: ");
         string *length2 = cat_str(length1, lengthBuffer);
         string *fullLength = cat_str(length2, "\n");
 
+        free(lengthBuffer);
         free_str(fullEncoding);
         free_str(length1);
         free_str(length2);
