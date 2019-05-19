@@ -4,6 +4,11 @@
 
 #include "http_string.h"
 
+/**
+ *
+ * @brief Here the HTTP request that comes in is processed and returned as HTTP response.
+ */
+
 typedef struct http_request {
     string *method;
     string *resource;

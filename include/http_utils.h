@@ -6,6 +6,12 @@
 
 
 /**
+ *
+ * @brief Here we put all the functions that don't fit into the other files. (Extra functions)
+ */
+
+
+/**
  * Returns if an ascii character is a valid hexadecimal digit, so if is 0-9, a-f or A-F.
  *
  * @param c The character to check.

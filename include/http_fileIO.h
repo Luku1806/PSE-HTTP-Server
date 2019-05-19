@@ -5,6 +5,12 @@
 
 #include <stddef.h>
 
+/**
+ *
+ * @brief All file functions required for reading, writing, etc. are accommodated here.
+ */
+
+
 #define DEFAULT_DOCUMENT_ROOT "/var/www/default/"
 #define EXTERN_DOCUMENT_ROOT "/var/www/extern/"
 #define INTERN_DOCUMENT_ROOT "/var/www/intern/"

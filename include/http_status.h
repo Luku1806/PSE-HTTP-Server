@@ -3,6 +3,11 @@
 
 #include "http_string.h"
 
+/**
+ *
+ * @brief This is where all status messages that we need are defined and set as required.
+ */
+
 #define HTTP_STATUS_OK                              200
 #define HTTP_STATUS_CREATED                         201
 #define HTTP_STATUS_ACCEPTED                        202

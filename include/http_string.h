@@ -3,6 +3,13 @@
 #ifndef HTTP_SERVER_09_HTTP_STRING_H
 #define HTTP_SERVER_09_HTTP_STRING_H
 
+/**
+ *
+ * @brief Here you will find all string functions that we currently need and may need later.
+ */
+
+
+
 typedef struct string {
     size_t len;
     char *str;
