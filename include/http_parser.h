@@ -5,10 +5,19 @@
 #include "http_string.h"
 
 /**
+ * @brief This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer.
  *
- * @brief Here the HTTP request that comes in is processed and returned as HTTP response.
+ * In general this should be used like:
+ *
+ * 1. Process raw message by calling parseRequest to save all informations in a request_struct
+ * 2. Put the struct into generateResponse to build a response struct
+ * 3. Put the response_struct into httpResponseToString to get the response as string
  */
 
+/**
+ * Used to bundle all information about a request.
+ * Contains all header fields, used by the program and can be expanded to the needs.
+ */
 typedef struct http_request {
     string *method;
     string *resource;
@@ -19,6 +28,11 @@ typedef struct http_request {
     void *content;
 } http_request;
 
+
+/**
+ * Used to bundle all information about a response.
+ * Contains all header fields, used by the program and can be expanded to the needs.
+ */
 typedef struct http_response {
     string *http_version;
     string *status;

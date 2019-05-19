@@ -5,7 +5,7 @@
 
 /**
  *
- * @brief Here you will find all string functions that we currently need and may need later.
+ * @brief This file contains all string functions that are currently needed and may need later.
  */
 
 

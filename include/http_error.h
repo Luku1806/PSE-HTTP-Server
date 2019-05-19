@@ -3,7 +3,7 @@
 
 /**
  *
- * @brief Here we evaluate the status message and answer accordingly.
+ * @brief File contains functions fot error handling.
  */
 
 

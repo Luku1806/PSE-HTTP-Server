@@ -7,7 +7,7 @@
 
 /**
  *
- * @brief Here we put all the functions that don't fit into the other files. (Extra functions)
+ * @brief This file provides all functions that are needed for utility.
  */
 
 

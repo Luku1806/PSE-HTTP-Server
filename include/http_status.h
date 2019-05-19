@@ -5,7 +5,7 @@
 
 /**
  *
- * @brief This is where all status messages that we need are defined and set as required.
+ * @brief This is where all status messages are defined and set as required.
  */
 
 #define HTTP_STATUS_OK                              200
