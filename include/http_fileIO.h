@@ -15,7 +15,7 @@
 #define EXTERN_DOCUMENT_ROOT "/var/www/extern/"
 #define INTERN_DOCUMENT_ROOT "/var/www/intern/"
 
-#define STATUS_SITE_PATH "/var/www/status"
+#define STATUS_SITE_PATH "/var/www/status/"
 
 
 /**
