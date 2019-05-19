@@ -93,6 +93,9 @@ $(document).ready(function(){initNavTree('http__parser_8h.html','');});
 <div class="title">http_parser.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="http__string_8h_source.html">http_string.h</a>&quot;</code><br />
 </div>
 <p><a href="http__parser_8h_source.html">Go to the source code of this file.</a></p>
@@ -100,7 +103,6 @@ $(document).ready(function(){initNavTree('http__parser_8h.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhttp__request.html">http_request</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer.  <a href="structhttp__request.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhttp__response.html">http_response</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,7 +110,6 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ab2c4ba73c2945a8b59357fe2c233f0c8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structhttp__request.html">http_request</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__parser_8h.html#ab2c4ba73c2945a8b59357fe2c233f0c8">http_request</a></td></tr>
-<tr class="memdesc:ab2c4ba73c2945a8b59357fe2c233f0c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer.  <a href="#ab2c4ba73c2945a8b59357fe2c233f0c8">More...</a><br /></td></tr>
 <tr class="separator:ab2c4ba73c2945a8b59357fe2c233f0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad50b92010be2b9397ee58aca82dae5a7"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structhttp__response.html">http_response</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__parser_8h.html#ad50b92010be2b9397ee58aca82dae5a7">http_response</a></td></tr>
 <tr class="separator:ad50b92010be2b9397ee58aca82dae5a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,7 +141,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a2be312d40e6df2eb4b00c68d49d0057c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstring.html">string</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="http__parser_8h.html#a2be312d40e6df2eb4b00c68d49d0057c">getMimeType</a> (<a class="el" href="structstring.html">string</a> *path)</td></tr>
 <tr class="separator:a2be312d40e6df2eb4b00c68d49d0057c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer. </p>
+<p>In general this should be used like:</p>
+<ol type="1">
+<li>Process raw message by calling parseRequest to save all informations in a request_struct</li>
+<li>Put the struct into generateResponse to build a response struct</li>
+<li>Put the response_struct into httpResponseToString to get the response as string </li>
+</ol>
+</div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="ab2c4ba73c2945a8b59357fe2c233f0c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab2c4ba73c2945a8b59357fe2c233f0c8">&#9670;&nbsp;</a></span>http_request</h2>
 
@@ -152,14 +161,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer. </p>
-<p>In general this should be used like:</p>
-<ol type="1">
-<li>Process raw message by calling parseRequest to save all informations in a request_struct</li>
-<li>Put the struct into generateResponse to build a response struct</li>
-<li>Put the response_struct into httpResponseToString to get the response as string Used to bundle all information about a request. Contains all header fields, used by the program and can be expanded to the needs. </li>
-</ol>
 
 </div>
 </div>
@@ -174,7 +175,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Used to bundle all information about a response. Contains all header fields, used by the program and can be expanded to the needs. </p>
 
 </div>
 </div>
@@ -434,10 +434,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Parses the raw string that came over the network. Creates and returns a new <a class="el" href="structhttp__request.html" title="This file provides all functions for processing the incoming requests, from reading everything into a...">http_request</a> struct pointer, containing all information needed to respond. Returns NULL if something is bad about the message.</p>
+<p>Parses the raw string that came over the network. Creates and returns a new <a class="el" href="structhttp__request.html">http_request</a> struct pointer, containing all information needed to respond. Returns NULL if something is bad about the message.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">strRequest</td><td>The raw <a class="el" href="structstring.html" title="This file contains all string functions that are currently needed and may need later. ">string(message)</a> received from the client. </td></tr>
+    <tr><td class="paramname">strRequest</td><td>The raw <a class="el" href="structstring.html">string(message)</a> received from the client. </td></tr>
   </table>
   </dd>
 </dl>
