@@ -67,9 +67,10 @@ void printRequest(http_request *request);
 /**
  * Parses the raw string that came over the network.
  * Creates and returns a new http_request struct pointer, containing all information needed to respond.
+ * Returns NULL if something is bad about the message.
  *
  * @param strRequest The raw string(message) received from the client.
- * @return A parseRequest pointer containing all information send in the message.
+ * @return A parseRequest pointer containing all information send in the message. NULL if message is bad.
  */
 http_request *parseRequest(string *strRequest);
 

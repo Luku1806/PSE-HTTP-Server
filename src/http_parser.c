@@ -95,17 +95,22 @@ void printRequest(http_request *request) {
 
 
 http_request *parseRequest(string *strRequest) {
-    http_request *request = new_httpRequest();
-
     // Extract Headerline from whole message
     size_t end_headerline;
     for (end_headerline = 0; end_headerline < strRequest->len; end_headerline++) {
-        char current = strRequest->str[end_headerline];
-        if (current == '\r' || current == '\n') break;
+        if (strRequest->str[end_headerline] == '\r') {
+            break;
+        }
     }
 
-    string *headerline = sub_str(strRequest, 0, end_headerline);
+    // No valid headerline (not ended by "\r\n")
+    if (end_headerline + 1 >= strRequest->len || strRequest->str[end_headerline + 1] != '\n') {
+        return NULL;
+    }
 
+    http_request *request = new_httpRequest();
+
+    string *headerline = sub_str(strRequest, 0, end_headerline);
     int tokenIndex = 0;
     for (size_t i = 0; i < headerline->len; i++) {
         //Jump over any leading whitespace
@@ -133,13 +138,23 @@ http_request *parseRequest(string *strRequest) {
                 request->http_version = token;
                 break;
             default:
+                // Wrong headerline
                 free_str(token);
-                break;
+                free_str(headerline);
+                free_httpRequest(request);
+                return NULL;
         }
         tokenIndex++;
     }
 
     free_str(headerline);
+
+    // Check if second linebreak occures
+    if (end_headerline + 3 < strRequest->len && strRequest->str[end_headerline + 2] == '\r' &&
+        strRequest->str[end_headerline + 3] == '\n') {
+        return request;
+    }
+
 
     // Extract all other headers
     for (size_t i = end_headerline; i < strRequest->len; i++) {
@@ -155,8 +170,8 @@ http_request *parseRequest(string *strRequest) {
             if (current == ':') {
                 break; // Headername found
             } else if (current == '\r' || current == '\n') {
-                i = end_headerName; // No Headername found in this line, continue in next line
-                continue;
+                free_httpRequest(request);
+                return NULL;  // No Headername found in this line --> request is bad!
             }
         }
 
@@ -173,18 +188,34 @@ http_request *parseRequest(string *strRequest) {
         // Find index where linebreak comes --> header content is over
         for (k = j; k < strRequest->len; k++) {
             current = strRequest->str[k];
-            if (current == '\r' || current == '\n') break;
+            if (current == '\r') {
+                break;
+            }
         }
+
+        if (current != '\r' || (k + 1 < strRequest->len && strRequest->str[k + 1] != '\n')) {
+            free_str(header_name);
+            free_httpRequest(request);
+            return NULL; // No true linebreak --> BAD Request
+        }
+
         string *header_content = sub_str(strRequest, j, k - j);
         i = k;
+
+        if (header_content == NULL || header_content->len == 0) {
+            free_str(header_name);
+            free_str(header_content);
+            free_httpRequest(request);
+            return NULL; // Header has a name, but no content --> BAD Request!!!
+        }
 
         //Fill request fields with content
         string *header_name_cap = toUpper_str(header_name);
 
         //Find fitting header or ignore
-        if (chars_equal_str(header_name_cap, "HOST")) {
+        if (chars_equal_str(header_name_cap, "HOST") && request->host == NULL) {
             request->host = header_content;
-        } else if (chars_equal_str(header_name_cap, "USER-AGENT")) {
+        } else if (chars_equal_str(header_name_cap, "USER-AGENT") && request->user_agent == NULL) {
             request->user_agent = header_content;
         } else {
             // No header to store content in, so free it
@@ -193,9 +224,14 @@ http_request *parseRequest(string *strRequest) {
 
         free_str(header_name);
         free_str(header_name_cap);
+
+        // Check if second linebreak occures after header --> headers are over
+        if (k + 3 < strRequest->len && strRequest->str[k + 2] == '\r' && strRequest->str[k + 3] == '\n') {
+            return request;
+        }
     }
 
-    return request;
+    return NULL;
 }
 
 
@@ -386,7 +422,8 @@ http_response *generateResponse(http_request *request) {
     if (chars_equal_str(request->resource, "/")) {
         absolutePath = cat_str(documentRoot, "index.html");
     } else {
-        string *relative = sub_str(request->resource, 1, request->resource->len - 1); // Copy everything but the the leading /
+        string *relative = sub_str(request->resource, 1,
+                                   request->resource->len - 1); // Copy everything but the the leading /
         absolutePath = str_cat_str(documentRoot, relative);
         free_str(relative);
     }
