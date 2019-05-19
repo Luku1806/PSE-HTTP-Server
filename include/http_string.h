@@ -4,7 +4,7 @@
 #define HTTP_SERVER_09_HTTP_STRING_H
 
 /**
- *
+ * @file http_string.h
  * @brief This file contains all string functions that are currently needed and may need later.
  */
 

@@ -5,6 +5,8 @@
 #include "http_string.h"
 
 /**
+ * @file http_parser.h
+ *
  * @brief This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer.
  *
  * In general this should be used like:
@@ -15,6 +17,8 @@
  */
 
 /**
+ * @struct http_request
+ *
  * Used to bundle all information about a request.
  * Contains all header fields, used by the program and can be expanded to the needs.
  */
@@ -30,6 +34,8 @@ typedef struct http_request {
 
 
 /**
+ * @struct http_response
+ *
  * Used to bundle all information about a response.
  * Contains all header fields, used by the program and can be expanded to the needs.
  */

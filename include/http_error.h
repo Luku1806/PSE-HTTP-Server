@@ -2,7 +2,7 @@
 #define HTTP_SERVER_09_HTTP_ERROR_H
 
 /**
- *
+ * @file http_error.h
  * @brief File contains functions fot error handling.
  */
 

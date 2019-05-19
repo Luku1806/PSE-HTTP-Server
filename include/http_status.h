@@ -4,7 +4,7 @@
 #include "http_string.h"
 
 /**
- *
+ * @file http_status.h
  * @brief This is where all status messages are defined and set as required.
  */
 
@@ -28,7 +28,6 @@
 #define HTTP_STATUS_BAD_GATEWAY                     502
 #define HTTP_STATUS_SERVICE_UNAVAILABLE             503
 #define HTTP_STATUS_SERVICE_VERSION_NOT_SUPPORTED   505
-
 
 
 /**
