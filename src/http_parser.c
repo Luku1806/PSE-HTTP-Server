@@ -216,13 +216,11 @@ http_response *generateStatusResponse(int statusCode) {
 
     // Build path from status code
     string *path = cpy_str(STATUS_SITE_PATH);
-    string *path2 = cat_str(path, "/");
-    string *path3 = cat_str(path2, codeBuffer);
-    string *fullPath = cat_str(path3, ".html");
+    string *path2 = cat_str(path, codeBuffer);
+    string *fullPath = cat_str(path2, ".html");
 
     free_str(path);
     free_str(path2);
-    free_str(path3);
 
     //Load status page to buffer and see if its found
     void *payload = loadFileToBuffer(fullPath);
@@ -386,11 +384,11 @@ http_response *generateResponse(http_request *request) {
     string *absolutePath;
 
     if (chars_equal_str(request->resource, "/")) {
-        absolutePath = cat_str(documentRoot, "/index.html");
+        absolutePath = cat_str(documentRoot, "index.html");
     } else {
-        char *pathAsCString = toCString_str(request->resource);
-        absolutePath = cat_str(documentRoot, pathAsCString);
-        free(pathAsCString);
+        string *relative = sub_str(request->resource, 1, request->resource->len - 1); // Copy everything but the the leading /
+        absolutePath = str_cat_str(documentRoot, relative);
+        free_str(relative);
     }
 
     string *decodedURL = decodeURL(absolutePath);
@@ -412,6 +410,7 @@ http_response *generateResponse(http_request *request) {
         free_str(decodedURL);
 
         realpath(test, old);
+
         if (strncmp(documentRoot->str, old, documentRoot->len) == 0) {
             free(test);
             free(old);

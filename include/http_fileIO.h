@@ -5,9 +5,9 @@
 
 #include <stddef.h>
 
-#define DEFAULT_DOCUMENT_ROOT "/var/www/default"
-#define EXTERN_DOCUMENT_ROOT "/var/www/extern"
-#define INTERN_DOCUMENT_ROOT "/var/www/intern"
+#define DEFAULT_DOCUMENT_ROOT "/var/www/default/"
+#define EXTERN_DOCUMENT_ROOT "/var/www/extern/"
+#define INTERN_DOCUMENT_ROOT "/var/www/intern/"
 
 #define STATUS_SITE_PATH "/var/www/status"
 
