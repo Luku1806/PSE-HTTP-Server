@@ -6,9 +6,21 @@
 
 
 /**
- *
  * @brief This file provides all functions that are needed for utility.
  */
+
+
+
+/**
+ * Converts an integer value to a null-terminated string using the specified base and stores the result in the char pointer given by buf parameter.
+ * Returns null if buffer would overflow
+ *
+ * @param value The integer value to convert to string
+ * @param buf The buffer to store the resulting string in.
+ * @param bufsize The size of the buffer
+ * @return A pointer to the resulting null-terminated string, same as parameter str. NULL if
+ */
+char *intToString(int value, char *buf, size_t bufsize);
 
 
 /**
