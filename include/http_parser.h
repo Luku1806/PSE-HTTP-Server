@@ -46,6 +46,7 @@ typedef struct http_response {
     string *content_type;
     string *content_encoding;
     size_t content_length;
+    char auth_required;
     void *content;
 } http_response;
 

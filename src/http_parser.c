@@ -248,6 +248,8 @@ http_response *generateStandardResponse(int statusCode) {
     response->http_version = cpy_str(HTTP_VERSION);
     response->server = cpy_str(SERVER_NAME);
 
+    if (statusCode == HTTP_STATUS_UNAUTHORIZED) response->auth_required = 1;
+
     return response;
 }
 
@@ -517,6 +519,13 @@ string *httpResponseToString(http_response *response) {
     free_str(fullHeader);
     free_str(server1);
     free_str(server2);
+
+    if(response->auth_required){
+        // If authentication required field is set, Basic authentication field is set in the string
+        string *auth1 = cat_str(fullServer, "WWW-Authenticate: Basic\r\n");
+        free_str(fullServer);
+        fullServer = auth1;
+    }
 
     if (response->content != NULL) {
         // Content-Type
