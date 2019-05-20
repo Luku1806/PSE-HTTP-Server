@@ -28,6 +28,7 @@ typedef struct http_request {
     string *http_version;
     string *host;
     string *user_agent;
+    string* authentication;
     size_t content_length;
     void *content;
 } http_request;

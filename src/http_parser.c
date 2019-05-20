@@ -25,6 +25,7 @@ void free_httpRequest(http_request *request) {
     free_str(request->http_version);
     free_str(request->host);
     free_str(request->user_agent);
+    free_str(request->authentication);
 
     if (request->content) {
         free(request->content);
@@ -49,6 +50,8 @@ void free_httpResponse(http_response *response) {
     free_str(response->server);
     free_str(response->content_type);
     free_str(response->content_encoding);
+
+    response->auth_required = 0;
 
     if (response->content) {
         free(response->content);
@@ -87,6 +90,11 @@ void printRequest(http_request *request) {
     if (request->user_agent != NULL) {
         printf("User-Agent: ");
         print_string(request->user_agent);
+        printf("\n");
+    }
+    if (request->authentication != NULL) {
+        printf("Authentication: ");
+        print_string(request->authentication);
         printf("\n");
     }
 
@@ -222,6 +230,8 @@ http_request *parseRequest(string *strRequest) {
             request->host = trimmedContent;
         } else if (chars_equal_str(header_name_cap, "USER-AGENT") && request->user_agent == NULL) {
             request->user_agent = trimmedContent;
+        } else if (chars_equal_str(header_name_cap, "AUTHENTICATION") && request->authentication == NULL) {
+            request->authentication = trimmedContent;
         } else {
             // No header to store content in, so free it
             free_str(trimmedContent);
@@ -520,7 +530,7 @@ string *httpResponseToString(http_response *response) {
     free_str(server1);
     free_str(server2);
 
-    if(response->auth_required){
+    if (response->auth_required) {
         // If authentication required field is set, Basic authentication field is set in the string
         string *auth1 = cat_str(fullServer, "WWW-Authenticate: Basic\r\n");
         free_str(fullServer);
