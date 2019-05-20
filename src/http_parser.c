@@ -213,6 +213,7 @@ http_request *parseRequest(string *strRequest) {
         string *header_name_cap = toUpper_str(header_name);
 
         //Find fitting header or ignore
+        // Here you can expand to new headers, you only have to add another if else
         if (chars_equal_str(header_name_cap, "HOST") && request->host == NULL) {
             request->host = header_content;
         } else if (chars_equal_str(header_name_cap, "USER-AGENT") && request->user_agent == NULL) {
@@ -288,7 +289,7 @@ http_response *generateDebugResponse(http_request *request) {
     if (request->method) {
         string *htmlMethod1 = cpy_str("HTTP-Methode: ");
         string *htmlMethod2 = str_cat_str(htmlMethod1, request->method);
-        string *htmlMethodFull = cat_str(htmlMethod2, "\n");
+        string *htmlMethodFull = cat_str(htmlMethod2, "\r\n");
 
         string *newSite = str_cat_str(htmlSite, htmlMethodFull);
         free_str(htmlSite);
@@ -302,7 +303,7 @@ http_response *generateDebugResponse(http_request *request) {
     if (request->http_version) {
         string *htmlVersion1 = cpy_str("HTTP-Version: ");
         string *htmlVersion2 = str_cat_str(htmlVersion1, request->http_version);
-        string *htmlVersionFull = cat_str(htmlVersion2, "\n");
+        string *htmlVersionFull = cat_str(htmlVersion2, "\r\n");
 
         string *newSite = str_cat_str(htmlSite, htmlVersionFull);
         free_str(htmlSite);
@@ -316,7 +317,7 @@ http_response *generateDebugResponse(http_request *request) {
     if (request->resource) {
         string *htmlResource1 = cpy_str("HTTP-Resource: ");
         string *htmlResource2 = str_cat_str(htmlResource1, request->resource);
-        string *htmlResourceFull = cat_str(htmlResource2, "\n");
+        string *htmlResourceFull = cat_str(htmlResource2, "\r\n");
 
         string *newSite = str_cat_str(htmlSite, htmlResourceFull);
         free_str(htmlSite);
@@ -330,7 +331,7 @@ http_response *generateDebugResponse(http_request *request) {
     if (request->user_agent) {
         string *htmlAgent1 = cpy_str("HTTP-User-Agent: ");
         string *htmlAgent2 = str_cat_str(htmlAgent1, request->user_agent);
-        string *htmlAgentFull = cat_str(htmlAgent2, "\n");
+        string *htmlAgentFull = cat_str(htmlAgent2, "\r\n");
 
         string *newSite = str_cat_str(htmlSite, htmlAgentFull);
         free_str(htmlSite);
@@ -344,7 +345,7 @@ http_response *generateDebugResponse(http_request *request) {
     if (request->host) {
         string *htmlHost1 = cpy_str("HTTP-Host: ");
         string *htmlHost2 = str_cat_str(htmlHost1, request->host);
-        string *htmlHostFull = cat_str(htmlHost2, "\n");
+        string *htmlHostFull = cat_str(htmlHost2, "\r\n");
 
         string *newSite = str_cat_str(htmlSite, htmlHostFull);
         free_str(htmlSite);
@@ -425,7 +426,7 @@ http_response *generateResponse(http_request *request) {
         absolutePath = cat_str(documentRoot, "index.html");
     } else {
         string *relative = sub_str(request->resource, 1,
-                                   request->resource->len - 1); // Copy everything but the the leading /
+                                   request->resource->len - 1); // Copy everything but the leading /
         absolutePath = str_cat_str(documentRoot, relative);
         free_str(relative);
     }
