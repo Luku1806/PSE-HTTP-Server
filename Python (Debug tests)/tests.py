@@ -388,17 +388,17 @@ cannon += Beam(
 )
 cannon += Beam(
     description='Externen Bereich anfordern',
-    request='GET / HTTP/1.1\r\nHost: extern\r\n\r\n',
+    request='GET / HTTP/1.1\r\nHost: extern \r\n\r\n',
     response=['HTTP/1.1 200']
 )
 cannon += Beam(
     description='Externen Bereich anfordern mit Port',
-    request='GET / HTTP/1.1\r\nHost: extern:31337\r\n\r\n',
+    request='GET / HTTP/1.1\r\nHost: extern:31337 \r\n\r\n',
     response=['HTTP/1.1 200']
 )
 cannon += Beam(
     description='Externen Bereich und Intern zugleich anfordern',
-    request='GET / HTTP/1.1\r\nHost: intern:extern\r\n\r\n',
+    request='GET / HTTP/1.1\r\nHost: intern:extern \r\n\r\n',
     response=['HTTP/1.1 401']
 )
 cannon += Beam(

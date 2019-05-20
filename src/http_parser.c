@@ -209,18 +209,22 @@ http_request *parseRequest(string *strRequest) {
             return NULL; // Header has a name, but no content --> BAD Request!!!
         }
 
+        // Filter out trailing spaces from content
+        string *trimmedContent = removeTrailingChars(header_content, ' ');
+        free_str(header_content);
+
         //Fill request fields with content
         string *header_name_cap = toUpper_str(header_name);
 
         //Find fitting header or ignore
         // Here you can expand to new headers, you only have to add another if else
         if (chars_equal_str(header_name_cap, "HOST") && request->host == NULL) {
-            request->host = header_content;
+            request->host = trimmedContent;
         } else if (chars_equal_str(header_name_cap, "USER-AGENT") && request->user_agent == NULL) {
-            request->user_agent = header_content;
+            request->user_agent = trimmedContent;
         } else {
             // No header to store content in, so free it
-            free_str(header_content);
+            free_str(trimmedContent);
         }
 
         free_str(header_name);
