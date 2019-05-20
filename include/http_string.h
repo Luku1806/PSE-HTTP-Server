@@ -175,4 +175,16 @@ char startsWith_str(string *str, char *starting);
 string *toUpper_str(string *str);
 
 
+
+/**
+ * Removes all trailing charcters.
+ * For example if toRemove is a, "12345aaa" becomes "12345"
+ *
+ * @param string The string to remove the trailing characters from.
+ * @param toRemove The trailing characters.
+ * @return The trimmed string.
+ */
+string *removeTrailingChars(string* string, char toRemove);
+
+
 #endif //HTTP_SERVER_09_HTTP_STRING_H

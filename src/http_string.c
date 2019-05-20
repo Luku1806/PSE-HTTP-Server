@@ -51,7 +51,7 @@ string *clone_str(string *src) {
 
 string *cat_str(string *dest, const char *src) {
 
-    if ((dest != NULL) && (src != NULL)){
+    if ((dest != NULL) && (src != NULL)) {
 
         size_t size1 = dest->len;
         size_t size2 = strlen(src);
@@ -63,7 +63,7 @@ string *cat_str(string *dest, const char *src) {
 
         return newString;
 
-    } else{
+    } else {
 
         return NULL;
     }
@@ -71,8 +71,8 @@ string *cat_str(string *dest, const char *src) {
 }
 
 
-string *cat_str_len(string *dest, void *src, size_t len){
-    if ((dest != NULL) && (src != NULL)){
+string *cat_str_len(string *dest, void *src, size_t len) {
+    if ((dest != NULL) && (src != NULL)) {
         size_t newSize = dest->len + len;
         string *newString = new_string(newSize);
 
@@ -86,8 +86,8 @@ string *cat_str_len(string *dest, void *src, size_t len){
 }
 
 
-string *str_cat_str(string *dest, string *src){
-    if ((dest != NULL) && (src != NULL)){
+string *str_cat_str(string *dest, string *src) {
+    if ((dest != NULL) && (src != NULL)) {
         size_t newSize = dest->len + src->len;
         string *newString = new_string(newSize);
 
@@ -101,7 +101,7 @@ string *str_cat_str(string *dest, string *src){
 }
 
 
-string * sub_str(string *str, size_t start, size_t len) {
+string *sub_str(string *str, size_t start, size_t len) {
     if (start + len > str->len) return NULL;
 
     string *substring = new_string(len);
@@ -111,7 +111,6 @@ string * sub_str(string *str, size_t start, size_t len) {
 
     return substring;
 }
-
 
 
 char equals_str(string *str1, string *str2) {
@@ -198,7 +197,7 @@ char endsWith_str(string *str, char *ending) {
     size_t ending_length = strlen(ending);
     int strFirstIndex = str->len - ending_length;
 
-    if(str->len < ending_length) return 0;
+    if (str->len < ending_length) return 0;
 
     for (int i = 0; i < ending_length; i++) {
         if (str->str[strFirstIndex + i] != ending[i]) return 0;
@@ -207,10 +206,10 @@ char endsWith_str(string *str, char *ending) {
     return 1;
 }
 
-char startsWith_str(string *str, char *starting){
+char startsWith_str(string *str, char *starting) {
     size_t starting_length = strlen(starting);
 
-    if(str->len < starting_length) return 0;
+    if (str->len < starting_length) return 0;
 
     for (int i = 0; i < starting_length; i++) {
         if (str->str[i] != starting[i]) return 0;
@@ -218,4 +217,22 @@ char startsWith_str(string *str, char *starting){
 
     return 1;
 
+}
+
+string *removeTrailingChars(string *string, char toRemove) {
+    if (string == NULL) return NULL;
+
+    size_t lastNoRemove = 0;
+    for (size_t i = 0; i < string->len; i++) {
+        char current = string->str[i];
+
+        if (current == toRemove) {
+            while (i < string->len && string->str[i] == toRemove) i++; // Jump over any charcter to remove
+            if (i < string->len) lastNoRemove = i; // If loop ended, but it was not the last character, set index
+        } else {
+            lastNoRemove = i;
+        }
+    }
+
+    return sub_str(string, 0, lastNoRemove + 1);
 }
