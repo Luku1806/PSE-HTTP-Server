@@ -498,7 +498,7 @@ string *httpResponseToString(http_response *response) {
     string *version = cpy_str(HTTP_VERSION);
     string *header1 = cat_str(version, " ");
     string *header2 = str_cat_str(header1, response->status);
-    string *fullHeader = cat_str(header2, "\n");
+    string *fullHeader = cat_str(header2, "\r\n");
 
     free_str(version);
     free_str(header1);
@@ -507,7 +507,7 @@ string *httpResponseToString(http_response *response) {
     // Servername
     string *server1 = cat_str(fullHeader, "Server: ");
     string *server2 = cat_str(server1, SERVER_NAME);
-    string *fullServer = cat_str(server2, "\n");
+    string *fullServer = cat_str(server2, "\r\n");
 
     free_str(fullHeader);
     free_str(server1);
@@ -517,7 +517,7 @@ string *httpResponseToString(http_response *response) {
         // Content-Type
         string *type1 = cat_str(fullServer, "Content-Type: ");
         string *type2 = str_cat_str(type1, response->content_type);
-        string *fullType = cat_str(type2, "\n");
+        string *fullType = cat_str(type2, "\r\n");
 
         free_str(fullServer);
         free_str(type1);
@@ -526,7 +526,7 @@ string *httpResponseToString(http_response *response) {
         // Content-Encoding
         string *encoding1 = cat_str(fullType, "Content-Encoding: ");
         string *encoding2 = str_cat_str(encoding1, response->content_encoding);
-        string *fullEncoding = cat_str(encoding2, "\n");
+        string *fullEncoding = cat_str(encoding2, "\r\n");
 
         free_str(fullType);
         free_str(encoding1);
@@ -538,7 +538,7 @@ string *httpResponseToString(http_response *response) {
 
         string *length1 = cat_str(fullEncoding, "Content-Length: ");
         string *length2 = cat_str(length1, lengthBuffer);
-        string *fullLength = cat_str(length2, "\n");
+        string *fullLength = cat_str(length2, "\r\n");
 
         free(lengthBuffer);
         free_str(fullEncoding);
@@ -546,14 +546,16 @@ string *httpResponseToString(http_response *response) {
         free_str(length2);
 
         //Content
-        string *content1 = cat_str(fullLength, "\n");
+        string *content1 = cat_str(fullLength, "\r\n");
         string *fullContent = cat_str_len(content1, response->content, response->content_length);
 
         free_str(fullLength);
         free_str(content1);
 
         return fullContent;
+    } else {
+        string *endedResponse = cat_str(fullServer, "\r\n");
+        free_str(fullServer);
+        return endedResponse;
     }
-
-    return fullServer;
 }
