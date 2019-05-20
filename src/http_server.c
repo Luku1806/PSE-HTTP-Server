@@ -166,9 +166,9 @@ static void main_loop(int sockfd) {
         http_response *response;
 
         //TODO Better solution
-        if(request != NULL && request->resource != NULL && chars_equal_str(request->resource,"/debug")){
+        if (request != NULL && request->resource != NULL && chars_equal_str(request->resource, "/debug")) {
             response = generateDebugResponse(request);
-        }else{
+        } else {
             response = generateResponse(request);
         }
 
