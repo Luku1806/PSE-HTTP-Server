@@ -34,3 +34,10 @@ void printHTTPCredentials(http_credentials *credentials) {
     printf("\n");
     fflush(stdout);
 }
+
+
+string *encodeSHA1(string *toEncode) {
+    string *hashed = new_string(SHA_DIGEST_LENGTH);
+    SHA1((unsigned char *) toEncode->str, toEncode->len, (unsigned char *) hashed->str);
+    return hashed;
+}

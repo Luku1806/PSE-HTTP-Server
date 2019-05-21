@@ -37,6 +37,13 @@ void free_httpCredentials(http_credentials *credentials);
 void printHTTPCredentials(http_credentials *credentials);
 
 
+/**
+ * Hashes a string with SHA1 using openssl.
+ *
+ * @param toEncode The string to hash.
+ * @return The hashed string.
+ */
+string *encodeSHA1(string *toEncode);
 
 
 
