@@ -46,6 +46,14 @@ void printHTTPCredentials(http_credentials *credentials);
 string *encodeSHA1(string *toEncode);
 
 
+/**
+ * Reads the authentication credentials for basic authentication from a given request and returns them.
+ * If authentication scheme is not Basic, no authentication credentials are given, or something is wrong about the credentials, NULL is returned.
+ *
+ * @param request The request to get the credentials from.
+ * @return The authentication credentials from the request. NULL if they are not set or something is bad about the syntax.
+ */
+http_credentials *getAuthenticationCredentials(http_request *request);
 
 
 
