@@ -8,6 +8,7 @@
 #include "../include/http_server.h"
 #include "../include/http_fileIO.h"
 #include "../include/http_utils.h"
+#include "../include/http_security.h"
 
 
 http_request *new_httpRequest() {
@@ -406,9 +407,10 @@ http_response *generateResponse(http_request *request) {
     }
 
     // Check which host (document root) to use in order to implement VIRTUAL HOSTING
-    string *documentRoot = NULL;
+    string *documentRoot = cpy_str(DEFAULT_DOCUMENT_ROOT);
 
     if (request->host != NULL && request->host->len != 0) {
+        free_str(documentRoot);
         int portBegin = find_chars(request->host, ":");
         string *host;
 
@@ -423,17 +425,24 @@ http_response *generateResponse(http_request *request) {
         if (chars_equal_str(host, "extern")) {
             documentRoot = cpy_str(EXTERN_DOCUMENT_ROOT);
         } else if (chars_equal_str(host, "intern")) {
-            free_str((host));
-            return generateStatusResponse(HTTP_STATUS_UNAUTHORIZED);
+            http_credentials *credentials = getAuthenticationCredentials(request);
+
+            // Authorization header not sent, wrong syntax or credentials are not valid
+            if (credentials == NULL || !checkCredentials(credentials)) {
+                free_str(host);
+                free_httpCredentials(credentials);
+                return generateStatusResponse(HTTP_STATUS_UNAUTHORIZED);
+            } else {
+                printHTTPCredentials(credentials);
+                free_httpCredentials(credentials);
+                documentRoot = cpy_str(DEFAULT_DOCUMENT_ROOT);
+            }
+
         } else {
             documentRoot = cpy_str(DEFAULT_DOCUMENT_ROOT);
         }
-
         free_str((host));
-    } else {
-        documentRoot = cpy_str(DEFAULT_DOCUMENT_ROOT);
     }
-
 
     //Create absolute path (document-root + relative path)
     string *absolutePath;
