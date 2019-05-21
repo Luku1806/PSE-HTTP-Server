@@ -30,3 +30,26 @@ void base64_cleanup() {
     free(decoding_table);
     decoding_table = NULL;
 }
+
+
+string *base64_encode_string(string *toEncode) {
+    size_t newLen;
+    char *encodedChars = base64_encode(toEncode->str, toEncode->len, &newLen);
+
+    string *encoded = cpy_str(encodedChars);
+    free(encodedChars);
+
+    return encoded;
+}
+
+string *base64_decode_string(string *toDecode) {
+    size_t newLen;
+    char *decodedChars = (char *) base64_decode(toDecode->str, toDecode->len, &newLen);
+
+    if(decodedChars == NULL) return NULL; // String is not base64
+
+    string *decoded = cpy_str(decodedChars);
+    free(decodedChars);
+
+    return decoded;
+}
