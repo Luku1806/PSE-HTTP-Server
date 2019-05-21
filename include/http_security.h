@@ -30,4 +30,17 @@ http_credentials *new_httpCredentials();
 void free_httpCredentials(http_credentials *credentials);
 
 
+/**
+ * Prints the given credentials to the console.
+ * @param credentials The credentials to print to the console.
+ */
+void printHTTPCredentials(http_credentials *credentials);
+
+
+
+
+
+
+
+
 #endif //HTTP_SERVER_09_HTTP_SECURITY_H

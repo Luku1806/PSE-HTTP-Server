@@ -25,4 +25,12 @@ void free_httpCredentials(http_credentials *credentials) {
 }
 
 
-
+void printHTTPCredentials(http_credentials *credentials) {
+    printf("Username: ");
+    print_string(credentials->user);
+    printf("\n");
+    printf("Password: ");
+    print_string(credentials->password);
+    printf("\n");
+    fflush(stdout);
+}
