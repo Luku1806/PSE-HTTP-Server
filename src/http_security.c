@@ -90,5 +90,24 @@ http_credentials *getAuthenticationCredentials(http_request *request) {
     return NULL;
 }
 
+char checkCredentials(http_credentials *credentials) {
+    string *passHash = encodeSHA1(credentials->password);
+    string *passHash64 = base64_encode_string(passHash);
 
+    char userAuthenticated = 0;
+
+    // TODO Read all credentials from .htpasswd and check if they match the given credentials
+
+    if (chars_equal_str(credentials->user, "test") && chars_equal_str(passHash64, "Uau5Y2B43vv4iNhFenx2+FyPEUw=")) {
+        userAuthenticated = 1;
+    } else if (chars_equal_str(credentials->user, "test1") &&
+               chars_equal_str(passHash64, "tenJq093fBkbyEfhrKIi1oNnFLc=")) {
+        userAuthenticated = 1;
+    }
+
+    free_str(passHash);
+    free_str(passHash64);
+
+    return userAuthenticated;
+}
 

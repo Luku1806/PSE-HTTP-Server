@@ -56,6 +56,16 @@ string *encodeSHA1(string *toEncode);
 http_credentials *getAuthenticationCredentials(http_request *request);
 
 
+/**
+ * Checks the credentials against the all credentials of the .htpasswd file.
+ * Returns 0 if no match was found, 1 if given credentials match an entry of the file.
+ *
+ * @param credentials The credentials to check if they exist in the .htpasswd file.
+ * @return 0 if no match was found in the file, 1 if there was a match to an entry.
+ */
+char checkCredentials(http_credentials *credentials);
+
+
 
 
 #endif //HTTP_SERVER_09_HTTP_SECURITY_H
