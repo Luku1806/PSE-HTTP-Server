@@ -36,6 +36,12 @@
 
 
 /**
+ * The path where the htpasswd file, with all the http credential is located
+ */
+#define HTPASSWD_PATH "/var/www/htpasswd"
+
+
+/**
  * Converts a path with /../ etc to an absolute path.
  * If file is not found, an empty string is returned. (Length = 0)
  *
