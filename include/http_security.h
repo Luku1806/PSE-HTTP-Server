@@ -4,6 +4,13 @@
 #include "http_string.h"
 #include "http_parser.h"
 
+
+/**
+ * The maximum count of credentials to load from disk
+ */
+#define MAX_CREDENTIALS 15
+
+
 /**
  * @struct http_credentials
  *
@@ -15,6 +22,17 @@ typedef struct credentials {
 } http_credentials;
 
 
+/**
+ * @struct http_credential_array
+ *
+ * Used to store an array(pointer) to credential pointers together with the count of them.
+ */
+typedef struct credentialArray{
+    http_credentials **credential_array;
+    size_t credentialCount;
+    size_t maxCredentialCount;
+}http_credential_array;
+
 
 /**
  * Creates (allocates) a new httpCredential and returns a pointer to it.
@@ -24,10 +42,36 @@ http_credentials *new_httpCredentials();
 
 
 /**
- * Frees the memory allocated for the httpRequest pointer.
- * @param request The request pointer to free.
+ * Frees the memory allocated for the httpCredential pointer.
+ * @param request The credential pointer to free.
  */
 void free_httpCredentials(http_credentials *credentials);
+
+
+/**
+ * Creates (allocates) a new http_credential_array of size max and returns a pointer to it.
+ *
+ * @param max The maximum of credentials this array can hold.
+ * @return The pointer to the allocated http_credential_array.
+ */
+http_credential_array *new_httpCredentialArray(size_t max);
+
+
+/**
+ * Frees the memory allocated for the http_credential_array pointer.
+ * @param request The credential_array pointer to free.
+ */
+void free_httpCredentialArray(http_credential_array *array);
+
+
+/**
+ * Adds a credential to the array. Returns 1 if the credentials fit into the array, 0 if its already full.
+ *
+ * @param credentialArray The array to add something to.
+ * @param credentials The credentials pointer to add to the array.
+ * @return 0 if array is already full, 1 if everything was okay.
+ */
+char credential_array_add(http_credential_array *credentialArray, http_credentials *credentials);
 
 
 /**
@@ -35,6 +79,12 @@ void free_httpCredentials(http_credentials *credentials);
  * @param credentials The credentials to print to the console.
  */
 void printHTTPCredentials(http_credentials *credentials);
+
+/**
+ * Prints the given credential array (all credentials it contains) to the console.
+ * @param credentials The credential array to print to the console.
+ */
+void printHTTPCredentialArray(http_credential_array *credentialArray);
 
 
 /**
@@ -66,6 +116,6 @@ http_credentials *getAuthenticationCredentials(http_request *request);
 char checkCredentials(http_credentials *credentials);
 
 
-
+http_credential_array *loadCredentials();
 
 #endif //HTTP_SERVER_09_HTTP_SECURITY_H
