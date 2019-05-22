@@ -101,8 +101,8 @@ string *str_cat_str(string *dest, string *src) {
 }
 
 
-string *sub_str(string *str, size_t start, size_t len) {
-    if (start + len > str->len) return NULL;
+string *sub_str(string *str, size_t start, int len) {
+    if (start + len > str->len && len < 1) return NULL;
 
     string *substring = new_string(len);
     for (int i = 0; i < len; i++) {

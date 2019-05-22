@@ -123,7 +123,7 @@ char chars_equal_str(string *str, char *chars);
  * @param len The length of the substring.
  * @return The substring of str. If start + length is greater than the string, NULL is returned.
  */
-string *sub_str(string *str, size_t start, size_t len);
+string *sub_str(string *str, size_t start, int len);
 
 
 /**
