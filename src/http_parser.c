@@ -231,7 +231,7 @@ http_request *parseRequest(string *strRequest) {
             request->host = trimmedContent;
         } else if (chars_equal_str(header_name_cap, "USER-AGENT") && request->user_agent == NULL) {
             request->user_agent = trimmedContent;
-        } else if (chars_equal_str(header_name_cap, "AUTHENTICATION") && request->authentication == NULL) {
+        } else if (chars_equal_str(header_name_cap, "AUTHORIZATION") && request->authentication == NULL) {
             request->authentication = trimmedContent;
         } else {
             // No header to store content in, so free it
@@ -435,7 +435,7 @@ http_response *generateResponse(http_request *request) {
             } else {
                 printHTTPCredentials(credentials);
                 free_httpCredentials(credentials);
-                documentRoot = cpy_str(DEFAULT_DOCUMENT_ROOT);
+                documentRoot = cpy_str(INTERN_DOCUMENT_ROOT);
             }
 
         } else {
