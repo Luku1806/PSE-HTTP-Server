@@ -362,64 +362,64 @@ cannon += Beam(
 
 # Case 45
 cannon += Beam(
-    description='Authentication with existent base64 encoded username "test" and password "testtest"',
+    description='Authorization with existent base64 encoded username "test" and password "testtest"',
     request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic dGVzdDp0ZXN0dGVzdA==\r\n\r\n',
     response=['HTTP/1.1 200']
 )
 
 # Case 46
 cannon += Beam(
-    description='Authentication with existent base64 encoded username "test1" and password "test1test1"',
+    description='Authorization with existent base64 encoded username "test1" and password "test1test1"',
     request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic dGVzdDE6dGVzdDF0ZXN0MQ==\r\n\r\n',
     response=['HTTP/1.1 200']
 )
 
 # Case 47
 cannon += Beam(
-    description='Authentication with non existent base64 encoded username "invalid" and password "intruder"',
+    description='Authorization with non existent base64 encoded username "invalid" and password "intruder"',
     request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic aW52YWxpZDppbnRydWRlcg==\r\n\r\n',
     response=['HTTP/1.1 401']
 )
 
 
-# Case 47
-cannon += Beam(
-    description='Authentication with non existent base64 encoded username "invalid" and password "intruder"',
-    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic dGVzdDE6dG:VzdDF0ZXN0MQ==\r\n\r\n',
-    response=['HTTP/1.1 401']
-)
-
-# Case 47
-cannon += Beam(
-    description='Authentication with valid credentials and lowercase "basic"',
-    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: basic dGVzdDp0ZXN0dGVzdA==\r\n\r\n',
-    response=['HTTP/1.1 200']
-)
-
 # Case 48
 cannon += Beam(
-    description='Authentication with valid credentials but authentication scheme "test"',
-    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: test dGVzdDp0ZXN0dGVzdA==\r\n\r\n',
+    description='Authorization with non existent base64 encoded username "invalid" and password "intruder"',
+    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic dGVzdDE6dG:VzdDF0ZXN0MQ==\r\n\r\n',
     response=['HTTP/1.1 401']
 )
 
 # Case 49
 cannon += Beam(
-    description='Authentication with valid credentials missing scheme',
-    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: dGVzdDp0ZXN0dGVzdA==\r\n\r\n',
-    response=['HTTP/1.1 401']
+    description='Authorization with valid credentials and lowercase "basic"',
+    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: basic dGVzdDp0ZXN0dGVzdA==\r\n\r\n',
+    response=['HTTP/1.1 200']
 )
 
 # Case 50
 cannon += Beam(
-    description='Authentication with Basic, but no credentials',
-    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic\r\n\r\n',
+    description='Authorization with valid credentials but authentication scheme "test"',
+    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: test dGVzdDp0ZXN0dGVzdA==\r\n\r\n',
     response=['HTTP/1.1 401']
 )
 
 # Case 51
 cannon += Beam(
-    description='Authentication without any content',
+    description='Authorization with valid credentials missing scheme',
+    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: dGVzdDp0ZXN0dGVzdA==\r\n\r\n',
+    response=['HTTP/1.1 401']
+)
+
+# Case 51
+cannon += Beam(
+    description='Authorization with Basic, but no credentials',
+    request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic\r\n\r\n',
+    response=['HTTP/1.1 401']
+)
+
+# Case 52
+cannon += Beam(
+    description='Authorization without any content',
     request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization:\r\n\r\n',
     response=['HTTP/1.1 400']
 )
