@@ -57,8 +57,10 @@ char hexStringToChar(string *hex) {
             return -1;
         } else if (hex->str[i] <= 57) {
             val += (hex->str[i] - 48) * (1 << (4 * (hex->len - 1 - i)));
-        } else {
+        } else if (hex->str[i] <= 90) {
             val += (hex->str[i] - 55) * (1 << (4 * (hex->len - 1 - i)));
+        } else {
+            val += (hex->str[i] - 87) * (1 << (4 * (hex->len - 1 - i)));
         }
     }
 
