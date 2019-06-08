@@ -20,7 +20,7 @@
 }
 
 #nav-tree .selected {
-  background-image: url('tab_a.png');
+  background-image: url('Doxygen/tab_a.png');
   background-repeat:repeat-x;
   color: #fff;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 1.0);
@@ -94,7 +94,7 @@
 }
 
 .ui-resizable-e {
-  background-image:url("splitbar.png");
+  background-image:url("Doxygen/splitbar.png");
   background-size:100%;
   background-repeat:no-repeat;
   background-attachment: scroll;
@@ -117,7 +117,7 @@
 }
 
 #nav-tree {
-  background-image:url('nav_h.png');
+  background-image:url('Doxygen/nav_h.png');
   background-repeat:repeat-x;
   background-color: #F9FAFC;
   -webkit-overflow-scrolling : touch; /* iOS 5+ */
