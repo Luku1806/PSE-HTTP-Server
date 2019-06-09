@@ -1,0 +1,63 @@
+.TH "http_response" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+http_response
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <http_parser\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBstring\fP * \fBhttp_version\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBstatus\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBserver\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBcontent_type\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBcontent_encoding\fP"
+.br
+.ti -1c
+.RI "size_t \fBcontent_length\fP"
+.br
+.ti -1c
+.RI "char \fBauth_required\fP"
+.br
+.ti -1c
+.RI "void * \fBcontent\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Used to bundle all information about a response\&. Contains all header fields, used by the program and can be expanded to the needs\&. 
+.SH "Field Documentation"
+.PP 
+.SS "char auth_required"
+
+.SS "void* content"
+
+.SS "\fBstring\fP* content_encoding"
+
+.SS "size_t content_length"
+
+.SS "\fBstring\fP* content_type"
+
+.SS "\fBstring\fP* http_version"
+
+.SS "\fBstring\fP* server"
+
+.SS "\fBstring\fP* status"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dokumentation from the source code\&.

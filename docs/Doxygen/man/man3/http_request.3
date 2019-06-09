@@ -1,0 +1,63 @@
+.TH "http_request" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+http_request
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <http_parser\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBstring\fP * \fBmethod\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBresource\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBhttp_version\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBhost\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBuser_agent\fP"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBauthentication\fP"
+.br
+.ti -1c
+.RI "size_t \fBcontent_length\fP"
+.br
+.ti -1c
+.RI "void * \fBcontent\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Used to bundle all information about a request\&. Contains all header fields, used by the program and can be expanded to the needs\&. 
+.SH "Field Documentation"
+.PP 
+.SS "\fBstring\fP* authentication"
+
+.SS "void* content"
+
+.SS "size_t content_length"
+
+.SS "\fBstring\fP* host"
+
+.SS "\fBstring\fP* http_version"
+
+.SS "\fBstring\fP* method"
+
+.SS "\fBstring\fP* resource"
+
+.SS "\fBstring\fP* user_agent"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dokumentation from the source code\&.

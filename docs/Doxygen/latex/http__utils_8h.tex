@@ -1,0 +1,98 @@
+\hypertarget{http__utils_8h}{}\section{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+utils.h File Reference}
+\label{http__utils_8h}\index{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+utils.\+h@{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+utils.\+h}}
+
+
+This file provides all functions that are needed for utility.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}http\+\_\+string.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{http__utils_8h_a563d42bbe08f6ee493dc980ed10c988d}{int\+To\+String}} (int value, char $\ast$buf, size\+\_\+t bufsize)
+\item 
+char \mbox{\hyperlink{http__utils_8h_a4d45503148b34f9d3529751a8c14904a}{is\+Ascii}} (char c)
+\item 
+char \mbox{\hyperlink{http__utils_8h_a91e38e4f0f5cace4ea78ddcfbb7207fa}{hex\+String\+To\+Char}} (\mbox{\hyperlink{structstring}{string}} $\ast$hex)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__utils_8h_ab3630a23c872f3b4613a7acfb65a9093}{decode\+U\+RL}} (\mbox{\hyperlink{structstring}{string}} $\ast$url)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file provides all functions that are needed for utility. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{http__utils_8h_ab3630a23c872f3b4613a7acfb65a9093}\label{http__utils_8h_ab3630a23c872f3b4613a7acfb65a9093}} 
+\index{http\+\_\+utils.\+h@{http\+\_\+utils.\+h}!decode\+U\+RL@{decode\+U\+RL}}
+\index{decode\+U\+RL@{decode\+U\+RL}!http\+\_\+utils.\+h@{http\+\_\+utils.\+h}}
+\subsubsection{\texorpdfstring{decode\+U\+R\+L()}{decodeURL()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ decode\+U\+RL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{url }\end{DoxyParamCaption})}
+
+Removes U\+R\+L-\/encoding from a string and returns the decoded string. Return N\+U\+LL if encoding is invalid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & $\ast$url The coded string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new decoded string. N\+U\+LL if encoding is invalid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__utils_8h_a91e38e4f0f5cace4ea78ddcfbb7207fa}\label{http__utils_8h_a91e38e4f0f5cace4ea78ddcfbb7207fa}} 
+\index{http\+\_\+utils.\+h@{http\+\_\+utils.\+h}!hex\+String\+To\+Char@{hex\+String\+To\+Char}}
+\index{hex\+String\+To\+Char@{hex\+String\+To\+Char}!http\+\_\+utils.\+h@{http\+\_\+utils.\+h}}
+\subsubsection{\texorpdfstring{hex\+String\+To\+Char()}{hexStringToChar()}}
+{\footnotesize\ttfamily char hex\+String\+To\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{hex }\end{DoxyParamCaption})}
+
+Converts a string of hexadecimal digits to a char. Used to convert the two hexadecimal digits behind the \% in url encoding to the corresponding character in the ascii table. For example\+: \%20\+: hex\+:20 --$>$ dez\+:32 --$>$ ascii\+:\char`\"{} \char`\"{} (space).
+
+Returns -\/1 if the string contains digits, that do not belong to the hexadezimal alphabet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The string with hexadecimal digits. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The corresponding character. -\/1 if its not a valid hex string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__utils_8h_a563d42bbe08f6ee493dc980ed10c988d}\label{http__utils_8h_a563d42bbe08f6ee493dc980ed10c988d}} 
+\index{http\+\_\+utils.\+h@{http\+\_\+utils.\+h}!int\+To\+String@{int\+To\+String}}
+\index{int\+To\+String@{int\+To\+String}!http\+\_\+utils.\+h@{http\+\_\+utils.\+h}}
+\subsubsection{\texorpdfstring{int\+To\+String()}{intToString()}}
+{\footnotesize\ttfamily char$\ast$ int\+To\+String (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{char $\ast$}]{buf,  }\item[{size\+\_\+t}]{bufsize }\end{DoxyParamCaption})}
+
+Converts an integer value to a null-\/terminated string using the specified base and stores the result in the char pointer given by buf parameter. Returns null if buffer would overflow
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The integer value to convert to string \\
+\hline
+{\em buf} & The buffer to store the resulting string in. \\
+\hline
+{\em bufsize} & The size of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the resulting null-\/terminated string, same as parameter str. N\+U\+LL if 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__utils_8h_a4d45503148b34f9d3529751a8c14904a}\label{http__utils_8h_a4d45503148b34f9d3529751a8c14904a}} 
+\index{http\+\_\+utils.\+h@{http\+\_\+utils.\+h}!is\+Ascii@{is\+Ascii}}
+\index{is\+Ascii@{is\+Ascii}!http\+\_\+utils.\+h@{http\+\_\+utils.\+h}}
+\subsubsection{\texorpdfstring{is\+Ascii()}{isAscii()}}
+{\footnotesize\ttfamily char is\+Ascii (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+Returns if an ascii character is a valid hexadecimal digit, so if is 0-\/9, a-\/f or A-\/F.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The character to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if its a hex-\/digit, 0 if not. 
+\end{DoxyReturn}

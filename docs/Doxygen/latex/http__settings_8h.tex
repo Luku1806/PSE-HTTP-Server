@@ -1,0 +1,101 @@
+\hypertarget{http__settings_8h}{}\section{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+settings.h File Reference}
+\label{http__settings_8h}\index{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+settings.\+h@{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+settings.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_af00aa3c79fe31d435739c34e4c989835}{S\+E\+R\+V\+E\+R\+\_\+\+N\+A\+ME}}~\char`\"{}H\+T\+TP-\/Server 09 1.\+0\char`\"{}
+\begin{DoxyCompactList}\small\item\em This file contains all project settings that can be made to the server. It conatins all paths, the server port etc... \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{http__settings_8h_a8bb9017f30ff8959b7916f558c82d306}{H\+T\+T\+P\+\_\+\+V\+E\+R\+S\+I\+ON}}~\char`\"{}H\+T\+TP/1.\+1\char`\"{}
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_a614217d263be1fb1a5f76e2ff7be19a2}{P\+O\+RT}}~31337
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}~1024
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_a72f9f22aef4ab236591c511f905228da}{D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}}~\char`\"{}/usr/local/webroot/default/\char`\"{}
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_ad93185b751edb7e3743de15d867b1cc6}{E\+X\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}}~\char`\"{}/usr/local/webroot/extern/\char`\"{}
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_a55f744c0f9d9d2575e486cd4d0fc061d}{I\+N\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}}~\char`\"{}/usr/local/webroot/intern/\char`\"{}
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_a07ac8a76cb8c4b8f9baf93b02d52f719}{S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+T\+E\+\_\+\+P\+A\+TH}}~\char`\"{}/usr/local/webroot/status/\char`\"{}
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_a9a7ced3ff5719aa21ae82f2fc344a2e8}{H\+T\+P\+A\+S\+S\+W\+D\+\_\+\+P\+A\+TH}}~\char`\"{}/usr/local/webroot/htpasswd\char`\"{}
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_ad88b44f22b836c7dcad8a2688e92c1e7}{M\+A\+X\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS}}~15
+\item 
+\#define \mbox{\hyperlink{http__settings_8h_aba925eb3f7c3ba6bda8dcaef2c83c48e}{H\+T\+T\+P\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+09\+\_\+\+H\+T\+T\+P\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+H}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{http__settings_8h_a6b20d41d6252e9871430c242cb1a56e7}\label{http__settings_8h_a6b20d41d6252e9871430c242cb1a56e7}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~1024}
+
+The size of the buffer for reading http requests oover the tcp socket. Should be big enough to be able to handle larger requests. \mbox{\Hypertarget{http__settings_8h_a72f9f22aef4ab236591c511f905228da}\label{http__settings_8h_a72f9f22aef4ab236591c511f905228da}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}{DEFAULT\_DOCUMENT\_ROOT}}
+{\footnotesize\ttfamily \#define D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT~\char`\"{}/usr/local/webroot/default/\char`\"{}}
+
+The default document root. \mbox{\Hypertarget{http__settings_8h_ad93185b751edb7e3743de15d867b1cc6}\label{http__settings_8h_ad93185b751edb7e3743de15d867b1cc6}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!E\+X\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT@{E\+X\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}}
+\index{E\+X\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT@{E\+X\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{E\+X\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}{EXTERN\_DOCUMENT\_ROOT}}
+{\footnotesize\ttfamily \#define E\+X\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT~\char`\"{}/usr/local/webroot/extern/\char`\"{}}
+
+The extern document root. \mbox{\Hypertarget{http__settings_8h_a9a7ced3ff5719aa21ae82f2fc344a2e8}\label{http__settings_8h_a9a7ced3ff5719aa21ae82f2fc344a2e8}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!H\+T\+P\+A\+S\+S\+W\+D\+\_\+\+P\+A\+TH@{H\+T\+P\+A\+S\+S\+W\+D\+\_\+\+P\+A\+TH}}
+\index{H\+T\+P\+A\+S\+S\+W\+D\+\_\+\+P\+A\+TH@{H\+T\+P\+A\+S\+S\+W\+D\+\_\+\+P\+A\+TH}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{H\+T\+P\+A\+S\+S\+W\+D\+\_\+\+P\+A\+TH}{HTPASSWD\_PATH}}
+{\footnotesize\ttfamily \#define H\+T\+P\+A\+S\+S\+W\+D\+\_\+\+P\+A\+TH~\char`\"{}/usr/local/webroot/htpasswd\char`\"{}}
+
+The path where the htpasswd file, with all the http credential is located \mbox{\Hypertarget{http__settings_8h_aba925eb3f7c3ba6bda8dcaef2c83c48e}\label{http__settings_8h_aba925eb3f7c3ba6bda8dcaef2c83c48e}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!H\+T\+T\+P\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+09\+\_\+\+H\+T\+T\+P\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+H@{H\+T\+T\+P\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+09\+\_\+\+H\+T\+T\+P\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+H}}
+\index{H\+T\+T\+P\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+09\+\_\+\+H\+T\+T\+P\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+H@{H\+T\+T\+P\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+09\+\_\+\+H\+T\+T\+P\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+H}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{H\+T\+T\+P\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+09\+\_\+\+H\+T\+T\+P\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+H}{HTTP\_SERVER\_09\_HTTP\_SETTINGS\_H}}
+{\footnotesize\ttfamily \#define H\+T\+T\+P\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+09\+\_\+\+H\+T\+T\+P\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+H}
+
+\mbox{\Hypertarget{http__settings_8h_a8bb9017f30ff8959b7916f558c82d306}\label{http__settings_8h_a8bb9017f30ff8959b7916f558c82d306}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!H\+T\+T\+P\+\_\+\+V\+E\+R\+S\+I\+ON@{H\+T\+T\+P\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{H\+T\+T\+P\+\_\+\+V\+E\+R\+S\+I\+ON@{H\+T\+T\+P\+\_\+\+V\+E\+R\+S\+I\+ON}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{H\+T\+T\+P\+\_\+\+V\+E\+R\+S\+I\+ON}{HTTP\_VERSION}}
+{\footnotesize\ttfamily \#define H\+T\+T\+P\+\_\+\+V\+E\+R\+S\+I\+ON~\char`\"{}H\+T\+TP/1.\+1\char`\"{}}
+
+The http version of the server. \mbox{\Hypertarget{http__settings_8h_a55f744c0f9d9d2575e486cd4d0fc061d}\label{http__settings_8h_a55f744c0f9d9d2575e486cd4d0fc061d}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!I\+N\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT@{I\+N\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}}
+\index{I\+N\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT@{I\+N\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT}{INTERN\_DOCUMENT\_ROOT}}
+{\footnotesize\ttfamily \#define I\+N\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT~\char`\"{}/usr/local/webroot/intern/\char`\"{}}
+
+The intern document root. To see files you have to authorize. \mbox{\Hypertarget{http__settings_8h_ad88b44f22b836c7dcad8a2688e92c1e7}\label{http__settings_8h_ad88b44f22b836c7dcad8a2688e92c1e7}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!M\+A\+X\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS@{M\+A\+X\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS}}
+\index{M\+A\+X\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS@{M\+A\+X\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS}{MAX\_CREDENTIALS}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+C\+R\+E\+D\+E\+N\+T\+I\+A\+LS~15}
+
+The maximum count of credentials to load from the htpasswd file from disk. \mbox{\Hypertarget{http__settings_8h_a614217d263be1fb1a5f76e2ff7be19a2}\label{http__settings_8h_a614217d263be1fb1a5f76e2ff7be19a2}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!P\+O\+RT@{P\+O\+RT}}
+\index{P\+O\+RT@{P\+O\+RT}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{P\+O\+RT}{PORT}}
+{\footnotesize\ttfamily \#define P\+O\+RT~31337}
+
+The tcp port to listen on. The server will be reachable at this port via http protocol \mbox{\Hypertarget{http__settings_8h_af00aa3c79fe31d435739c34e4c989835}\label{http__settings_8h_af00aa3c79fe31d435739c34e4c989835}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!S\+E\+R\+V\+E\+R\+\_\+\+N\+A\+ME@{S\+E\+R\+V\+E\+R\+\_\+\+N\+A\+ME}}
+\index{S\+E\+R\+V\+E\+R\+\_\+\+N\+A\+ME@{S\+E\+R\+V\+E\+R\+\_\+\+N\+A\+ME}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+R\+V\+E\+R\+\_\+\+N\+A\+ME}{SERVER\_NAME}}
+{\footnotesize\ttfamily \#define S\+E\+R\+V\+E\+R\+\_\+\+N\+A\+ME~\char`\"{}H\+T\+TP-\/Server 09 1.\+0\char`\"{}}
+
+
+
+This file contains all project settings that can be made to the server. It conatins all paths, the server port etc... 
+
+The name of the server. \mbox{\Hypertarget{http__settings_8h_a07ac8a76cb8c4b8f9baf93b02d52f719}\label{http__settings_8h_a07ac8a76cb8c4b8f9baf93b02d52f719}} 
+\index{http\+\_\+settings.\+h@{http\+\_\+settings.\+h}!S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+T\+E\+\_\+\+P\+A\+TH@{S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+T\+E\+\_\+\+P\+A\+TH}}
+\index{S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+T\+E\+\_\+\+P\+A\+TH@{S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+T\+E\+\_\+\+P\+A\+TH}!http\+\_\+settings.\+h@{http\+\_\+settings.\+h}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+T\+E\+\_\+\+P\+A\+TH}{STATUS\_SITE\_PATH}}
+{\footnotesize\ttfamily \#define S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+T\+E\+\_\+\+P\+A\+TH~\char`\"{}/usr/local/webroot/status/\char`\"{}}
+
+The path where all status pages lay. 

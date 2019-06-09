@@ -1,0 +1,75 @@
+.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_settings.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_settings.h
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSERVER_NAME\fP   'HTTP\-Server 09 1\&.0'"
+.br
+.RI "This file contains all project settings that can be made to the server\&. It conatins all paths, the server port etc\&.\&.\&. "
+.ti -1c
+.RI "#define \fBHTTP_VERSION\fP   'HTTP/1\&.1'"
+.br
+.ti -1c
+.RI "#define \fBPORT\fP   31337"
+.br
+.ti -1c
+.RI "#define \fBBUFFER_SIZE\fP   1024"
+.br
+.ti -1c
+.RI "#define \fBDEFAULT_DOCUMENT_ROOT\fP   '/usr/local/webroot/default/'"
+.br
+.ti -1c
+.RI "#define \fBEXTERN_DOCUMENT_ROOT\fP   '/usr/local/webroot/extern/'"
+.br
+.ti -1c
+.RI "#define \fBINTERN_DOCUMENT_ROOT\fP   '/usr/local/webroot/intern/'"
+.br
+.ti -1c
+.RI "#define \fBSTATUS_SITE_PATH\fP   '/usr/local/webroot/status/'"
+.br
+.ti -1c
+.RI "#define \fBHTPASSWD_PATH\fP   '/usr/local/webroot/htpasswd'"
+.br
+.ti -1c
+.RI "#define \fBMAX_CREDENTIALS\fP   15"
+.br
+.ti -1c
+.RI "#define \fBHTTP_SERVER_09_HTTP_SETTINGS_H\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BUFFER_SIZE   1024"
+The size of the buffer for reading http requests oover the tcp socket\&. Should be big enough to be able to handle larger requests\&. 
+.SS "#define DEFAULT_DOCUMENT_ROOT   '/usr/local/webroot/default/'"
+The default document root\&. 
+.SS "#define EXTERN_DOCUMENT_ROOT   '/usr/local/webroot/extern/'"
+The extern document root\&. 
+.SS "#define HTPASSWD_PATH   '/usr/local/webroot/htpasswd'"
+The path where the htpasswd file, with all the http credential is located 
+.SS "#define HTTP_SERVER_09_HTTP_SETTINGS_H"
+
+.SS "#define HTTP_VERSION   'HTTP/1\&.1'"
+The http version of the server\&. 
+.SS "#define INTERN_DOCUMENT_ROOT   '/usr/local/webroot/intern/'"
+The intern document root\&. To see files you have to authorize\&. 
+.SS "#define MAX_CREDENTIALS   15"
+The maximum count of credentials to load from the htpasswd file from disk\&. 
+.SS "#define PORT   31337"
+The tcp port to listen on\&. The server will be reachable at this port via http protocol 
+.SS "#define SERVER_NAME   'HTTP\-Server 09 1\&.0'"
+
+.PP
+This file contains all project settings that can be made to the server\&. It conatins all paths, the server port etc\&.\&.\&. The name of the server\&. 
+.SS "#define STATUS_SITE_PATH   '/usr/local/webroot/status/'"
+The path where all status pages lay\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dokumentation from the source code\&.

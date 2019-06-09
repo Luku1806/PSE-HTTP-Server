@@ -1,0 +1,130 @@
+\hypertarget{http__file_i_o_8h}{}\section{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+file\+IO.h File Reference}
+\label{http__file_i_o_8h}\index{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+file\+I\+O.\+h@{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+file\+I\+O.\+h}}
+
+
+All file functions required for reading, writing, etc. are accommodated here.  
+
+
+{\ttfamily \#include \char`\"{}http\+\_\+string.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__file_i_o_8h_a69d2dd430c07c1ca33e54d2b956d5195}{to\+Real\+Path}} (\mbox{\hyperlink{structstring}{string}} $\ast$path)
+\item 
+char \mbox{\hyperlink{http__file_i_o_8h_a85dcd9951b1a1556b6e56b5b34d6a5db}{is\+In\+Document\+Root}} (\mbox{\hyperlink{structstring}{string}} $\ast$filepath, \mbox{\hyperlink{structstring}{string}} $\ast$root)
+\item 
+size\+\_\+t \mbox{\hyperlink{http__file_i_o_8h_a7a168f1e6248ad7a372fe8b98d787e6f}{get\+Filesize}} (\mbox{\hyperlink{structstring}{string}} $\ast$filepath)
+\item 
+void $\ast$ \mbox{\hyperlink{http__file_i_o_8h_af66e92339f4d11e393d875316a73fa4d}{load\+File\+To\+Buffer}} (\mbox{\hyperlink{structstring}{string}} $\ast$filepath)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__file_i_o_8h_a2be312d40e6df2eb4b00c68d49d0057c}{get\+Mime\+Type}} (\mbox{\hyperlink{structstring}{string}} $\ast$path)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__file_i_o_8h_a42614d2930b340260c3e337c9fc58eab}{get\+Mime\+Encoding}} (\mbox{\hyperlink{structstring}{string}} $\ast$path)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+All file functions required for reading, writing, etc. are accommodated here. 
+
+Also here you can define the different filepaths and document roots. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{http__file_i_o_8h_a7a168f1e6248ad7a372fe8b98d787e6f}\label{http__file_i_o_8h_a7a168f1e6248ad7a372fe8b98d787e6f}} 
+\index{http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}!get\+Filesize@{get\+Filesize}}
+\index{get\+Filesize@{get\+Filesize}!http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}}
+\subsubsection{\texorpdfstring{get\+Filesize()}{getFilesize()}}
+{\footnotesize\ttfamily size\+\_\+t get\+Filesize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{filepath }\end{DoxyParamCaption})}
+
+Returns the size of a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path, the file lays in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the file at the given path. 0 if file is empty or not available. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__file_i_o_8h_a42614d2930b340260c3e337c9fc58eab}\label{http__file_i_o_8h_a42614d2930b340260c3e337c9fc58eab}} 
+\index{http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}!get\+Mime\+Encoding@{get\+Mime\+Encoding}}
+\index{get\+Mime\+Encoding@{get\+Mime\+Encoding}!http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}}
+\subsubsection{\texorpdfstring{get\+Mime\+Encoding()}{getMimeEncoding()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ get\+Mime\+Encoding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{path }\end{DoxyParamCaption})}
+
+Returns the string containing the content/mime encoding of the resource. Returns an empty string with lenth 0, if information could not be found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the resource. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string containing the M\+I\+M\+E-\/\+Encoding of the resource. Empty string if information was not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__file_i_o_8h_a2be312d40e6df2eb4b00c68d49d0057c}\label{http__file_i_o_8h_a2be312d40e6df2eb4b00c68d49d0057c}} 
+\index{http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}!get\+Mime\+Type@{get\+Mime\+Type}}
+\index{get\+Mime\+Type@{get\+Mime\+Type}!http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}}
+\subsubsection{\texorpdfstring{get\+Mime\+Type()}{getMimeType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ get\+Mime\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{path }\end{DoxyParamCaption})}
+
+Returns the string containing the content/mime type of the resource. Returns an empty string with lenth 0, if information could not be found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the resource. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string containing the M\+I\+M\+E-\/\+Type of the resource. Empty string if information was not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__file_i_o_8h_a85dcd9951b1a1556b6e56b5b34d6a5db}\label{http__file_i_o_8h_a85dcd9951b1a1556b6e56b5b34d6a5db}} 
+\index{http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}!is\+In\+Document\+Root@{is\+In\+Document\+Root}}
+\index{is\+In\+Document\+Root@{is\+In\+Document\+Root}!http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}}
+\subsubsection{\texorpdfstring{is\+In\+Document\+Root()}{isInDocumentRoot()}}
+{\footnotesize\ttfamily char is\+In\+Document\+Root (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{filepath,  }\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+Checks if a path lays in the document root.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path to check if it lays in the document root. \\
+\hline
+{\em root} & The document path root to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the path is not in the document root, 1 if it is in document root. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__file_i_o_8h_af66e92339f4d11e393d875316a73fa4d}\label{http__file_i_o_8h_af66e92339f4d11e393d875316a73fa4d}} 
+\index{http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}!load\+File\+To\+Buffer@{load\+File\+To\+Buffer}}
+\index{load\+File\+To\+Buffer@{load\+File\+To\+Buffer}!http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}}
+\subsubsection{\texorpdfstring{load\+File\+To\+Buffer()}{loadFileToBuffer()}}
+{\footnotesize\ttfamily void$\ast$ load\+File\+To\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{filepath }\end{DoxyParamCaption})}
+
+Loads a file at a given path into a buffer and returns it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path of the file to be loaded. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The file in a buffer. N\+U\+LL if file was not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__file_i_o_8h_a69d2dd430c07c1ca33e54d2b956d5195}\label{http__file_i_o_8h_a69d2dd430c07c1ca33e54d2b956d5195}} 
+\index{http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}!to\+Real\+Path@{to\+Real\+Path}}
+\index{to\+Real\+Path@{to\+Real\+Path}!http\+\_\+file\+I\+O.\+h@{http\+\_\+file\+I\+O.\+h}}
+\subsubsection{\texorpdfstring{to\+Real\+Path()}{toRealPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ to\+Real\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{path }\end{DoxyParamCaption})}
+
+Converts a path with /../ etc to an absolute path. If file is not found, an empty string is returned. (Length = 0)
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted, absolute path. Returns an empty string if path is not found. 
+\end{DoxyReturn}

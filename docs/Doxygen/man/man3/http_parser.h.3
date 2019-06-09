@@ -1,0 +1,240 @@
+.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_parser.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_parser.h \- This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'http_string\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBhttp_request\fP"
+.br
+.ti -1c
+.RI "struct \fBhttp_response\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBhttp_request\fP \fBhttp_request\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBhttp_response\fP \fBhttp_response\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBhttp_request\fP * \fBnew_httpRequest\fP ()"
+.br
+.ti -1c
+.RI "void \fBfree_httpRequest\fP (\fBhttp_request\fP *request)"
+.br
+.ti -1c
+.RI "\fBhttp_response\fP * \fBnew_httpResponse\fP ()"
+.br
+.ti -1c
+.RI "void \fBfree_httpResponse\fP (\fBhttp_response\fP *response)"
+.br
+.ti -1c
+.RI "void \fBprintRequest\fP (\fBhttp_request\fP *request)"
+.br
+.ti -1c
+.RI "\fBhttp_request\fP * \fBparseRequest\fP (\fBstring\fP *strRequest)"
+.br
+.ti -1c
+.RI "\fBhttp_response\fP * \fBgenerateStandardResponse\fP (int statusCode)"
+.br
+.ti -1c
+.RI "\fBhttp_response\fP * \fBgenerateStatusResponse\fP (int statusCode)"
+.br
+.ti -1c
+.RI "\fBhttp_response\fP * \fBgenerateDebugResponse\fP (\fBhttp_request\fP *request)"
+.br
+.ti -1c
+.RI "\fBhttp_response\fP * \fBgenerateResponse\fP (\fBhttp_request\fP *request)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBhttpResponseToString\fP (\fBhttp_response\fP *response)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBgetMimeType\fP (\fBstring\fP *path)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer\&. 
+
+In general this should be used like:
+.PP
+.IP "1." 4
+Process raw message by calling parseRequest to save all informations in a request_struct
+.IP "2." 4
+Put the struct into generateResponse to build a response struct
+.IP "3." 4
+Put the response_struct into httpResponseToString to get the response as string 
+.PP
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBhttp_request\fP  \fBhttp_request\fP"
+
+.SS "typedef struct \fBhttp_response\fP  \fBhttp_response\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "void free_httpRequest (\fBhttp_request\fP * request)"
+Frees the memory allocated for the httpRequest pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrequest\fP The request pointer to free\&. 
+.RE
+.PP
+
+.SS "void free_httpResponse (\fBhttp_response\fP * response)"
+Frees the memory allocated for the httpResponse pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresponse\fP The response pointer to free\&. 
+.RE
+.PP
+
+.SS "\fBhttp_response\fP* generateDebugResponse (\fBhttp_request\fP * request)"
+Creates a response with an HTML site containing the information contained in the request\&. This is used for debug an can be called by requesting /debug as path\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrequest\fP The request to show\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The debug response to the given request\&. 
+.RE
+.PP
+
+.SS "\fBhttp_response\fP* generateResponse (\fBhttp_request\fP * request)"
+Creates a response for the given request\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrequest\fP The request to respond to\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The response to the given request\&. 
+.RE
+.PP
+
+.SS "\fBhttp_response\fP* generateStandardResponse (int statusCode)"
+Returns a pointer to a response with servername, http-version, and status already set\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatusCode\fP The status code for the request\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated and pre-initialized http-response\&. 
+.RE
+.PP
+
+.SS "\fBhttp_response\fP* generateStatusResponse (int statusCode)"
+Returns a pointer to a response with servername, http-version, status, and the corresponding html-site already set\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatusCode\fP The status code for the request\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated and pre-initialized http-response\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* getMimeType (\fBstring\fP * path)"
+Returns the string containing the content/mime type of the resource\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the resource\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string containing the MIME-Type of the resource\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* httpResponseToString (\fBhttp_response\fP * response)"
+Generates a string representing the gven response to be sent to the client\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresponse\fP The response to be converted to the string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The pointer to the string to be sent\&. 
+.RE
+.PP
+
+.SS "\fBhttp_request\fP* new_httpRequest ()"
+Creates (allocates) a new httpRequest and returns a pointer to it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The pointer to the allocated httpRequest\&. 
+.RE
+.PP
+
+.SS "\fBhttp_response\fP* new_httpResponse ()"
+Creates (allocates) a new httpResponse and returns a pointer to it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The pointer to the allocated httpResponse\&. 
+.RE
+.PP
+
+.SS "\fBhttp_request\fP* parseRequest (\fBstring\fP * strRequest)"
+Parses the raw string that came over the network\&. Creates and returns a new \fBhttp_request\fP struct pointer, containing all information needed to respond\&. Returns NULL if something is bad about the message\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrRequest\fP The raw \fBstring(message)\fP received from the client\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A parseRequest pointer containing all information send in the message\&. NULL if message is bad\&. 
+.RE
+.PP
+
+.SS "void printRequest (\fBhttp_request\fP * request)"
+Prints a request formatted to the console\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrequest\fP The request to print\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dokumentation from the source code\&.

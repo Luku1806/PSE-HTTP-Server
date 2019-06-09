@@ -1,0 +1,374 @@
+\hypertarget{http__string_8h}{}\section{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+string.h File Reference}
+\label{http__string_8h}\index{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+string.\+h@{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+string.\+h}}
+
+
+This file contains all string functions that are currently needed and may need later.  
+
+
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstring}{string}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structstring}{string}} \mbox{\hyperlink{http__string_8h_ad5629a6456deb7d0338d634236565499}{string}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_a14adbd968c785a8f0782fa5071136b06}{new\+\_\+string}} (size\+\_\+t len)
+\item 
+void \mbox{\hyperlink{http__string_8h_ae988132fd8cdb8fc75ef5a2c639e41dc}{free\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str)
+\item 
+void \mbox{\hyperlink{http__string_8h_adaf7921c8c14ecd87e941c4b71b70dac}{print\+\_\+string}} (\mbox{\hyperlink{structstring}{string}} $\ast$str)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_a1de6617cc33f666b1df3e92600af7fba}{cpy\+\_\+str}} (const char $\ast$src)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_a34ef4156900a8b2ede6ef32f95bdcc50}{clone\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$src)
+\item 
+char $\ast$ \mbox{\hyperlink{http__string_8h_afc9a1f3e37baae2ffb223507331a9ae8}{to\+C\+String\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_ab0ceedc4165092be58a4a209d3777139}{cat\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$dest, const char $\ast$src)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_a89f826f97fda7dec02560429bbb018d5}{cat\+\_\+str\+\_\+len}} (\mbox{\hyperlink{structstring}{string}} $\ast$dest, void $\ast$src, size\+\_\+t len)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_ad9c626adb421d785be1b9e94c1490dfc}{str\+\_\+cat\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$dest, \mbox{\hyperlink{structstring}{string}} $\ast$src)
+\item 
+char \mbox{\hyperlink{http__string_8h_ad3523cff686f0afb5b0253fcdb533433}{equals\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str1, \mbox{\hyperlink{structstring}{string}} $\ast$str2)
+\item 
+char \mbox{\hyperlink{http__string_8h_ab6316cf3ab37aaf8f6ef1567242925fe}{chars\+\_\+equal\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str, char $\ast$chars)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_adf5b7c2c912b8e14445153ac03216799}{sub\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str, size\+\_\+t start, int len)
+\item 
+int \mbox{\hyperlink{http__string_8h_ae6aa1dff8747e05689a69f360fc94517}{find\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str1, \mbox{\hyperlink{structstring}{string}} $\ast$str2)
+\item 
+int \mbox{\hyperlink{http__string_8h_a87395a01474e1555aa062f51eb6d26df}{find\+\_\+chars}} (\mbox{\hyperlink{structstring}{string}} $\ast$str1, char $\ast$chars)
+\item 
+char \mbox{\hyperlink{http__string_8h_a5a3baab1752e3f60942fe00af7052972}{ends\+With\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str, char $\ast$ending)
+\item 
+char \mbox{\hyperlink{http__string_8h_a3b9437c759d7868a1059e59b1b7b3f7f}{starts\+With\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str, char $\ast$starting)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_abc72a42629439332da74444c1f23dfa3}{to\+Upper\+\_\+str}} (\mbox{\hyperlink{structstring}{string}} $\ast$str)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__string_8h_a448cdebdbcadda6fe1321522ce425eb7}{remove\+Trailing\+Chars}} (\mbox{\hyperlink{structstring}{string}} $\ast$\mbox{\hyperlink{structstring}{string}}, char to\+Remove)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains all string functions that are currently needed and may need later. 
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{http__string_8h_ad5629a6456deb7d0338d634236565499}\label{http__string_8h_ad5629a6456deb7d0338d634236565499}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!string@{string}}
+\index{string@{string}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{string}{string}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structstring}{string}}  \mbox{\hyperlink{structstring}{string}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{http__string_8h_ab0ceedc4165092be58a4a209d3777139}\label{http__string_8h_ab0ceedc4165092be58a4a209d3777139}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!cat\+\_\+str@{cat\+\_\+str}}
+\index{cat\+\_\+str@{cat\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{cat\+\_\+str()}{cat\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ cat\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{dest,  }\item[{const char $\ast$}]{src }\end{DoxyParamCaption})}
+
+Combines a string and a c-\/string to a new string 
+\begin{DoxyParams}{Parameters}
+{\em dest} & String 1 to combine \\
+\hline
+{\em src} & char-\/pointer to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Either Returns a new String or N\+U\+LL depending on whether the condition is met or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_a89f826f97fda7dec02560429bbb018d5}\label{http__string_8h_a89f826f97fda7dec02560429bbb018d5}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!cat\+\_\+str\+\_\+len@{cat\+\_\+str\+\_\+len}}
+\index{cat\+\_\+str\+\_\+len@{cat\+\_\+str\+\_\+len}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{cat\+\_\+str\+\_\+len()}{cat\_str\_len()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ cat\+\_\+str\+\_\+len (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{dest,  }\item[{void $\ast$}]{src,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Combines a string and a generic pointer with a given length 
+\begin{DoxyParams}{Parameters}
+{\em dest} & String 1 to combine \\
+\hline
+{\em src} & pointer to combine \\
+\hline
+{\em len} & lenth of the pointer to concat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Either Returns a new String or N\+U\+LL depending on whether the condition is met or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_ab6316cf3ab37aaf8f6ef1567242925fe}\label{http__string_8h_ab6316cf3ab37aaf8f6ef1567242925fe}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!chars\+\_\+equal\+\_\+str@{chars\+\_\+equal\+\_\+str}}
+\index{chars\+\_\+equal\+\_\+str@{chars\+\_\+equal\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{chars\+\_\+equal\+\_\+str()}{chars\_equal\_str()}}
+{\footnotesize\ttfamily char chars\+\_\+equal\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str,  }\item[{char $\ast$}]{chars }\end{DoxyParamCaption})}
+
+Determines if a strings is equal to a char pointer (c-\/string).
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to compare to the chars. \\
+\hline
+{\em chars} & Chars to compare to the string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 if the strings are different, 1 if they are equal. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_a34ef4156900a8b2ede6ef32f95bdcc50}\label{http__string_8h_a34ef4156900a8b2ede6ef32f95bdcc50}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!clone\+\_\+str@{clone\+\_\+str}}
+\index{clone\+\_\+str@{clone\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{clone\+\_\+str()}{clone\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ clone\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{src }\end{DoxyParamCaption})}
+
+Clones everything stored in src, to a new string pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & The string to clone. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new string pointer, containing all information of src. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_a1de6617cc33f666b1df3e92600af7fba}\label{http__string_8h_a1de6617cc33f666b1df3e92600af7fba}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!cpy\+\_\+str@{cpy\+\_\+str}}
+\index{cpy\+\_\+str@{cpy\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{cpy\+\_\+str()}{cpy\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ cpy\+\_\+str (\begin{DoxyParamCaption}\item[{const char $\ast$}]{src }\end{DoxyParamCaption})}
+
+Copies a C-\/string into a new string struct and returns this.
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & The C-\/string to copy into the struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string struct pointer with the C-\/string in it 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_a5a3baab1752e3f60942fe00af7052972}\label{http__string_8h_a5a3baab1752e3f60942fe00af7052972}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!ends\+With\+\_\+str@{ends\+With\+\_\+str}}
+\index{ends\+With\+\_\+str@{ends\+With\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{ends\+With\+\_\+str()}{endsWith\_str()}}
+{\footnotesize\ttfamily char ends\+With\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str,  }\item[{char $\ast$}]{ending }\end{DoxyParamCaption})}
+
+Returns if a string ends with a set of chars(c-\/string).
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to see if it ends with the chars. \\
+\hline
+{\em ending} & The chars to see if the string ends with them. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the string ends with the chars. 0 if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_ad3523cff686f0afb5b0253fcdb533433}\label{http__string_8h_ad3523cff686f0afb5b0253fcdb533433}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!equals\+\_\+str@{equals\+\_\+str}}
+\index{equals\+\_\+str@{equals\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{equals\+\_\+str()}{equals\_str()}}
+{\footnotesize\ttfamily char equals\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str1,  }\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+Determines if 2 strings are equal. 
+\begin{DoxyParams}{Parameters}
+{\em str1} & String 1 to compare. \\
+\hline
+{\em str2} & String 2 to compare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 if the strings are different, 1 if they are equal. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_a87395a01474e1555aa062f51eb6d26df}\label{http__string_8h_a87395a01474e1555aa062f51eb6d26df}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!find\+\_\+chars@{find\+\_\+chars}}
+\index{find\+\_\+chars@{find\+\_\+chars}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{find\+\_\+chars()}{find\_chars()}}
+{\footnotesize\ttfamily int find\+\_\+chars (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str1,  }\item[{char $\ast$}]{chars }\end{DoxyParamCaption})}
+
+Finds the first occurence of chars in str
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to look if it contains chars. \\
+\hline
+{\em str2} & The chars(C-\/\+String) to find in str \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the first occurence of chars in str. Returns -\/1 if not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_ae6aa1dff8747e05689a69f360fc94517}\label{http__string_8h_ae6aa1dff8747e05689a69f360fc94517}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!find\+\_\+str@{find\+\_\+str}}
+\index{find\+\_\+str@{find\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{find\+\_\+str()}{find\_str()}}
+{\footnotesize\ttfamily int find\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str1,  }\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+Finds the first occurence of str2 in str1
+
+
+\begin{DoxyParams}{Parameters}
+{\em str1} & The string to look if it contains str2. \\
+\hline
+{\em str2} & The string to find in str1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the first occurence of str2 in str1. Returns -\/1 if not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_ae988132fd8cdb8fc75ef5a2c639e41dc}\label{http__string_8h_ae988132fd8cdb8fc75ef5a2c639e41dc}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!free\+\_\+str@{free\+\_\+str}}
+\index{free\+\_\+str@{free\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{free\+\_\+str()}{free\_str()}}
+{\footnotesize\ttfamily void free\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str }\end{DoxyParamCaption})}
+
+Frees the allocated memory of a string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string pointer to free. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{http__string_8h_a14adbd968c785a8f0782fa5071136b06}\label{http__string_8h_a14adbd968c785a8f0782fa5071136b06}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!new\+\_\+string@{new\+\_\+string}}
+\index{new\+\_\+string@{new\+\_\+string}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{new\+\_\+string()}{new\_string()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ new\+\_\+string (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Allocates a new string pointer and returns it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em len} & The length of the string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the nwe allocated string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_adaf7921c8c14ecd87e941c4b71b70dac}\label{http__string_8h_adaf7921c8c14ecd87e941c4b71b70dac}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!print\+\_\+string@{print\+\_\+string}}
+\index{print\+\_\+string@{print\+\_\+string}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{print\+\_\+string()}{print\_string()}}
+{\footnotesize\ttfamily void print\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str }\end{DoxyParamCaption})}
+
+Prints a string to the console.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to print. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{http__string_8h_a448cdebdbcadda6fe1321522ce425eb7}\label{http__string_8h_a448cdebdbcadda6fe1321522ce425eb7}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!remove\+Trailing\+Chars@{remove\+Trailing\+Chars}}
+\index{remove\+Trailing\+Chars@{remove\+Trailing\+Chars}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{remove\+Trailing\+Chars()}{removeTrailingChars()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ remove\+Trailing\+Chars (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{string,  }\item[{char}]{to\+Remove }\end{DoxyParamCaption})}
+
+Removes all trailing charcters. For example if to\+Remove is a, \char`\"{}12345aaa\char`\"{} becomes \char`\"{}12345\char`\"{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & The string to remove the trailing characters from. \\
+\hline
+{\em to\+Remove} & The trailing characters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The trimmed string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_a3b9437c759d7868a1059e59b1b7b3f7f}\label{http__string_8h_a3b9437c759d7868a1059e59b1b7b3f7f}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!starts\+With\+\_\+str@{starts\+With\+\_\+str}}
+\index{starts\+With\+\_\+str@{starts\+With\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{starts\+With\+\_\+str()}{startsWith\_str()}}
+{\footnotesize\ttfamily char starts\+With\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str,  }\item[{char $\ast$}]{starting }\end{DoxyParamCaption})}
+
+Returns if a string starts with a set of chars(c-\/string).
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to see if it start with the chars. \\
+\hline
+{\em starting} & The chars to see if the string start with them. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the string starts with the chars. 0 if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_ad9c626adb421d785be1b9e94c1490dfc}\label{http__string_8h_ad9c626adb421d785be1b9e94c1490dfc}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!str\+\_\+cat\+\_\+str@{str\+\_\+cat\+\_\+str}}
+\index{str\+\_\+cat\+\_\+str@{str\+\_\+cat\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{str\+\_\+cat\+\_\+str()}{str\_cat\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ str\+\_\+cat\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{dest,  }\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{src }\end{DoxyParamCaption})}
+
+Combines two strings to a new string 
+\begin{DoxyParams}{Parameters}
+{\em dest} & String 1 to combine \\
+\hline
+{\em src} & String 2 to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Either Returns a new String or N\+U\+LL depending on whether the condition is met or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_adf5b7c2c912b8e14445153ac03216799}\label{http__string_8h_adf5b7c2c912b8e14445153ac03216799}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!sub\+\_\+str@{sub\+\_\+str}}
+\index{sub\+\_\+str@{sub\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{sub\+\_\+str()}{sub\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ sub\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str,  }\item[{size\+\_\+t}]{start,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+Return a substring with the length len of str starting at start.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to get substring of. \\
+\hline
+{\em start} & Index to start the substring. \\
+\hline
+{\em len} & The length of the substring. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The substring of str. If start + length is greater than the string, N\+U\+LL is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_afc9a1f3e37baae2ffb223507331a9ae8}\label{http__string_8h_afc9a1f3e37baae2ffb223507331a9ae8}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!to\+C\+String\+\_\+str@{to\+C\+String\+\_\+str}}
+\index{to\+C\+String\+\_\+str@{to\+C\+String\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{to\+C\+String\+\_\+str()}{toCString\_str()}}
+{\footnotesize\ttfamily char$\ast$ to\+C\+String\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str }\end{DoxyParamCaption})}
+
+Returns a null terminated char pointer (c-\/string) version of a string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to return as c-\/string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string as char pointer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__string_8h_abc72a42629439332da74444c1f23dfa3}\label{http__string_8h_abc72a42629439332da74444c1f23dfa3}} 
+\index{http\+\_\+string.\+h@{http\+\_\+string.\+h}!to\+Upper\+\_\+str@{to\+Upper\+\_\+str}}
+\index{to\+Upper\+\_\+str@{to\+Upper\+\_\+str}!http\+\_\+string.\+h@{http\+\_\+string.\+h}}
+\subsubsection{\texorpdfstring{to\+Upper\+\_\+str()}{toUpper\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ to\+Upper\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str }\end{DoxyParamCaption})}
+
+Returns a string, converted to capital letters only.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to convert to capital letters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the string converted to capital letters only. 
+\end{DoxyReturn}

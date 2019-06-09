@@ -1,0 +1,117 @@
+\hypertarget{http__base64_8h}{}\section{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+base64.h File Reference}
+\label{http__base64_8h}\index{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+base64.\+h@{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+base64.\+h}}
+
+
+This file provides functions to encode and decode c-\/strings/char pointers from and to base64 encoded text.  
+
+
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}http\+\_\+string.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{http__base64_8h_a0ff93d87e55e69b8cb5397c30cd10b51}{build\+\_\+decoding\+\_\+table}} ()
+\item 
+void \mbox{\hyperlink{http__base64_8h_a24c1b02f2e403468ce12faa8374877c1}{base64\+\_\+cleanup}} ()
+\item 
+char $\ast$ \mbox{\hyperlink{http__base64_8h_aab78ff2ac8c7390cd6755ce3a55eaa21}{base64\+\_\+encode}} (const unsigned char $\ast$data, size\+\_\+t input\+\_\+length, size\+\_\+t $\ast$output\+\_\+length)
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{http__base64_8h_a093de76493e254154a5ccee90672244b}{base64\+\_\+decode}} (const char $\ast$data, size\+\_\+t input\+\_\+length, size\+\_\+t $\ast$output\+\_\+length)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__base64_8h_aab31dce014fbfecee002b9e96e2ebf55}{base64\+\_\+encode\+\_\+string}} (\mbox{\hyperlink{structstring}{string}} $\ast$to\+Encode)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__base64_8h_a8b3f64e672e4539ecb490fcdf809af4b}{base64\+\_\+decode\+\_\+string}} (\mbox{\hyperlink{structstring}{string}} $\ast$to\+Decode)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file provides functions to encode and decode c-\/strings/char pointers from and to base64 encoded text. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{http__base64_8h_a24c1b02f2e403468ce12faa8374877c1}\label{http__base64_8h_a24c1b02f2e403468ce12faa8374877c1}} 
+\index{http\+\_\+base64.\+h@{http\+\_\+base64.\+h}!base64\+\_\+cleanup@{base64\+\_\+cleanup}}
+\index{base64\+\_\+cleanup@{base64\+\_\+cleanup}!http\+\_\+base64.\+h@{http\+\_\+base64.\+h}}
+\subsubsection{\texorpdfstring{base64\+\_\+cleanup()}{base64\_cleanup()}}
+{\footnotesize\ttfamily void base64\+\_\+cleanup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Frees the memory allocated for the decoding table. Has to be called anywhere after base64\+\_\+decode to prevent memory leaks. \mbox{\Hypertarget{http__base64_8h_a093de76493e254154a5ccee90672244b}\label{http__base64_8h_a093de76493e254154a5ccee90672244b}} 
+\index{http\+\_\+base64.\+h@{http\+\_\+base64.\+h}!base64\+\_\+decode@{base64\+\_\+decode}}
+\index{base64\+\_\+decode@{base64\+\_\+decode}!http\+\_\+base64.\+h@{http\+\_\+base64.\+h}}
+\subsubsection{\texorpdfstring{base64\+\_\+decode()}{base64\_decode()}}
+{\footnotesize\ttfamily unsigned char$\ast$ base64\+\_\+decode (\begin{DoxyParamCaption}\item[{const char $\ast$}]{data,  }\item[{size\+\_\+t}]{input\+\_\+length,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+length }\end{DoxyParamCaption})}
+
+Decodes a base64 encoded c-\/string into normal decoded text.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The c-\/string to decode from base64. \\
+\hline
+{\em input\+\_\+length} & The length if the c-\/string to decode. \\
+\hline
+{\em output\+\_\+length} & The lenght of the returned decoded char$\ast$ (c-\/string). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The char$\ast$ (c-\/string) containing the decoded text. It has the length $\ast$output\+\_\+length. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__base64_8h_a8b3f64e672e4539ecb490fcdf809af4b}\label{http__base64_8h_a8b3f64e672e4539ecb490fcdf809af4b}} 
+\index{http\+\_\+base64.\+h@{http\+\_\+base64.\+h}!base64\+\_\+decode\+\_\+string@{base64\+\_\+decode\+\_\+string}}
+\index{base64\+\_\+decode\+\_\+string@{base64\+\_\+decode\+\_\+string}!http\+\_\+base64.\+h@{http\+\_\+base64.\+h}}
+\subsubsection{\texorpdfstring{base64\+\_\+decode\+\_\+string()}{base64\_decode\_string()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ base64\+\_\+decode\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{to\+Decode }\end{DoxyParamCaption})}
+
+Decodes a base64 encoded c-\/string into normal decoded text. Returns N\+U\+LL if string to\+Decode is not base64.
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Decode} & The string to decode from base64. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string containing the decoded text. N\+U\+LL if to\+Decode is not base64. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__base64_8h_aab78ff2ac8c7390cd6755ce3a55eaa21}\label{http__base64_8h_aab78ff2ac8c7390cd6755ce3a55eaa21}} 
+\index{http\+\_\+base64.\+h@{http\+\_\+base64.\+h}!base64\+\_\+encode@{base64\+\_\+encode}}
+\index{base64\+\_\+encode@{base64\+\_\+encode}!http\+\_\+base64.\+h@{http\+\_\+base64.\+h}}
+\subsubsection{\texorpdfstring{base64\+\_\+encode()}{base64\_encode()}}
+{\footnotesize\ttfamily char$\ast$ base64\+\_\+encode (\begin{DoxyParamCaption}\item[{const unsigned char $\ast$}]{data,  }\item[{size\+\_\+t}]{input\+\_\+length,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+length }\end{DoxyParamCaption})}
+
+Encodes a normal c-\/string into base64 encoded text.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The c-\/string to encode to base64. \\
+\hline
+{\em input\+\_\+length} & The length if the c-\/string to encode. \\
+\hline
+{\em output\+\_\+length} & The lenght of the returned encoded char$\ast$ (c-\/string). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The char$\ast$ (c-\/string) containing the encoded text. It has the length $\ast$output\+\_\+length. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__base64_8h_aab31dce014fbfecee002b9e96e2ebf55}\label{http__base64_8h_aab31dce014fbfecee002b9e96e2ebf55}} 
+\index{http\+\_\+base64.\+h@{http\+\_\+base64.\+h}!base64\+\_\+encode\+\_\+string@{base64\+\_\+encode\+\_\+string}}
+\index{base64\+\_\+encode\+\_\+string@{base64\+\_\+encode\+\_\+string}!http\+\_\+base64.\+h@{http\+\_\+base64.\+h}}
+\subsubsection{\texorpdfstring{base64\+\_\+encode\+\_\+string()}{base64\_encode\_string()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ base64\+\_\+encode\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{to\+Encode }\end{DoxyParamCaption})}
+
+Encodes a normal string into base64 encoded text.
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Encode} & The string to encode to base64. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string containing the encoded text. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__base64_8h_a0ff93d87e55e69b8cb5397c30cd10b51}\label{http__base64_8h_a0ff93d87e55e69b8cb5397c30cd10b51}} 
+\index{http\+\_\+base64.\+h@{http\+\_\+base64.\+h}!build\+\_\+decoding\+\_\+table@{build\+\_\+decoding\+\_\+table}}
+\index{build\+\_\+decoding\+\_\+table@{build\+\_\+decoding\+\_\+table}!http\+\_\+base64.\+h@{http\+\_\+base64.\+h}}
+\subsubsection{\texorpdfstring{build\+\_\+decoding\+\_\+table()}{build\_decoding\_table()}}
+{\footnotesize\ttfamily void build\+\_\+decoding\+\_\+table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Builds up the internal decoding table. Is called by base64\+\_\+decode. Anywhere in the program base64\+\_\+cleanup has to be called to free the memory allocated for the table. 

@@ -1,0 +1,200 @@
+.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_security.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_security.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'http_string\&.h'\fP
+.br
+\fC#include 'http_parser\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBcredentials\fP"
+.br
+.ti -1c
+.RI "struct \fBcredentialArray\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBcredentials\fP \fBhttp_credentials\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBcredentialArray\fP \fBhttp_credential_array\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBhttp_credentials\fP * \fBnew_httpCredentials\fP ()"
+.br
+.ti -1c
+.RI "void \fBfree_httpCredentials\fP (\fBhttp_credentials\fP *\fBcredentials\fP)"
+.br
+.ti -1c
+.RI "\fBhttp_credential_array\fP * \fBnew_httpCredentialArray\fP (size_t max)"
+.br
+.ti -1c
+.RI "void \fBfree_httpCredentialArray\fP (\fBhttp_credential_array\fP *array)"
+.br
+.ti -1c
+.RI "char \fBcredential_array_add\fP (\fBhttp_credential_array\fP *\fBcredentialArray\fP, \fBhttp_credentials\fP *\fBcredentials\fP)"
+.br
+.ti -1c
+.RI "void \fBprintHTTPCredentials\fP (\fBhttp_credentials\fP *\fBcredentials\fP)"
+.br
+.ti -1c
+.RI "void \fBprintHTTPCredentialArray\fP (\fBhttp_credential_array\fP *\fBcredentialArray\fP)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBencodeSHA1\fP (\fBstring\fP *toEncode)"
+.br
+.ti -1c
+.RI "\fBhttp_credentials\fP * \fBgetAuthenticationCredentials\fP (\fBhttp_request\fP *request)"
+.br
+.ti -1c
+.RI "char \fBcheckCredentials\fP (\fBhttp_credentials\fP *\fBcredentials\fP)"
+.br
+.ti -1c
+.RI "\fBhttp_credential_array\fP * \fBloadCredentials\fP ()"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBcredentialArray\fP  \fBhttp_credential_array\fP"
+
+.SS "typedef struct \fBcredentials\fP  \fBhttp_credentials\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "char checkCredentials (\fBhttp_credentials\fP * credentials)"
+Checks the credentials against the all credentials of the \&.htpasswd file\&. Returns 0 if no match was found, 1 if given credentials match an entry of the file\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcredentials\fP The credentials to check if they exist in the \&.htpasswd file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 if no match was found in the file, 1 if there was a match to an entry\&. 
+.RE
+.PP
+
+.SS "char credential_array_add (\fBhttp_credential_array\fP * credentialArray, \fBhttp_credentials\fP * credentials)"
+Adds a credential to the array\&. Returns 1 if the credentials fit into the array, 0 if its already full\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fI\fBcredentialArray\fP\fP The array to add something to\&. 
+.br
+\fIcredentials\fP The credentials pointer to add to the array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 if array is already full, 1 if everything was okay\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* encodeSHA1 (\fBstring\fP * toEncode)"
+Hashes a string with SHA1 using openssl\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoEncode\fP The string to hash\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The hashed string\&. 
+.RE
+.PP
+
+.SS "void free_httpCredentialArray (\fBhttp_credential_array\fP * array)"
+Frees the memory allocated for the \fBhttp_credential_array\fP pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrequest\fP The credential_array pointer to free\&. 
+.RE
+.PP
+
+.SS "void free_httpCredentials (\fBhttp_credentials\fP * credentials)"
+Frees the memory allocated for the httpCredential pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrequest\fP The credential pointer to free\&. 
+.RE
+.PP
+
+.SS "\fBhttp_credentials\fP* getAuthenticationCredentials (\fBhttp_request\fP * request)"
+Reads the authentication credentials for basic authentication from a given request and returns them\&. If authentication scheme is not Basic, no authentication credentials are given, or something is wrong about the credentials, NULL is returned\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrequest\fP The request to get the credentials from\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The authentication credentials from the request\&. NULL if they are not set or something is bad about the syntax\&. 
+.RE
+.PP
+
+.SS "\fBhttp_credential_array\fP* loadCredentials ()"
+
+.SS "\fBhttp_credential_array\fP* new_httpCredentialArray (size_t max)"
+Creates (allocates) a new \fBhttp_credential_array\fP of size max and returns a pointer to it\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImax\fP The maximum of credentials this array can hold\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The pointer to the allocated \fBhttp_credential_array\fP\&. 
+.RE
+.PP
+
+.SS "\fBhttp_credentials\fP* new_httpCredentials ()"
+Creates (allocates) a new httpCredential and returns a pointer to it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The pointer to the allocated httpCredential\&. 
+.RE
+.PP
+
+.SS "void printHTTPCredentialArray (\fBhttp_credential_array\fP * credentialArray)"
+Prints the given credential array (all credentials it contains) to the console\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcredentials\fP The credential array to print to the console\&. 
+.RE
+.PP
+
+.SS "void printHTTPCredentials (\fBhttp_credentials\fP * credentials)"
+Prints the given credentials to the console\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcredentials\fP The credentials to print to the console\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dokumentation from the source code\&.

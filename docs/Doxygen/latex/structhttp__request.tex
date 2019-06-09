@@ -1,0 +1,84 @@
+\hypertarget{structhttp__request}{}\section{http\+\_\+request Struct Reference}
+\label{structhttp__request}\index{http\+\_\+request@{http\+\_\+request}}
+
+
+{\ttfamily \#include $<$http\+\_\+parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{structhttp__request_a594173f80b9975fd3ba5394b63ebc509}{method}}
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{structhttp__request_a09aa4e1a1b2609255ee841c0607d8bea}{resource}}
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{structhttp__request_aa2fa632b89e408825ab17250da007e81}{http\+\_\+version}}
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{structhttp__request_a3ef12808a94326450b20b9bc887b4503}{host}}
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{structhttp__request_a97532af77bd6e59b976a10402660d112}{user\+\_\+agent}}
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{structhttp__request_a194262fd004e8ec14c9839345a0c3b21}{authentication}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structhttp__request_a5d3af3f0ffe0a7162b5a69784bb619bc}{content\+\_\+length}}
+\item 
+void $\ast$ \mbox{\hyperlink{structhttp__request_a3d6d14728fec84498eff595a3e31d15a}{content}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Used to bundle all information about a request. Contains all header fields, used by the program and can be expanded to the needs. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structhttp__request_a194262fd004e8ec14c9839345a0c3b21}\label{structhttp__request_a194262fd004e8ec14c9839345a0c3b21}} 
+\index{http\+\_\+request@{http\+\_\+request}!authentication@{authentication}}
+\index{authentication@{authentication}!http\+\_\+request@{http\+\_\+request}}
+\subsubsection{\texorpdfstring{authentication}{authentication}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ authentication}
+
+\mbox{\Hypertarget{structhttp__request_a3d6d14728fec84498eff595a3e31d15a}\label{structhttp__request_a3d6d14728fec84498eff595a3e31d15a}} 
+\index{http\+\_\+request@{http\+\_\+request}!content@{content}}
+\index{content@{content}!http\+\_\+request@{http\+\_\+request}}
+\subsubsection{\texorpdfstring{content}{content}}
+{\footnotesize\ttfamily void$\ast$ content}
+
+\mbox{\Hypertarget{structhttp__request_a5d3af3f0ffe0a7162b5a69784bb619bc}\label{structhttp__request_a5d3af3f0ffe0a7162b5a69784bb619bc}} 
+\index{http\+\_\+request@{http\+\_\+request}!content\+\_\+length@{content\+\_\+length}}
+\index{content\+\_\+length@{content\+\_\+length}!http\+\_\+request@{http\+\_\+request}}
+\subsubsection{\texorpdfstring{content\+\_\+length}{content\_length}}
+{\footnotesize\ttfamily size\+\_\+t content\+\_\+length}
+
+\mbox{\Hypertarget{structhttp__request_a3ef12808a94326450b20b9bc887b4503}\label{structhttp__request_a3ef12808a94326450b20b9bc887b4503}} 
+\index{http\+\_\+request@{http\+\_\+request}!host@{host}}
+\index{host@{host}!http\+\_\+request@{http\+\_\+request}}
+\subsubsection{\texorpdfstring{host}{host}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ host}
+
+\mbox{\Hypertarget{structhttp__request_aa2fa632b89e408825ab17250da007e81}\label{structhttp__request_aa2fa632b89e408825ab17250da007e81}} 
+\index{http\+\_\+request@{http\+\_\+request}!http\+\_\+version@{http\+\_\+version}}
+\index{http\+\_\+version@{http\+\_\+version}!http\+\_\+request@{http\+\_\+request}}
+\subsubsection{\texorpdfstring{http\+\_\+version}{http\_version}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ http\+\_\+version}
+
+\mbox{\Hypertarget{structhttp__request_a594173f80b9975fd3ba5394b63ebc509}\label{structhttp__request_a594173f80b9975fd3ba5394b63ebc509}} 
+\index{http\+\_\+request@{http\+\_\+request}!method@{method}}
+\index{method@{method}!http\+\_\+request@{http\+\_\+request}}
+\subsubsection{\texorpdfstring{method}{method}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ method}
+
+\mbox{\Hypertarget{structhttp__request_a09aa4e1a1b2609255ee841c0607d8bea}\label{structhttp__request_a09aa4e1a1b2609255ee841c0607d8bea}} 
+\index{http\+\_\+request@{http\+\_\+request}!resource@{resource}}
+\index{resource@{resource}!http\+\_\+request@{http\+\_\+request}}
+\subsubsection{\texorpdfstring{resource}{resource}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ resource}
+
+\mbox{\Hypertarget{structhttp__request_a97532af77bd6e59b976a10402660d112}\label{structhttp__request_a97532af77bd6e59b976a10402660d112}} 
+\index{http\+\_\+request@{http\+\_\+request}!user\+\_\+agent@{user\+\_\+agent}}
+\index{user\+\_\+agent@{user\+\_\+agent}!http\+\_\+request@{http\+\_\+request}}
+\subsubsection{\texorpdfstring{user\+\_\+agent}{user\_agent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ user\+\_\+agent}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/\mbox{\hyperlink{http__parser_8h}{http\+\_\+parser.\+h}}\end{DoxyCompactItemize}

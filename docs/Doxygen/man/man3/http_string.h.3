@@ -1,0 +1,366 @@
+.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_string.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_string.h \- This file contains all string functions that are currently needed and may need later\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stddef\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBstring\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBstring\fP \fBstring\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBstring\fP * \fBnew_string\fP (size_t len)"
+.br
+.ti -1c
+.RI "void \fBfree_str\fP (\fBstring\fP *str)"
+.br
+.ti -1c
+.RI "void \fBprint_string\fP (\fBstring\fP *str)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBcpy_str\fP (const char *src)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBclone_str\fP (\fBstring\fP *src)"
+.br
+.ti -1c
+.RI "char * \fBtoCString_str\fP (\fBstring\fP *str)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBcat_str\fP (\fBstring\fP *dest, const char *src)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBcat_str_len\fP (\fBstring\fP *dest, void *src, size_t len)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBstr_cat_str\fP (\fBstring\fP *dest, \fBstring\fP *src)"
+.br
+.ti -1c
+.RI "char \fBequals_str\fP (\fBstring\fP *str1, \fBstring\fP *str2)"
+.br
+.ti -1c
+.RI "char \fBchars_equal_str\fP (\fBstring\fP *str, char *chars)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBsub_str\fP (\fBstring\fP *str, size_t start, int len)"
+.br
+.ti -1c
+.RI "int \fBfind_str\fP (\fBstring\fP *str1, \fBstring\fP *str2)"
+.br
+.ti -1c
+.RI "int \fBfind_chars\fP (\fBstring\fP *str1, char *chars)"
+.br
+.ti -1c
+.RI "char \fBendsWith_str\fP (\fBstring\fP *str, char *ending)"
+.br
+.ti -1c
+.RI "char \fBstartsWith_str\fP (\fBstring\fP *str, char *starting)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBtoUpper_str\fP (\fBstring\fP *str)"
+.br
+.ti -1c
+.RI "\fBstring\fP * \fBremoveTrailingChars\fP (\fBstring\fP *\fBstring\fP, char toRemove)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This file contains all string functions that are currently needed and may need later\&. 
+
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBstring\fP  \fBstring\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "\fBstring\fP* cat_str (\fBstring\fP * dest, const char * src)"
+Combines a string and a c-string to a new string 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdest\fP String 1 to combine 
+.br
+\fIsrc\fP char-pointer to combine 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Either Returns a new String or NULL depending on whether the condition is met or not\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* cat_str_len (\fBstring\fP * dest, void * src, size_t len)"
+Combines a string and a generic pointer with a given length 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdest\fP String 1 to combine 
+.br
+\fIsrc\fP pointer to combine 
+.br
+\fIlen\fP lenth of the pointer to concat 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Either Returns a new String or NULL depending on whether the condition is met or not\&. 
+.RE
+.PP
+
+.SS "char chars_equal_str (\fBstring\fP * str, char * chars)"
+Determines if a strings is equal to a char pointer (c-string)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP String to compare to the chars\&. 
+.br
+\fIchars\fP Chars to compare to the string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns 0 if the strings are different, 1 if they are equal\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* clone_str (\fBstring\fP * src)"
+Clones everything stored in src, to a new string pointer\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrc\fP The string to clone\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new string pointer, containing all information of src\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* cpy_str (const char * src)"
+Copies a C-string into a new string struct and returns this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrc\fP The C-string to copy into the struct\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string struct pointer with the C-string in it 
+.RE
+.PP
+
+.SS "char endsWith_str (\fBstring\fP * str, char * ending)"
+Returns if a string ends with a set of chars(c-string)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The string to see if it ends with the chars\&. 
+.br
+\fIending\fP The chars to see if the string ends with them\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+1 if the string ends with the chars\&. 0 if not\&. 
+.RE
+.PP
+
+.SS "char equals_str (\fBstring\fP * str1, \fBstring\fP * str2)"
+Determines if 2 strings are equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr1\fP String 1 to compare\&. 
+.br
+\fIstr2\fP String 2 to compare\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns 0 if the strings are different, 1 if they are equal\&. 
+.RE
+.PP
+
+.SS "int find_chars (\fBstring\fP * str1, char * chars)"
+Finds the first occurence of chars in str
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The string to look if it contains chars\&. 
+.br
+\fIstr2\fP The chars(C-String) to find in str 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The index of the first occurence of chars in str\&. Returns -1 if not found\&. 
+.RE
+.PP
+
+.SS "int find_str (\fBstring\fP * str1, \fBstring\fP * str2)"
+Finds the first occurence of str2 in str1
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr1\fP The string to look if it contains str2\&. 
+.br
+\fIstr2\fP The string to find in str1 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The index of the first occurence of str2 in str1\&. Returns -1 if not found\&. 
+.RE
+.PP
+
+.SS "void free_str (\fBstring\fP * str)"
+Frees the allocated memory of a string\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The string pointer to free\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* new_string (size_t len)"
+Allocates a new string pointer and returns it\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlen\fP The length of the string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The pointer to the nwe allocated string\&. 
+.RE
+.PP
+
+.SS "void print_string (\fBstring\fP * str)"
+Prints a string to the console\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The string to print\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* removeTrailingChars (\fBstring\fP * string, char toRemove)"
+Removes all trailing charcters\&. For example if toRemove is a, '12345aaa' becomes '12345'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstring\fP The string to remove the trailing characters from\&. 
+.br
+\fItoRemove\fP The trailing characters\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The trimmed string\&. 
+.RE
+.PP
+
+.SS "char startsWith_str (\fBstring\fP * str, char * starting)"
+Returns if a string starts with a set of chars(c-string)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The string to see if it start with the chars\&. 
+.br
+\fIstarting\fP The chars to see if the string start with them\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+1 if the string starts with the chars\&. 0 if not\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* str_cat_str (\fBstring\fP * dest, \fBstring\fP * src)"
+Combines two strings to a new string 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdest\fP String 1 to combine 
+.br
+\fIsrc\fP String 2 to combine 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Either Returns a new String or NULL depending on whether the condition is met or not\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* sub_str (\fBstring\fP * str, size_t start, int len)"
+Return a substring with the length len of str starting at start\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP String to get substring of\&. 
+.br
+\fIstart\fP Index to start the substring\&. 
+.br
+\fIlen\fP The length of the substring\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The substring of str\&. If start + length is greater than the string, NULL is returned\&. 
+.RE
+.PP
+
+.SS "char* toCString_str (\fBstring\fP * str)"
+Returns a null terminated char pointer (c-string) version of a string\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The string to return as c-string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string as char pointer\&. 
+.RE
+.PP
+
+.SS "\fBstring\fP* toUpper_str (\fBstring\fP * str)"
+Returns a string, converted to capital letters only\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The string to convert to capital letters\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A pointer to the string converted to capital letters only\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dokumentation from the source code\&.

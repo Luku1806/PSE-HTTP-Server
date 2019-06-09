@@ -1,0 +1,242 @@
+\hypertarget{http__parser_8h}{}\section{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+parser.h File Reference}
+\label{http__parser_8h}\index{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+parser.\+h@{C\+:/\+Users/\+Leon Franke/\+Desktop/pse2019-\/gruppe09-\/master/include/http\+\_\+parser.\+h}}
+
+
+This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer.  
+
+
+{\ttfamily \#include \char`\"{}http\+\_\+string.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structhttp__request}{http\+\_\+request}}
+\item 
+struct \mbox{\hyperlink{structhttp__response}{http\+\_\+response}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structhttp__request}{http\+\_\+request}} \mbox{\hyperlink{http__parser_8h_ab2c4ba73c2945a8b59357fe2c233f0c8}{http\+\_\+request}}
+\item 
+typedef struct \mbox{\hyperlink{structhttp__response}{http\+\_\+response}} \mbox{\hyperlink{http__parser_8h_ad50b92010be2b9397ee58aca82dae5a7}{http\+\_\+response}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$ \mbox{\hyperlink{http__parser_8h_ad4601ecd9580f379f5d80e55fa9bce09}{new\+\_\+http\+Request}} ()
+\item 
+void \mbox{\hyperlink{http__parser_8h_a720708477ad1ff2a4a1b70f34e2fa830}{free\+\_\+http\+Request}} (\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$request)
+\item 
+\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$ \mbox{\hyperlink{http__parser_8h_a4fca5e54bed439525618c5f588033955}{new\+\_\+http\+Response}} ()
+\item 
+void \mbox{\hyperlink{http__parser_8h_a44ecd50022fddd41bad799d6ed5c3c58}{free\+\_\+http\+Response}} (\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$response)
+\item 
+void \mbox{\hyperlink{http__parser_8h_a3fb73595d5ecaa0973ce4e0d0f53f474}{print\+Request}} (\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$request)
+\item 
+\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$ \mbox{\hyperlink{http__parser_8h_aa1492356feef3b1557684ed08a1f390b}{parse\+Request}} (\mbox{\hyperlink{structstring}{string}} $\ast$str\+Request)
+\item 
+\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$ \mbox{\hyperlink{http__parser_8h_a3cd2d22424469a961379cc5c41eb632b}{generate\+Standard\+Response}} (int status\+Code)
+\item 
+\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$ \mbox{\hyperlink{http__parser_8h_a6816dc695bd8bef8de84adf6687b5cde}{generate\+Status\+Response}} (int status\+Code)
+\item 
+\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$ \mbox{\hyperlink{http__parser_8h_a92047f1d8ffbbe51f4e881e294b91a43}{generate\+Debug\+Response}} (\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$request)
+\item 
+\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$ \mbox{\hyperlink{http__parser_8h_a36eb3c125cd109e1928e1a935a79bb73}{generate\+Response}} (\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$request)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__parser_8h_a69f67998c92c0ee476e3d95182bcf61e}{http\+Response\+To\+String}} (\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$response)
+\item 
+\mbox{\hyperlink{structstring}{string}} $\ast$ \mbox{\hyperlink{http__parser_8h_a2be312d40e6df2eb4b00c68d49d0057c}{get\+Mime\+Type}} (\mbox{\hyperlink{structstring}{string}} $\ast$path)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer. 
+
+In general this should be used like\+:
+
+
+\begin{DoxyEnumerate}
+\item Process raw message by calling parse\+Request to save all informations in a request\+\_\+struct
+\item Put the struct into generate\+Response to build a response struct
+\item Put the response\+\_\+struct into http\+Response\+To\+String to get the response as string 
+\end{DoxyEnumerate}
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{http__parser_8h_ab2c4ba73c2945a8b59357fe2c233f0c8}\label{http__parser_8h_ab2c4ba73c2945a8b59357fe2c233f0c8}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!http\+\_\+request@{http\+\_\+request}}
+\index{http\+\_\+request@{http\+\_\+request}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{http\+\_\+request}{http\_request}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structhttp__request}{http\+\_\+request}}  \mbox{\hyperlink{structhttp__request}{http\+\_\+request}}}
+
+\mbox{\Hypertarget{http__parser_8h_ad50b92010be2b9397ee58aca82dae5a7}\label{http__parser_8h_ad50b92010be2b9397ee58aca82dae5a7}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!http\+\_\+response@{http\+\_\+response}}
+\index{http\+\_\+response@{http\+\_\+response}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{http\+\_\+response}{http\_response}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structhttp__response}{http\+\_\+response}}  \mbox{\hyperlink{structhttp__response}{http\+\_\+response}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{http__parser_8h_a720708477ad1ff2a4a1b70f34e2fa830}\label{http__parser_8h_a720708477ad1ff2a4a1b70f34e2fa830}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!free\+\_\+http\+Request@{free\+\_\+http\+Request}}
+\index{free\+\_\+http\+Request@{free\+\_\+http\+Request}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{free\+\_\+http\+Request()}{free\_httpRequest()}}
+{\footnotesize\ttfamily void free\+\_\+http\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$}]{request }\end{DoxyParamCaption})}
+
+Frees the memory allocated for the http\+Request pointer. 
+\begin{DoxyParams}{Parameters}
+{\em request} & The request pointer to free. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{http__parser_8h_a44ecd50022fddd41bad799d6ed5c3c58}\label{http__parser_8h_a44ecd50022fddd41bad799d6ed5c3c58}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!free\+\_\+http\+Response@{free\+\_\+http\+Response}}
+\index{free\+\_\+http\+Response@{free\+\_\+http\+Response}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{free\+\_\+http\+Response()}{free\_httpResponse()}}
+{\footnotesize\ttfamily void free\+\_\+http\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$}]{response }\end{DoxyParamCaption})}
+
+Frees the memory allocated for the http\+Response pointer. 
+\begin{DoxyParams}{Parameters}
+{\em response} & The response pointer to free. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{http__parser_8h_a92047f1d8ffbbe51f4e881e294b91a43}\label{http__parser_8h_a92047f1d8ffbbe51f4e881e294b91a43}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!generate\+Debug\+Response@{generate\+Debug\+Response}}
+\index{generate\+Debug\+Response@{generate\+Debug\+Response}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{generate\+Debug\+Response()}{generateDebugResponse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhttp__response}{http\+\_\+response}}$\ast$ generate\+Debug\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$}]{request }\end{DoxyParamCaption})}
+
+Creates a response with an H\+T\+ML site containing the information contained in the request. This is used for debug an can be called by requesting /debug as path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & The request to show. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The debug response to the given request. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_a36eb3c125cd109e1928e1a935a79bb73}\label{http__parser_8h_a36eb3c125cd109e1928e1a935a79bb73}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!generate\+Response@{generate\+Response}}
+\index{generate\+Response@{generate\+Response}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{generate\+Response()}{generateResponse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhttp__response}{http\+\_\+response}}$\ast$ generate\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$}]{request }\end{DoxyParamCaption})}
+
+Creates a response for the given request.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & The request to respond to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The response to the given request. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_a3cd2d22424469a961379cc5c41eb632b}\label{http__parser_8h_a3cd2d22424469a961379cc5c41eb632b}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!generate\+Standard\+Response@{generate\+Standard\+Response}}
+\index{generate\+Standard\+Response@{generate\+Standard\+Response}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{generate\+Standard\+Response()}{generateStandardResponse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhttp__response}{http\+\_\+response}}$\ast$ generate\+Standard\+Response (\begin{DoxyParamCaption}\item[{int}]{status\+Code }\end{DoxyParamCaption})}
+
+Returns a pointer to a response with servername, http-\/version, and status already set.
+
+
+\begin{DoxyParams}{Parameters}
+{\em status\+Code} & The status code for the request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated and pre-\/initialized http-\/response. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_a6816dc695bd8bef8de84adf6687b5cde}\label{http__parser_8h_a6816dc695bd8bef8de84adf6687b5cde}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!generate\+Status\+Response@{generate\+Status\+Response}}
+\index{generate\+Status\+Response@{generate\+Status\+Response}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{generate\+Status\+Response()}{generateStatusResponse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhttp__response}{http\+\_\+response}}$\ast$ generate\+Status\+Response (\begin{DoxyParamCaption}\item[{int}]{status\+Code }\end{DoxyParamCaption})}
+
+Returns a pointer to a response with servername, http-\/version, status, and the corresponding html-\/site already set.
+
+
+\begin{DoxyParams}{Parameters}
+{\em status\+Code} & The status code for the request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated and pre-\/initialized http-\/response. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_a2be312d40e6df2eb4b00c68d49d0057c}\label{http__parser_8h_a2be312d40e6df2eb4b00c68d49d0057c}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!get\+Mime\+Type@{get\+Mime\+Type}}
+\index{get\+Mime\+Type@{get\+Mime\+Type}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{get\+Mime\+Type()}{getMimeType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ get\+Mime\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{path }\end{DoxyParamCaption})}
+
+Returns the string containing the content/mime type of the resource.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the resource. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string containing the M\+I\+M\+E-\/\+Type of the resource. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_a69f67998c92c0ee476e3d95182bcf61e}\label{http__parser_8h_a69f67998c92c0ee476e3d95182bcf61e}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!http\+Response\+To\+String@{http\+Response\+To\+String}}
+\index{http\+Response\+To\+String@{http\+Response\+To\+String}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{http\+Response\+To\+String()}{httpResponseToString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstring}{string}}$\ast$ http\+Response\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhttp__response}{http\+\_\+response}} $\ast$}]{response }\end{DoxyParamCaption})}
+
+Generates a string representing the gven response to be sent to the client.
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & The response to be converted to the string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the string to be sent. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_ad4601ecd9580f379f5d80e55fa9bce09}\label{http__parser_8h_ad4601ecd9580f379f5d80e55fa9bce09}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!new\+\_\+http\+Request@{new\+\_\+http\+Request}}
+\index{new\+\_\+http\+Request@{new\+\_\+http\+Request}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{new\+\_\+http\+Request()}{new\_httpRequest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhttp__request}{http\+\_\+request}}$\ast$ new\+\_\+http\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creates (allocates) a new http\+Request and returns a pointer to it. \begin{DoxyReturn}{Returns}
+The pointer to the allocated http\+Request. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_a4fca5e54bed439525618c5f588033955}\label{http__parser_8h_a4fca5e54bed439525618c5f588033955}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!new\+\_\+http\+Response@{new\+\_\+http\+Response}}
+\index{new\+\_\+http\+Response@{new\+\_\+http\+Response}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{new\+\_\+http\+Response()}{new\_httpResponse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhttp__response}{http\+\_\+response}}$\ast$ new\+\_\+http\+Response (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creates (allocates) a new http\+Response and returns a pointer to it. \begin{DoxyReturn}{Returns}
+The pointer to the allocated http\+Response. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_aa1492356feef3b1557684ed08a1f390b}\label{http__parser_8h_aa1492356feef3b1557684ed08a1f390b}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!parse\+Request@{parse\+Request}}
+\index{parse\+Request@{parse\+Request}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{parse\+Request()}{parseRequest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhttp__request}{http\+\_\+request}}$\ast$ parse\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstring}{string}} $\ast$}]{str\+Request }\end{DoxyParamCaption})}
+
+Parses the raw string that came over the network. Creates and returns a new \mbox{\hyperlink{structhttp__request}{http\+\_\+request}} struct pointer, containing all information needed to respond. Returns N\+U\+LL if something is bad about the message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str\+Request} & The raw \mbox{\hyperlink{structstring}{string(message)}} received from the client. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A parse\+Request pointer containing all information send in the message. N\+U\+LL if message is bad. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{http__parser_8h_a3fb73595d5ecaa0973ce4e0d0f53f474}\label{http__parser_8h_a3fb73595d5ecaa0973ce4e0d0f53f474}} 
+\index{http\+\_\+parser.\+h@{http\+\_\+parser.\+h}!print\+Request@{print\+Request}}
+\index{print\+Request@{print\+Request}!http\+\_\+parser.\+h@{http\+\_\+parser.\+h}}
+\subsubsection{\texorpdfstring{print\+Request()}{printRequest()}}
+{\footnotesize\ttfamily void print\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhttp__request}{http\+\_\+request}} $\ast$}]{request }\end{DoxyParamCaption})}
+
+Prints a request formatted to the console. 
+\begin{DoxyParams}{Parameters}
+{\em request} & The request to print. \\
+\hline
+\end{DoxyParams}

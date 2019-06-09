@@ -1,0 +1,238 @@
+\subsection*{Introduction}
+
+This repository contains a simple implementation of an http webserver, together with its test, a doxygen documentation and a sample document root.
+
+\subsection*{Features}
+
+
+\begin{DoxyItemize}
+\item Simple content serving from 3 different web roots (1 \char`\"{}protected\char`\"{} with basic authentication)
+\item Basic authentication with standard htpasswd file (S\+H\+A1 only)
+\end{DoxyItemize}
+
+\subsection*{Installation}
+
+The makefile provides 2 ways of installing and running the server. There is a \href{#manual-installation}{\tt manual way}, and a \href{#automatic-installation}{\tt full installation}, which even populates the content folders.
+
+No matter which way you prefer, you have to do the initial preparation and then continue with the \href{#manual-installation}{\tt manual way} or the \href{#automatic-installation}{\tt automatic way}. 
+
+
+
+\paragraph*{Preperation}
+
+
+\begin{DoxyEnumerate}
+\item Install git and make
+
+Example for Debian/\+Ubuntu\+: \begin{DoxyVerb}sudo apt-get install git build-essential -y
+\end{DoxyVerb}
+
+\item Install the needed libraries, if they are not already installed.
+
+Open\+S\+SL and the Magic library are needed.
+
+Example for Debian/\+Ubuntu\+: \begin{DoxyVerb}sudo apt-get install libmagic-dev   # Install Magic
+sudo apt-get install libssl-dev     # Install OpenSSL
+\end{DoxyVerb}
+
+\item Clone the git repository to a folder you like to run the program from.
+
+For this example we will assume that we clone to $\ast$/home/user/documents$\ast$ and reference it through the whole readme.
+
+Example if you have a valid ssh key added to Git\+Lab\+: \begin{DoxyVerb}cd /home/user/documents
+git clone ssh://git@git.fh-muenster.de:2323/lr413680/pse2019-gruppe09.git
+\end{DoxyVerb}
+
+
+Example if you want to use http, in this case you will be asked for your Git\+Lab credentials\+: \begin{DoxyVerb}cd /home/user/documents     
+git clone https://git@git.fh-muenster.de:2323/lr413680/pse2019-gruppe09.git
+\end{DoxyVerb}
+
+\item Now go into the newly created folder with the project in it by calling \begin{DoxyVerb}cd ./pse2019-gruppe09/
+\end{DoxyVerb}
+
+\item Do the \href{#settings}{\tt settings} you want by editing \href{include/http_settings.h}{\tt http\+\_\+settings.\+h}. {\bfseries This has to be done before the build with make}!
+
+For example you can change the server port and buffersize and give it a unique name.
+
+{\bfseries Note\+: Please only change the path settings, if you are using manual installation, because automatic installation only works with the standard folders! All other settings can be changed as you want.}
+\end{DoxyEnumerate}
+
+Now we are ready to do the final installation by using {\bfseries one} of the two ways.
+
+The \href{#automatic-installation}{\tt automatic version} is the preferred one because of convenience. 
+
+
+
+\paragraph*{Automatic installation}
+
+If you install the program this way, the built executable will be copied to /usr/local/bin and you can call it from anywhere. For this you need to be able to call sudo.
+
+Also the standard webroot is copied to /usr/local/webroot so you wont have to do anything.
+
+{\bfseries I\+M\+P\+O\+R\+T\+A\+NT\+: For automatic installation it is required that all paths are default in the \href{#paths}{\tt settings}, otherwise the webroot wont be found!}
+
+
+\begin{DoxyEnumerate}
+\item Build the executable by calling make (you have to still be in the folder where you ended preperation) \begin{DoxyVerb}make
+\end{DoxyVerb}
+
+\item Call make install, to copy everything to the right place. For this you need to call it with sudo or the current user has to have write right to /usr/local/. \begin{DoxyVerb}sudo make install
+\end{DoxyVerb}
+
+\item At this point you should call make clean, even if it is not necessary \begin{DoxyVerb}make clean
+\end{DoxyVerb}
+
+\item Now the program is installed and can be called {\bfseries system wide} by simply calling \begin{DoxyVerb}http_server
+\end{DoxyVerb}
+
+\end{DoxyEnumerate}
+
+
+
+
+
+\paragraph*{Automatic uninstall}
+
+If you dont longer need the server it can be deinstalled automatically. This will only work if the program was installed the \href{#automatic-installation}{\tt automatic way}!
+
+To do so, simply call\+:
+
+sudo make uninstall
+
+{\itshape This will delete the executable and the whole webroot. Keep that in mind to not loose your websites!} 
+
+
+
+\paragraph*{Manual installation}
+
+
+\begin{DoxyEnumerate}
+\item Copy the \mbox{[}webroot\mbox{]}(webroot) to the path specified in the \href{#paths}{\tt settings}. You can also create the folders yourself, and directly put your own website, htpasswd and status pages.
+
+Keep in mind that every path can be set to somewhere else, so simply copying the \mbox{[}webroot\mbox{]}(webroot) may not work!
+\item Build the executable by calling make (you have to still be in the folder where you ended preperation) \begin{DoxyVerb}make
+\end{DoxyVerb}
+
+\item In the folder you now find the executable called {\itshape http\+\_\+server}. This file can be copied to anywhere you want, but for now we will assume that you leve it where it is.
+
+Now if you are still in the folder where the file lies, you can start the server by calling\+: \begin{DoxyVerb}./http_server
+\end{DoxyVerb}
+
+
+or if you are not in the folder where the file lies\+: \begin{DoxyVerb}/home/user/documents/pse2019-gruppe09/http_server
+\end{DoxyVerb}
+
+\end{DoxyEnumerate}
+
+
+
+
+
+{\itshape Note\+: If you want to serve your own websites, simply put them into the webroot folders for the different host, specified in the \href{#paths}{\tt settings}}.
+
+\subsection*{Testing}
+
+The repository contains a test suite running in python, that checks each function of the server for normal operation.
+
+After the installation of the server, you can confirm that everything is configured properly by running the tests.
+
+\paragraph*{Python}
+
+If Python 3 is not installed already, you have to do it now by calling\+: \begin{DoxyVerb}sudo apt-get install python3
+\end{DoxyVerb}
+
+
+\paragraph*{Running the test}
+
+Now to run the test, start the server, navigate to the \mbox{[}test folder\mbox{]}(test) in the project folder (/home/user/documents/pse2019-\/gruppe09/test in our example) and run the test\+: \begin{DoxyVerb}http_server
+cd /home/user/documents/pse2019-gruppe09/test
+python3 tests.py
+\end{DoxyVerb}
+
+
+When the program is finished, you can look at the output. The program will show a summary showing the number of failures and successful requests. If a test failed, scroll up to see which one it was, and what went wrong.
+
+{\itshape Note\+: If all tests fail and the failure is} \begin{DoxyVerb}"Connecting failed: [Errno 111] Connection refused"
+\end{DoxyVerb}
+
+
+{\itshape check the \href{#port}{\tt port} in the settings. If you changed it, you have to change it at the beginning of \href{test/tests.py}{\tt test.\+py} too!}
+
+\subsection*{Settings}
+
+{\bfseries Settings have to be done before the build is done.} To change the settings, open \href{include/http_settings.h}{\tt http\+\_\+settings.\+h} and edit it to your needs\+:
+
+\paragraph*{General}
+
+
+\begin{DoxyItemize}
+\item \#\#\#\#\# S\+E\+R\+V\+E\+R\+\_\+\+N\+A\+ME The name of the server to be put into the H\+T\+TP responses.
+
+Default\+: \begin{DoxyVerb}#define SERVER_NAME "HTTP-Server 09 1.0"
+\end{DoxyVerb}
+
+\item \#\#\#\#\# H\+T\+T\+P\+\_\+\+V\+E\+R\+S\+I\+ON The H\+T\+TP version to be send in the header.
+
+{\bfseries Please only change if you know what you are doing, because the server is H\+T\+T\+P/1.\+1 changing this could make it incompatible to any browser!}
+
+Default\+: \begin{DoxyVerb}#define HTTP_VERSION "HTTP/1.1"
+\end{DoxyVerb}
+
+\end{DoxyItemize}
+
+\paragraph*{General}
+
+
+\begin{DoxyItemize}
+\item \#\#\#\#\# P\+O\+RT The tcp port, the server listens on for requests. For usage of http standard port 80, the program has to be run as superuser so it is not used by default.
+
+Default\+: \begin{DoxyVerb}#define PORT 31337
+\end{DoxyVerb}
+
+\item \#\#\#\#\# B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE The size of the buffer, used for reading messages from the tcp connection. Choose an appropriate size, if it is to small, longer messages can not be responded to. But keep in mind that the memory has to be allocated, so it also can not be infinitely huge.
+
+The value has to be given in bytes.
+
+Default\+: \begin{DoxyVerb}#define PORT 31337
+\end{DoxyVerb}
+
+\end{DoxyItemize}
+
+\paragraph*{Paths}
+
+
+\begin{DoxyItemize}
+\item \#\#\#\#\# D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT This is the path where all files that should be served when no special host is requested or the host is unknown lie.
+
+Default\+: \begin{DoxyVerb}#define DEFAULT_DOCUMENT_ROOT "/usr/local/webroot/default/"
+\end{DoxyVerb}
+
+\item \#\#\#\#\# E\+X\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT This is the path where all files that should be served when the host \char`\"{}extern\char`\"{} is requested lie.
+
+Default\+: \begin{DoxyVerb}#define EXTERN_DOCUMENT_ROOT "/usr/local/webroot/extern/"
+\end{DoxyVerb}
+
+\item \#\#\#\#\# I\+N\+T\+E\+R\+N\+\_\+\+D\+O\+C\+U\+M\+E\+N\+T\+\_\+\+R\+O\+OT This is the path where all files that should be served when the host \char`\"{}intern\char`\"{} is requested lie. Keep in mind that this document root, is \char`\"{}protected\char`\"{} via basic authentication. The credentials lie in the htpasswd file.
+
+Default\+: \begin{DoxyVerb}#define INTERN_DOCUMENT_ROOT "/usr/local/webroot/intern/"
+\end{DoxyVerb}
+
+\item \#\#\#\#\# S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+T\+E\+\_\+\+P\+A\+TH This path contains all status pages. Each status page is named after its status. Each status has its own site, and any html file with a fitting name can be used.
+
+For example a page for status 505 is named\+: \char`\"{}505.\+html\char`\"{}
+
+Default\+: \begin{DoxyVerb}#define STATUS_SITE_PATH "/usr/local/webroot/status/"
+\end{DoxyVerb}
+
+\item \#\#\#\#\# H\+T\+P\+A\+S\+S\+W\+D\+\_\+\+P\+A\+TH This path contains the htpasswd file. The server only supports S\+H\+A1 encrypted credentials, so keep in mind to set the -\/s flag when creating credentials with htpasswd.
+
+This file can be created by the command\+: \begin{DoxyVerb}htpasswd -s -c htpasswd [username]
+\end{DoxyVerb}
+
+
+Using this command, the htpasswd file will be created or updated, the user \mbox{[}username\mbox{]} will be created and you will be promted to type in a password for the new user.
+
+Default\+: \begin{DoxyVerb}#define HTPASSWD_PATH "/usr/local/webroot/htpasswd" \end{DoxyVerb}
+ 
+\end{DoxyItemize}
