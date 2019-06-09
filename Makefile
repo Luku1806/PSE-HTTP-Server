@@ -37,7 +37,7 @@ install: $(TARGET)
 	# Copy webroot
 	cp -r webroot $(DESTDIR)/
 
-	@echo "Successfully installed HTTP-Server!
+	@echo "Successfully installed HTTP-Server!"
 
 
 .PHONY: uninstall
