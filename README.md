@@ -14,7 +14,7 @@ together with its test, a doxygen documentation and a sample document root.
 The makefile provides 2 ways of installing and running the server.
 There is a [manual way](#manual-installation), and a [full installation](#automatic-installation), which even populates the content folders.
 
-No matter which way you prefer, you have to to the initial preparation and then continue with 
+No matter which way you prefer, you have to do the initial preparation and then continue with 
 the [manual way](#manual-installation) or the [automatic way](#automatic-installation). 
 
 -------------------------------------------------------------
@@ -56,6 +56,7 @@ the [manual way](#manual-installation) or the [automatic way](#automatic-install
    	    cd ./pse2019-gruppe09/
    	    
  5. Do the [settings](#settings) you want by editing [http_settings.h](include/http_settings.h). 
+ 	**This has to be done before the build with make**!
  
  	For example you can change the server port and buffersize and give it a unique name.
  	
@@ -102,7 +103,7 @@ otherwise the webroot wont be found!**
  If you dont longer need the server it can be deinstalled automatically.
  This will only work if the program was installed the [automatic way](#automatic-installation)!
  
- To do so simply call:
+ To do so, simply call:
      
     sudo make uninstall
     
@@ -175,7 +176,7 @@ you have to change it at the beginning of [test.py](test/tests.py) too!*
  	
 ## Settings
 
-Settings have to be done before the build is done.
+**Settings have to be done before the build is done.**
 To change the settings, open [http_settings.h](include/http_settings.h) and edit it to your needs:
 
 
@@ -193,7 +194,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   The HTTP version to be send in the header.
   
   **Please only change if you know what you are doing,
-  because the server is HTTP/1.1 so changing this could make it incompatible to any browser!**
+  because the server is HTTP/1.1 changing this could make it incompatible to any browser!**
   
   Default:
   
