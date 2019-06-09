@@ -229,7 +229,7 @@ cannon += Beam(
 # Case 26.2
 cannon += Beam(
     description="host: iNteRn",
-    request='GET / HTTP/1.1\r\nHost: iNterRn\r\n\r\n',
+    request='GET / HTTP/1.1\r\nHost: iNteRn\r\n\r\n',
     response=['HTTP/1.1 401']
 )
 
