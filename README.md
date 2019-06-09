@@ -136,7 +136,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   
   Default:
   
-  	#define SERVER_NAME "HTTP-Server 09 1.0"
+      #define SERVER_NAME "HTTP-Server 09 1.0"
   	
 
 + ##### HTTP_VERSION
@@ -147,7 +147,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   
   Default:
   
-  	#define HTTP_VERSION "HTTP/1.1"
+      #define HTTP_VERSION "HTTP/1.1"
   	
   	
   	
@@ -160,7 +160,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   
   Default:
   
-  	#define PORT 31337
+      #define PORT 31337
 
 
 + ##### BUFFER_SIZE
@@ -172,7 +172,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   
   Default:
   
-  	#define PORT 31337
+      #define PORT 31337
   	
   	
   	
@@ -184,7 +184,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   
   Default:
   
-  	#define DEFAULT_DOCUMENT_ROOT "/usr/local/webroot/default/"
+      #define DEFAULT_DOCUMENT_ROOT "/usr/local/webroot/default/"
   	
 
 + ##### EXTERN_DOCUMENT_ROOT
@@ -193,7 +193,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   
   Default:
   
-  	#define EXTERN_DOCUMENT_ROOT "/usr/local/webroot/extern/"
+      #define EXTERN_DOCUMENT_ROOT "/usr/local/webroot/extern/"
   	
   	
 + ##### INTERN_DOCUMENT_ROOT
@@ -203,7 +203,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
       
   Default:
   	
-  	#define INTERN_DOCUMENT_ROOT "/usr/local/webroot/intern/"
+      #define INTERN_DOCUMENT_ROOT "/usr/local/webroot/intern/"
       
       
 + ##### STATUS_SITE_PATH
@@ -214,7 +214,7 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
       
   Default:
   
-  	#define STATUS_SITE_PATH "/usr/local/webroot/status/"
+      #define STATUS_SITE_PATH "/usr/local/webroot/status/"
       
       
 + ##### HTPASSWD_PATH
@@ -224,11 +224,11 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   
   This file can be created by the command:
   
-  	htpasswd -s -c htpasswd [username]
+      htpasswd -s -c htpasswd [username]
   	
   Using this command, the htpasswd file will be created or updated, the user [username]
   will be created and you will be promted to type in a password for the new user.
   
   Default:
   	
-  	#define HTPASSWD_PATH "/usr/local/webroot/htpasswd"
+      #define HTPASSWD_PATH "/usr/local/webroot/htpasswd"
