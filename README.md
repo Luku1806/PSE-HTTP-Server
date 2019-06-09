@@ -31,6 +31,9 @@ Es handelt sich hierbei um das Repository der Gruppe 09, welche aus den Mitglied
 | Implementierung von **Virtual Hosting** | Lukas Reining | 8.05.2019  | ✔ |
 | Erstellen der Python Tests | Florian Galz | 10.05.2019  | ✔ |
 | Erstellen der Dokumentation | Leon Franke | 10.05.2019  | ✔ |
+| Implementierung von **Server Authentifizierung** | Lukas Reining | 26.05.2019  | ✔ |
+| Implementierung von **Base64 Kodierung** | Florian Galz | 26.05.2019  | ✔ |
+| Implementierung von **http_security** | Leon Franke | 26.05.2019  | ✔ |
 
 Legende: 
 - Erledigt: ✔
