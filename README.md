@@ -55,7 +55,9 @@ the [manual way](#manual-installation) or the [automatic way](#automatic-install
    
    	    cd ./pse2019-gruppe09/
    	    
- 5. Do the [settings](#settings) you want. For example you can change the server port, and buffersize.
+ 5. Do the [settings](#settings) you want by editing [http_settings.h](include/http_settings.h). 
+ 
+ 	For example you can change the server port and buffersize and give it a unique name.
  	
  	**Note: Please only change the path settings, if you are using manual installation, because 
  	automatic installation only works with the standard folders! All other settings can be changed as you want.**
@@ -144,7 +146,7 @@ The repository contains a test suite running in python, that checks each functio
 
 After the installation of the server, you can confirm that everything is configured properly by running the tests.
 
-####Python
+#### Python
 
 If Python 3 is not installed already, you have to do it now by calling:
     
@@ -152,9 +154,10 @@ If Python 3 is not installed already, you have to do it now by calling:
 
 
 #### Running the test
-Now to run the test, navigate to the [test folder](test) in the 
+Now to run the test, start the server, navigate to the [test folder](test) in the 
 project folder (/home/user/documents/pse2019-gruppe09/test in our example) and run the test:
 
+	http_server
 	cd /home/user/documents/pse2019-gruppe09/test
     python3 tests.py
 
