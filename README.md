@@ -68,7 +68,7 @@ by default and you can call it from anywhere. For this you need to be able to ca
 Also the standard webroot is copied to /usr/local/webroot so you wont have to do anything.
 
 **IMPORTANT: For automatic installation it is required that all paths are default, 
-otherwise the webroot wont't be found**
+otherwise the webroot wont't be found!**
 
 
  1. Build the executable by calling make (you have to still be in the folder where you ended preperation)
@@ -76,7 +76,7 @@ otherwise the webroot wont't be found**
 		make
 		
  2. Call make install, to copy everything to the right place. For this you need to call it
- 	with sudo.
+ 	with sudo or the current user has to have write right to /usr/local/.
  		
  		sudo make install
  
@@ -201,9 +201,9 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   is requested lie. Keep in mind that this document root, is "protected" via basic
   authentication. The credentials lie in the htpasswd file.
       
-   Default:
-      
-      #define INTERN_DOCUMENT_ROOT "/usr/local/webroot/intern/"
+  Default:
+  	
+  	#define INTERN_DOCUMENT_ROOT "/usr/local/webroot/intern/"
       
       
 + ##### STATUS_SITE_PATH
@@ -212,9 +212,9 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   
   For example a page for status 505 is named: "505.html"
       
-   Default:
-      
-      #define STATUS_SITE_PATH "/usr/local/webroot/status/"
+  Default:
+  
+  	#define STATUS_SITE_PATH "/usr/local/webroot/status/"
       
       
 + ##### HTPASSWD_PATH
@@ -229,6 +229,6 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   Using this command, the htpasswd file will be created or updated, the user [username]
   will be created and you will be promted to type in a password for the new user.
   
-   Default:
-      
-      #define HTPASSWD_PATH "/usr/local/webroot/htpasswd"
+  Default:
+  	
+  	#define HTPASSWD_PATH "/usr/local/webroot/htpasswd"
