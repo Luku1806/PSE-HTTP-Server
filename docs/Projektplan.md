@@ -1,6 +1,5 @@
 # PSE-HTTP-SERVER-09
 
-<<<<<<< Updated upstream
 Es handelt sich hierbei um das Repository der Gruppe 09, welche aus den Mitgliedern Lukas Reining, Leon Franke und Florian Galz besteht. 
 
 ## Projektplan
@@ -40,8 +39,4 @@ Legende:
 - Erledigt: ✔
 - In Bearbeitung: 🔨
 - Noch nicht begonnen: ❌
-=======
-## Introduction
-This repository contains a simple implementation of an http webserver,
-together with its test, a doxygen documentation and a sample document root.
->>>>>>> Stashed changes
+
