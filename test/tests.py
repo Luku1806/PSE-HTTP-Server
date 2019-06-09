@@ -30,7 +30,7 @@ cannon = Laz0rCannon(host=host, port=port)
 
 # Laz0r Beams (Tests to fire against the server).
 
-#------------Simple valid stuff------------#
+# ------------Simple valid stuff------------#
 
 # Case 1
 cannon += Beam(
@@ -46,7 +46,7 @@ cannon += Beam(
     response=['HTTP/1.1 200']
 )
 
-#------------Http method------------#
+# ------------Http method------------#
 
 # Case 3
 cannon += Beam(
@@ -62,7 +62,7 @@ cannon += Beam(
     response=['HTTP/1.1 501']
 )
 
-#------------HTTP version------------#
+# ------------HTTP version------------#
 
 # Case 5
 cannon += Beam(
@@ -99,7 +99,7 @@ cannon += Beam(
     response=['HTTP/1.1 505']
 )
 
-#------------File stuff------------#
+# ------------File stuff------------#
 
 # Case 10
 cannon += Beam(
@@ -143,7 +143,7 @@ cannon += Beam(
     response=['HTTP/1.1 200']
 )
 
-#------------URL encoding------------#
+# ------------URL encoding------------#
 
 # Case 16
 cannon += Beam(
@@ -173,7 +173,7 @@ cannon += Beam(
     response=['HTTP/1.1 404']
 )
 
-#------------File extensions------------#
+# ------------File extensions------------#
 
 # Case 20
 cannon += Beam(
@@ -210,7 +210,7 @@ cannon += Beam(
     response=['HTTP/1.1 404']
 )
 
-#------------Host stuff------------#
+# ------------Host stuff------------#
 
 # Case 25
 cannon += Beam(
@@ -275,7 +275,7 @@ cannon += Beam(
     response=['HTTP/1.1 400']
 )
 
-#------------Missing stuff in headerline------------#
+# ------------Missing stuff in headerline------------#
 
 # Case 34
 cannon += Beam(
@@ -298,7 +298,7 @@ cannon += Beam(
     response=['HTTP/1.1 400']
 )
 
-#------------General syntax stuff------------#
+# ------------General syntax stuff------------#
 
 # Case 37
 cannon += Beam(
@@ -321,7 +321,7 @@ cannon += Beam(
     response=['HTTP/1.1 404']
 )
 
-#------------Linebreak stuff------------#
+# ------------Linebreak stuff------------#
 
 # Case 40
 cannon += Beam(
@@ -358,7 +358,7 @@ cannon += Beam(
     response=['HTTP/1.1 400']
 )
 
-#------------Authentication stuff------------#
+# ------------Authentication stuff------------#
 
 # Case 45
 cannon += Beam(
@@ -380,7 +380,6 @@ cannon += Beam(
     request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic aW52YWxpZDppbnRydWRlcg==\r\n\r\n',
     response=['HTTP/1.1 401']
 )
-
 
 # Case 48
 cannon += Beam(

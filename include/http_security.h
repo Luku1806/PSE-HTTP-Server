@@ -6,12 +6,6 @@
 
 
 /**
- * The maximum count of credentials to load from disk
- */
-#define MAX_CREDENTIALS 15
-
-
-/**
  * @struct http_credentials
  *
  * Used to bundle a username and a password.
@@ -27,11 +21,11 @@ typedef struct credentials {
  *
  * Used to store an array(pointer) to credential pointers together with the count of them.
  */
-typedef struct credentialArray{
+typedef struct credentialArray {
     http_credentials **credential_array;
     size_t credentialCount;
     size_t maxCredentialCount;
-}http_credential_array;
+} http_credential_array;
 
 
 /**

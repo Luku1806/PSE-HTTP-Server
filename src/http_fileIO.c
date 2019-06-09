@@ -113,19 +113,19 @@ char *getMimeInformation(string *path, int flag) {
 
 string *getMimeType(string *path) {
     //Get mimetype for everything not containing magic bytes (magic.h would have to guess)
-    if(endsWith_str(path, ".html") || endsWith_str(path, ".htm") || endsWith_str(path, ".shtml")){
+    if (endsWith_str(path, ".html") || endsWith_str(path, ".htm") || endsWith_str(path, ".shtml")) {
         return cpy_str("text/html");
-    }else if(endsWith_str(path, ".js")){
+    } else if (endsWith_str(path, ".js")) {
         return cpy_str("text/javascript");
-    }else if(endsWith_str(path, ".css")){
+    } else if (endsWith_str(path, ".css")) {
         return cpy_str("text/css");
-    }else if(endsWith_str(path, ".xml")){
+    } else if (endsWith_str(path, ".xml")) {
         return cpy_str("text/xml");
-    }else if(endsWith_str(path, ".csv")){
+    } else if (endsWith_str(path, ".csv")) {
         return cpy_str("text/comma-separated-values");
-    }else if(endsWith_str(path, ".tsv")){
+    } else if (endsWith_str(path, ".tsv")) {
         return cpy_str("text/tab-separated-values");
-    }else if(endsWith_str(path, ".txt")){
+    } else if (endsWith_str(path, ".txt")) {
         return cpy_str("text/plain");
     }
 

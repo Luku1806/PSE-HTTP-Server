@@ -28,7 +28,7 @@ typedef struct http_request {
     string *http_version;
     string *host;
     string *user_agent;
-    string* authentication;
+    string *authentication;
     size_t content_length;
     void *content;
 } http_request;
@@ -141,7 +141,6 @@ http_response *generateResponse(http_request *request);
  * @return The pointer to the string to be sent.
  */
 string *httpResponseToString(http_response *response);
-
 
 
 /**

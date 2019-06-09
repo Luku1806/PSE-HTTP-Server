@@ -5,10 +5,10 @@
 #include "../include/http_parser.h"
 #include "../include/http_error.h"
 #include "../include/http_status.h"
-#include "../include/http_server.h"
 #include "../include/http_fileIO.h"
 #include "../include/http_utils.h"
 #include "../include/http_security.h"
+#include "../include/http_settings.h"
 
 
 http_request *new_httpRequest() {

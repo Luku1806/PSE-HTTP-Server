@@ -14,34 +14,6 @@
 
 
 /**
- * The default document root.
- */
-#define DEFAULT_DOCUMENT_ROOT "/var/www/default/"
-
-/**
- * The extern document root.
- */
-#define EXTERN_DOCUMENT_ROOT "/var/www/extern/"
-
-/**
- * The intern document root. To see files you have to authorize.
- */
-#define INTERN_DOCUMENT_ROOT "/var/www/intern/"
-
-
-/**
- * The path where all status pages lay.
- */
-#define STATUS_SITE_PATH "/var/www/status/"
-
-
-/**
- * The path where the htpasswd file, with all the http credential is located
- */
-#define HTPASSWD_PATH "/var/www/htpasswd"
-
-
-/**
  * Converts a path with /../ etc to an absolute path.
  * If file is not found, an empty string is returned. (Length = 0)
  *

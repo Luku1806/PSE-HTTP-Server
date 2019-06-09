@@ -1,4 +1,4 @@
-var searchData=
-[
-  ['string',['string',['../structstring.html',1,'']]]
-];
+var searchData =
+    [
+        ['string', ['string', ['../structstring.html', 1, '']]]
+    ];

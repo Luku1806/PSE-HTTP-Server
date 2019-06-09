@@ -44,6 +44,7 @@ class Response(object):
         - `expected`: The expected response string.
         - `received`: The actual response string.
     """
+
     def __init__(self, pass_, expected, received):
         """Initialize the container and store the arguments."""
         self.pass_ = pass_
@@ -242,10 +243,10 @@ class Laz0rCannon(object):
         """Initialize the laz0r cannon and store the arguments."""
         # Predefined colors
         colors_enabled = {
-            'fail':     '\33[31m',
-            'pass':     '\33[32m',
-            'warning':  '\33[33m',
-            'reset':    '\33[0m'
+            'fail': '\33[31m',
+            'pass': '\33[32m',
+            'warning': '\33[33m',
+            'reset': '\33[0m'
         }
         colors_disabled = {'fail': '', 'pass': '', 'warning': '', 'reset': ''}
 

@@ -1,13 +1,9 @@
 #include "../include/http_status.h"
 
-#include "../include/http_string.h"
 
+string *getStatusString(int statusCode) {
 
-
-
-string *getStatusString(int statusCode){
-
-    switch(statusCode){
+    switch (statusCode) {
         case HTTP_STATUS_OK:
             return cpy_str("200 OK");
         case HTTP_STATUS_CREATED:

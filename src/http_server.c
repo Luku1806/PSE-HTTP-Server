@@ -1,8 +1,8 @@
-#include "../include/http_server.h"
+
 #include "../include/http_string.h"
 #include "../include/http_error.h"
 #include "../include/http_parser.h"
-#include "../include/http_fileIO.h"
+#include "../include/http_settings.h"
 
 /* Version: 2.1.2 */
 #include <errno.h>      // errno
@@ -12,12 +12,8 @@
 #include <stdio.h>      // fprintf
 #include <stdlib.h>     // exit, malloc, free
 #include <string.h>     // memset, strerror
-#include <sys/socket.h> // struct sockaddr_in, socket, setsockopt, bind, listen, socklen_t, accept
 #include <unistd.h> // read, write, close
 
-
-#define PORT 31337
-#define BUFFER_SIZE 1024
 
 /**
  * Globale Variablen.

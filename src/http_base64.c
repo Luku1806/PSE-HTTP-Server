@@ -1,5 +1,4 @@
 #include "../include/http_base64.h"
-#include "../include/http_string.h"
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -96,7 +95,7 @@ unsigned char *base64_decode(const char *data, size_t input_length, size_t *outp
 
 string *base64_encode_string(string *toEncode) {
     size_t newLen;
-    char *encodedChars = base64_encode(toEncode->str, toEncode->len, &newLen);
+    char *encodedChars = base64_encode((const unsigned char *) toEncode->str, toEncode->len, &newLen);
 
     string *encoded = cpy_str(encodedChars);
     free(encodedChars);
@@ -108,7 +107,7 @@ string *base64_decode_string(string *toDecode) {
     size_t newLen;
     char *decodedChars = (char *) base64_decode(toDecode->str, toDecode->len, &newLen);
 
-    if(decodedChars == NULL) return NULL; // String is not base64
+    if (decodedChars == NULL) return NULL; // String is not base64
 
     string *decoded = cpy_str(decodedChars);
     free(decodedChars);
