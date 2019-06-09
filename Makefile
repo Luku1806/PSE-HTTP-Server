@@ -37,7 +37,11 @@ install: $(TARGET)
 	# Copy webroot
 	cp -r webroot $(DESTDIR)/
 
+	@echo "Successfully installed HTTP-Server!
+
+
 .PHONY: uninstall
 uninstall:
 	rm -f $(DESTDIR)/bin/$(TARGET)
 	rm -f -r $(DESTDIR)/webroot
+	@echo "Successfully uninstalled HTTP-Server! Binary and webroot were deleted!"
