@@ -47,29 +47,29 @@
 /**
  * The default document root.
  */
-#define DEFAULT_DOCUMENT_ROOT "/var/www/default/"
+#define DEFAULT_DOCUMENT_ROOT "/usr/local/webroot/default/"
 
 /**
  * The extern document root.
  */
-#define EXTERN_DOCUMENT_ROOT "/var/www/extern/"
+#define EXTERN_DOCUMENT_ROOT "/usr/local/webroot/extern/"
 
 /**
  * The intern document root. To see files you have to authorize.
  */
-#define INTERN_DOCUMENT_ROOT "/var/www/intern/"
+#define INTERN_DOCUMENT_ROOT "/usr/local/webroot/intern/"
 
 
 /**
  * The path where all status pages lay.
  */
-#define STATUS_SITE_PATH "/var/www/status/"
+#define STATUS_SITE_PATH "/usr/local/webroot/status/"
 
 
 /**
  * The path where the htpasswd file, with all the http credential is located
  */
-#define HTPASSWD_PATH "/var/www/htpasswd"
+#define HTPASSWD_PATH "/usr/local/webroot/htpasswd"
 
 
 
