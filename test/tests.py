@@ -226,6 +226,13 @@ cannon += Beam(
     response=['HTTP/1.1 401']
 )
 
+# Case 26.2
+cannon += Beam(
+    description="host: iNteRn",
+    request='GET / HTTP/1.1\r\nHost: iNterRn\r\n\r\n',
+    response=['HTTP/1.1 401']
+)
+
 # Case 27
 cannon += Beam(
     description="'host: extern ' (spaces behind extern)",

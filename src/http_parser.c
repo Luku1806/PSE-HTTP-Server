@@ -412,19 +412,22 @@ http_response *generateResponse(http_request *request) {
     if (request->host != NULL && request->host->len != 0) {
         free_str(documentRoot);
         int portBegin = find_chars(request->host, ":");
-        string *host;
+        string *host_header;
 
         // Filter port out
         if (portBegin != -1) {
-            host = sub_str(request->host, 0, portBegin);
+            host_header = sub_str(request->host, 0, portBegin);
         } else {
-            host = clone_str(request->host);
+            host_header = clone_str(request->host);
         }
 
+        string *host = toUpper_str(host_header);
+        free_str(host_header);
+
         // VIRTUAL HOSTING: Look what host and corresponding document root to serve
-        if (chars_equal_str(host, "extern")) {
+        if (chars_equal_str(host, "EXTERN")) {
             documentRoot = cpy_str(EXTERN_DOCUMENT_ROOT);
-        } else if (chars_equal_str(host, "intern")) {
+        } else if (chars_equal_str(host, "INTERN")) {
             http_credentials *credentials = getAuthenticationCredentials(request);
 
             // Authorization header not sent, wrong syntax or credentials are not valid
