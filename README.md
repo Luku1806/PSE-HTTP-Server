@@ -17,6 +17,8 @@ There is a manual way, and a full installation, which even populates the content
 No matter which way you prefer, you have to to the initial preparation and then continue with 
 the manual or the automatic way. 
 
+-------------------------------------------------------------
+
 #### Preperation
 
  1. Install git and make
@@ -56,13 +58,71 @@ the manual or the automatic way.
  
  The [automatic version](#automatic-installation) is the preferred one because of convenience.
  
+--------------------------------------------------------------
 
 #### Automatic installation
 
- 
- 
- 
+If you install the program this way, the built executable will be copied to /usr/local/bin
+by default and you can call it from anywhere. For this you need to be able to call sudo.
 
+Also the standard webroot is copied to /usr/local/webroot so you wont have to do anything.
+
+**IMPORTANT: For automatic installation it is required that all paths are default, 
+otherwise the webroot wont't be found**
+
+
+ 1. Build the executable by calling make (you have to still be in the folder where you ended preperation)
+
+		make
+		
+ 2. Call make install, to copy everything to the right place. For this you need to call it
+ 	with sudo.
+ 		
+ 		sudo make install
+ 
+ 3. At this point you should call make clean, even if it is not necessary
+ 
+ 		make clean
+ 
+ 4. Now the program is installed and can be called **system wide** by simply calling
+ 
+ 		http_server
+ 	
+ 	
+ ---------------------------------------
+ 
+ 
+ #### Manual installation
+ 
+ 1. Copy the [webroot](webroot) to the path specified in the [settings](#paths).
+  	You can also create the folders yourself, and directly put your own website, htpasswd and status pages.
+  	
+  	Keep in mind that every path can be set to somewhere else, so simply copying the [webroot](webroot) 
+  	may not work!
+ 
+ 2. Build the executable by calling make (you have to still be in the folder where you ended preperation)
+ 
+ 		make
+ 		
+ 3. In the folder you now find the executable called *http_server*. This file can be copied to anywhere
+ 	you want, but for now we will assume that you leve it where it is.
+ 	
+ 	Now if you are still in the folder where the file lies, you can start the server by calling:
+ 		
+ 		./http_server
+ 	
+ 	or if you are not in the folder where the file lies:
+ 	
+ 		/home/user/documents/pse2019-gruppe09/http_server
+ 		
+
+ ----------------------
+  
+ *Note: If you want to serve your own websites, simply put them into the webroot folders for the different host,
+ specified in the [settings](#paths)*.
+ 	
+ 
+ 	
 ## Settings
 
 Settings have to be done before the build is done.
