@@ -54,7 +54,7 @@ the manual or the automatic way.
  
  Now we are ready to to the final installation by using **one** of the two ways.
  
- The [automatic version](####automatic-installation) is the preferred one because of convenience.
+ The [automatic version](#automatic-installation) is the preferred one because of convenience.
  
 
 #### Automatic installation
