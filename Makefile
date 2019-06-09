@@ -13,6 +13,7 @@ obj = $(src:.c=.o)
 
 
 all: $(TARGET)
+	@echo "Successfully compiled HTTP-Server! Run it by typing './$(TARGET)'"
 
 
 $(TARGET): $(obj)
@@ -22,3 +23,4 @@ $(TARGET): $(obj)
 .PHONY: clean
 clean:
 	rm -f $(obj) $(TARGET)
+	@echo "Successfully cleaned HTTP-Server! All objects and binaries were removed!"
