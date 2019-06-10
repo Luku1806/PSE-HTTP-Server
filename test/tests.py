@@ -129,7 +129,7 @@ cannon += Beam(
     response=['HTTP/1.1 200']
 )
 
-# Case 15
+# Case 14
 cannon += Beam(
     description='Spaces in request',
     request='         GET /index.html HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\n\r\n',
@@ -138,28 +138,28 @@ cannon += Beam(
 
 # ------------URL encoding------------#
 
-# Case 16
+# Case 15
 cannon += Beam(
     description="Non hex charcter after %",
     request='GET /%keinhex HTTP/1.1\r\nHost: {host}:{port}\r\n\r\n',
     response=['HTTP/1.1 400']
 )
 
-# Case 17
+# Case 16
 cannon += Beam(
     description="% as last character",
     request='GET /images% HTTP/1.1\r\nHost: {host}:{port}\r\n\r\n',
     response=['HTTP/1.1 400']
 )
 
-# Case 18
+# Case 17
 cannon += Beam(
     description='Space in ressource that is not url encoded',
     request='GET /images/ein leerzeichen.png HTTP/1.1\r\nHost: {host}:{port}\r\n\r\n',
     response=['HTTP/1.1 400']
 )
 
-# Case 19
+# Case 18
 cannon += Beam(
     description="Non ascii charcter",
     request='GET /👧 HTTP/1.1\r\nHost: {host}:{port}\r\n\r\n',
@@ -168,35 +168,35 @@ cannon += Beam(
 
 # ------------File extensions------------#
 
-# Case 20
+# Case 19
 cannon += Beam(
     description="Access to existing picture without file ending",
     request='GET /images/tux HTTP/1.1\r\nHost: {host}:{port}\r\n\r\n',
     response=['HTTP/1.1 200']
 )
 
-# Case 21
+# Case 20
 cannon += Beam(
     description="Access to existing .jpg picture",
     request='GET /images/tux.jpg HTTP/1.1\r\nHost: {host}:{port} \r\n\r\n',
     response=['HTTP/1.1 200']
 )
 
-# Case 22
+# Case 21
 cannon += Beam(
     description="Access to existing .png picture",
     request='GET /images/tux.png HTTP/1.1\r\nHost: {host}:{port} \r\n\r\n',
     response=['HTTP/1.1 200']
 )
 
-# Case 23
+# Case 22
 cannon += Beam(
     description="Access to existing .PNG picture",
     request='GET /images/TUX1.PNG HTTP/1.1\r\nHost: {host}:{port} \r\n\r\n',
     response=['HTTP/1.1 200']
 )
 
-# Case 24
+# Case 23
 cannon += Beam(
     description='Try to read *.png',
     request='GET /*.png HTTP/1.1\r\nHost: {host}:{port}\r\n\r\n',
@@ -205,21 +205,21 @@ cannon += Beam(
 
 # ------------Host stuff------------#
 
-# Case 25
+# Case 24
 cannon += Beam(
     description="host: extern",
     request='GET / HTTP/1.1\r\nHost: extern\r\n\r\n',
     response=['HTTP/1.1 200']
 )
 
-# Case 26
+# Case 25
 cannon += Beam(
     description="host: intern",
     request='GET / HTTP/1.1\r\nHost: intern\r\n\r\n',
     response=['HTTP/1.1 401']
 )
 
-# Case 26.2
+# Case 26
 cannon += Beam(
     description="host: iNteRn",
     request='GET / HTTP/1.1\r\nHost: iNteRn\r\n\r\n',
@@ -409,14 +409,14 @@ cannon += Beam(
     response=['HTTP/1.1 401']
 )
 
-# Case 51
+# Case 52
 cannon += Beam(
     description='Authorization with Basic, but no credentials',
     request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization: Basic\r\n\r\n',
     response=['HTTP/1.1 401']
 )
 
-# Case 52
+# Case 53
 cannon += Beam(
     description='Authorization without any content',
     request='GET / HTTP/1.1\r\nHost: intern\r\nAuthorization:\r\n\r\n',
