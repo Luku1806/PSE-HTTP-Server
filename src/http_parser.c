@@ -436,7 +436,7 @@ http_response *generateResponse(http_request *request) {
                 free_httpCredentials(credentials);
                 return generateStatusResponse(HTTP_STATUS_UNAUTHORIZED);
             } else {
-                printHTTPCredentials(credentials);
+                //printHTTPCredentials(credentials);
                 free_httpCredentials(credentials);
                 documentRoot = cpy_str(INTERN_DOCUMENT_ROOT);
             }
