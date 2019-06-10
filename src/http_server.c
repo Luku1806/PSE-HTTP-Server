@@ -60,6 +60,10 @@ static void register_signal() {
  */
 static int setup_socket() {
 
+#ifdef STDIN_ONLY
+    return STDOUT_FILENO;
+#endif
+
     int opt = 1;
     int sockfd = 0;
     struct sockaddr_in serv_addr;
@@ -125,6 +129,8 @@ static void main_loop(int sockfd) {
      */
     while (run) {
 
+#ifndef STDIN_ONLY
+
         /*
          * Der accept()-Aufruf blockiert, bis eine neue Verbindung rein kommt.
          */
@@ -139,6 +145,10 @@ static void main_loop(int sockfd) {
             }
             error("ERROR on accept");
         }
+
+#else
+        newsockfd = STDIN_FILENO;
+#endif
 
         /*
          * Lies die ankommenden Daten von dem Socket in das Array buffer.
@@ -161,7 +171,7 @@ static void main_loop(int sockfd) {
         // Decide if request is for a special site (at the moment only debug) and generate response
         http_response *response;
 
-        //TODO Better solution
+        // Decide if debug site should be send
         if (request != NULL && request->resource != NULL && chars_equal_str(request->resource, "/debug")) {
             response = generateDebugResponse(request);
         } else {
@@ -169,6 +179,8 @@ static void main_loop(int sockfd) {
         }
 
         string *sendString = httpResponseToString(response);
+
+#ifndef STDIN_ONLY
 
         /*
          * Schreibe die ausgehenden Daten auf den Socket.
@@ -185,6 +197,16 @@ static void main_loop(int sockfd) {
             error("ERROR on close");
         }
 
+#else
+        /*
+        * Gib die eingegangenen Daten auf der Kommandozeile aus.
+        */
+        if (write(STDOUT_FILENO, sendString->str, sendString->len) < 0) {
+            error("ERROR writing to STDOUT");
+        }
+
+#endif
+
         /*
          * Free everything up
          */
@@ -200,9 +222,13 @@ static void main_loop(int sockfd) {
      */
     free(buffer);
 
+#ifndef STDIN_ONLY
+
     if (close(sockfd) < 0) {
         error("ERROR on close");
     }
+
+#endif
 
 }
 
