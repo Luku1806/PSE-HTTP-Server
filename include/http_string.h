@@ -9,7 +9,10 @@
  */
 
 
-
+/**
+ * @struct string
+ * @brief Used to store char buffer together with their length, to get have a string like struct that is not null terminated.
+ */
 typedef struct string {
     size_t len;   /**< @brief The length in bytes of the string. This is without a null terminator, because we dont use one!!!*/
     char *str;    /**< @brief The actual bytes/characters of the string.*/
@@ -18,6 +21,7 @@ typedef struct string {
 
 /**
  * @brief Allocates a new string pointer and returns it.
+ *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *
  * @param len The length of the string.
@@ -44,6 +48,7 @@ void print_string(string *str);
 
 /**
  * @brief Copies a C-string into a new string struct and returns this.
+ *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *
  * @param src The C-string to copy into the struct.
@@ -54,6 +59,7 @@ string *cpy_str(const char *src);
 
 /**
  * @brief Clones everything stored in src, to a new string pointer.
+ *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *
  * @param src The string to clone.
@@ -64,6 +70,7 @@ string *clone_str(string *src);
 
 /**
  * @brief Returns a null terminated char pointer (c-string) version of a string.
+ *
  * Allocates memory for the returned char pointer. This has to be freed by calling free!
  *
  * @param str The string to return as c-string.
@@ -74,6 +81,7 @@ char *toCString_str(string *str);
 
 /**
  * @brief Combines a string and a c-string to a new string
+ *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *
  * @param dest String 1 to combine
@@ -85,6 +93,7 @@ string *cat_str(string *dest, const char *src);
 
 /**
  * @brief Combines a string and a generic pointer with a given length
+ *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *
  * @param dest String 1 to combine
@@ -97,6 +106,7 @@ string *cat_str_len(string *dest, void *src, size_t len);
 
 /**
  * @brief Combines two strings to a new string
+ *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *
  * @param dest String 1 to combine
@@ -128,6 +138,7 @@ char chars_equal_str(string *str, char *chars);
 
 /**
  * @brief Return a substring with the length len of str starting at start.
+ *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *
  * @param str String to get substring of.
@@ -180,6 +191,7 @@ char startsWith_str(string *str, char *starting);
 
 /**
  * @brief Returns a string, converted to capital letters only.
+ *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *
  * @param str The string to convert to capital letters.
@@ -190,6 +202,7 @@ string *toUpper_str(string *str);
 
 /**
  * @brief Removes all trailing charcters.
+ *
  * For example if toRemove is a, "12345aaa" becomes "12345"
  * Allocates memory for the returned string. This has to be freed by calling free_str!
  *

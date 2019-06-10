@@ -15,6 +15,7 @@
 
 /**
  * @brief Converts an integer value to a null-terminated string using the specified base and stores the result in the char pointer given by buf parameter.
+ *
  * Returns null if buffer would overflow
  *
  * Because buf is the same as the return value, either buf or the returned pointer have to be freed, when the string is no longer needed, by calling free.
@@ -38,6 +39,7 @@ char isAscii(char c);
 
 /**
  * @brief Converts a string of hexadecimal digits to a char.
+ *
  * Used to convert the two hexadecimal digits behind the % in url encoding to the corresponding character in the ascii table.
  * For example: %20: hex:20 --> dez:32 --> ascii:" " (space).
  *
@@ -51,6 +53,7 @@ char hexStringToChar(string *hex);
 
 /**
  * @brief Removes URL-encoding from a string and returns the decoded string.
+ *
  * Return NULL if encoding is invalid.
  *
  * Allocates memory for the returned string. This has to be freed by calling free_str!

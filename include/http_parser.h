@@ -21,6 +21,7 @@
  * @struct http_request
  *
  * @brief Used to bundle all information about a request.
+ *
  * Contains all header fields, used by the program and can be expanded to the needs.
  * None of this fields has to be set, it depends on the information, the client sent.
  */
@@ -40,6 +41,7 @@ typedef struct http_request {
  * @struct http_response
  *
  * @brief Used to bundle all information about a response.
+ *
  * Contains all header fields, used by the program and can be expanded to the needs.
  */
 typedef struct http_response {
@@ -56,6 +58,7 @@ typedef struct http_response {
 
 /**
  * @brief Creates (allocates) a new httpRequest and returns a pointer to it.
+ *
  * The returned allocated memory has to be freed, when its no longer needed by calling free_httpRequest()!
  *
  * @return The pointer to the allocated httpRequest.
@@ -71,6 +74,7 @@ void free_httpRequest(http_request *request);
 
 /**
  * @brief Creates (allocates) a new httpResponse and returns a pointer to it.
+ *
  * The returned allocated memory has to be freed, when its no longer needed by calling free_httpResponse()!
  *
  * @return The pointer to the allocated httpResponse.
@@ -94,6 +98,7 @@ void printRequest(http_request *request);
 
 /**
  * @brief Parses the raw string that came over the network.
+ *
  * Creates and returns a new http_request struct pointer, containing all information needed to respond.
  * Returns NULL if something is bad about the message.
  *
@@ -129,6 +134,7 @@ http_response *generateStatusResponse(int statusCode);
 
 /**
  * @brief Creates a response with an HTML site containing the information contained in the request.
+ *
  * This is used for debug an can be called by requesting /debug as path.
  *
  * The returned response has to be freed, when its no longer needed by calling free_httpResponse()!

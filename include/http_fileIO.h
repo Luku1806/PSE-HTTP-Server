@@ -13,6 +13,7 @@
 
 /**
  * @brief Converts a path with /../ etc to an absolute path.
+ *
  * If file is not found, an empty string is returned (Length = 0).
  *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
@@ -55,6 +56,7 @@ void *loadFileToBuffer(string *filepath);
 
 /**
  * @brief Returns the string containing the content/mime type of the resource.
+ *
  * Returns an empty string with lenth 0, if information could not be found.
  *
  * Allocates memory for the returned string. This has to be freed by calling free_str!
@@ -67,6 +69,7 @@ string *getMimeType(string *path);
 
 /**
  * @brief Returns the string containing the content/mime encoding of the resource.
+ *
  * Returns an empty string with lenth 0, if information could not be found.
  *
  * Allocates memory for the returned string. This has to be freed by calling free_str!

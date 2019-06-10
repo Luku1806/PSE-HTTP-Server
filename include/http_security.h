@@ -6,7 +6,7 @@
 
 
 /**
- * @file http_fileIO.h
+ * @file http_security.h
  * @brief This file contains functions and data structures to implement basic HTTP authentication and SHA1 encryption.
  */
 
@@ -16,7 +16,7 @@
  *
  * @brief Used to bundle a username and a password.
  */
-typedef struct credentials {
+typedef struct http_credentials {
     string *user;     /**< @brief The username to store.*/
     string *password; /**< @brief The password corresponding to the username.*/
 } http_credentials;
@@ -30,7 +30,7 @@ typedef struct credentials {
  * New credentials should only be added by calling credential_array_add(), to be sure to not overflow the array.
  * The memory for all credentials up to maxCredentialCount is allocated when creating a new one by calling new_httpCredentialArray().
  */
-typedef struct credentialArray {
+typedef struct http_credentialArray {
     http_credentials **credential_array; /**< @brief An array/pointer of credential pointers.*/
     size_t credentialCount;              /**< @brief The currently stored credentials. Should always be <= maxCredentialCount, otherwise an overflow will happen.*/
     size_t maxCredentialCount;           /**< @brief The maximum number of credentials to store, and so to allocate.*/
@@ -108,6 +108,7 @@ string *encodeSHA1(string *toEncode);
 
 /**
  * @brief Reads the authentication credentials for basic authentication from a given request and returns them.
+ *
  * If authentication scheme is not Basic, no authentication credentials are given, or something is wrong about the credentials, NULL is returned.
  *
  * The allocated memory for the returned http_credentials has to be freed, when its no longer needed by calling free_httpCredentials()!
@@ -120,6 +121,7 @@ http_credentials *getAuthenticationCredentials(http_request *request);
 
 /**
  * @brief Checks the credentials against the all credentials of the .htpasswd file.
+ *
  * Returns 0 if no match was found, 1 if given credentials match an entry of the file.
  *
  * @param credentials The credentials to check if they exist in the .htpasswd file.

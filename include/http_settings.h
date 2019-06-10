@@ -15,6 +15,8 @@
 /**
  * @def SERVER_NAME
  * @brief The name of the server.
+ *
+ * This will be sent in the packet to show the client which server is talking to it.
  */
 #define SERVER_NAME "HTTP-Server 09 1.0"
 
@@ -22,6 +24,8 @@
 /**
  * @def HTTP_VERSION
  * @brief The http version of the server.
+ *
+ * This should be left as it is.
  */
 #define HTTP_VERSION "HTTP/1.1"
 
@@ -34,6 +38,7 @@
 /**
  * @def PORT
  * @brief The tcp port to listen on.
+ *
  * The server will be reachable at this port via http protocol.
  */
 #define PORT 31337
@@ -42,6 +47,7 @@
 /**
  * @def BUFFER_SIZE
  * @brief The size of the buffer for reading http requests over the tcp socket.
+ *
  * Should be big enough to be able to handle larger requests.
  */
 #define BUFFER_SIZE 1024
@@ -55,6 +61,7 @@
 /**
  * @def DEFAULT_DOCUMENT_ROOT
  * @brief The default document root.
+ *
  * This folder should contain the website etc. that should be available if no, or a unknown host is requested.
  */
 #define DEFAULT_DOCUMENT_ROOT "/usr/local/webroot/default/"
@@ -63,6 +70,7 @@
 /**
  * @def EXTERN_DOCUMENT_ROOT
  * @brief The extern document root.
+ *
  * This folder should contain the website etc. that should be available if the host "extern" is requested.
  */
 #define EXTERN_DOCUMENT_ROOT "/usr/local/webroot/extern/"
@@ -71,6 +79,7 @@
 /**
  * @def INTERN_DOCUMENT_ROOT
  * @brief The intern document root.
+ *
  * This folder should contain the website etc. that should be available, if the host "intern" is requested.
  * To see files the client has to authorize with credentials that are stored in the htpasswd file.
  */
@@ -80,6 +89,7 @@
 /**
  * @def STATUS_SITE_PATH
  * @brief The path where all status pages lie.
+ *
  * Each status page is named after its status.
  * Each status has its own site, and any html file with a fitting name can be used.
  *
@@ -107,6 +117,7 @@
 /**
  * @def MAX_CREDENTIALS
  * @brief The maximum count of credentials to load from the htpasswd file from disk.
+ *
  * Keep in mind, that when having more credentials in the file than MAX_CREDENTIALS, they will be ignored,
  * so be sure to set it to an appropriate size, without wasting to much memory.
  */

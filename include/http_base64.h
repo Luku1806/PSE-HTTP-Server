@@ -13,6 +13,7 @@
 
 /**
  * @brief Builds up the internal decoding table.
+ *
  * Is called by base64_decode.
  * Anywhere in the program base64_cleanup has to be called to free the memory allocated for the table.
  */
@@ -21,6 +22,7 @@ void build_decoding_table();
 
 /**
  * @brief Frees the memory allocated for the decoding table.
+ *
  * Has to be called anywhere after base64_decode to prevent memory leaks.
  */
 void base64_cleanup();
@@ -65,6 +67,7 @@ string *base64_encode_string(string *toEncode);
 
 /**
  * @brief Decodes a base64 encoded c-string into normal decoded text.
+ *
  * Returns NULL if string toDecode is not base64.
  *
  * Allocates memory for the returned string. This has to freed be by calling free_str!

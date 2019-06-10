@@ -32,6 +32,7 @@
 
 /**
  * @brief Returns a string, containing the status code and the human readable description.
+ *
  * For example if statutscode == 200: "200 OK".
  *
  * @param statusCode The status code to generate a string for.
