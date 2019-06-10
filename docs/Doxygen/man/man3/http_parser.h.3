@@ -1,8 +1,8 @@
-.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_parser.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.TH "include/http_parser.h" 3 "Mon Jun 10 2019" "Documentation" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_parser.h \- This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer\&.  
+include/http_parser.h \- This file provides all functions for processing the incoming requests, from reading everything into a struct, to generating an answer\&.  
 
 .SH SYNOPSIS
 .br
@@ -16,9 +16,11 @@ C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_parser.h \- Th
 .ti -1c
 .RI "struct \fBhttp_request\fP"
 .br
+.RI "Used to bundle all information about a request\&. Contains all header fields, used by the program and can be expanded to the needs\&. None of this fields has to be set, it depends on the information, the client sent\&. "
 .ti -1c
 .RI "struct \fBhttp_response\fP"
 .br
+.RI "Used to bundle all information about a response\&. Contains all header fields, used by the program and can be expanded to the needs\&. "
 .in -1c
 .SS "Typedefs"
 
@@ -36,39 +38,51 @@ C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_parser.h \- Th
 .ti -1c
 .RI "\fBhttp_request\fP * \fBnew_httpRequest\fP ()"
 .br
+.RI "Creates (allocates) a new httpRequest and returns a pointer to it\&. The returned allocated memory has to be freed, when its no longer needed by calling \fBfree_httpRequest()\fP! "
 .ti -1c
 .RI "void \fBfree_httpRequest\fP (\fBhttp_request\fP *request)"
 .br
+.RI "Frees the memory allocated for the httpRequest pointer\&. "
 .ti -1c
 .RI "\fBhttp_response\fP * \fBnew_httpResponse\fP ()"
 .br
+.RI "Creates (allocates) a new httpResponse and returns a pointer to it\&. The returned allocated memory has to be freed, when its no longer needed by calling \fBfree_httpResponse()\fP! "
 .ti -1c
 .RI "void \fBfree_httpResponse\fP (\fBhttp_response\fP *response)"
 .br
+.RI "Frees the memory allocated for the httpResponse pointer\&. "
 .ti -1c
 .RI "void \fBprintRequest\fP (\fBhttp_request\fP *request)"
 .br
+.RI "Prints a request formatted to the console\&. "
 .ti -1c
 .RI "\fBhttp_request\fP * \fBparseRequest\fP (\fBstring\fP *strRequest)"
 .br
+.RI "Parses the raw string that came over the network\&. Creates and returns a new \fBhttp_request\fP struct pointer, containing all information needed to respond\&. Returns NULL if something is bad about the message\&. "
 .ti -1c
 .RI "\fBhttp_response\fP * \fBgenerateStandardResponse\fP (int statusCode)"
 .br
+.RI "Returns a pointer to a response with servername, http-version, and status already set\&. "
 .ti -1c
 .RI "\fBhttp_response\fP * \fBgenerateStatusResponse\fP (int statusCode)"
 .br
+.RI "Returns a pointer to a response with servername, http-version, status, and the corresponding html-site already set\&. "
 .ti -1c
 .RI "\fBhttp_response\fP * \fBgenerateDebugResponse\fP (\fBhttp_request\fP *request)"
 .br
+.RI "Creates a response with an HTML site containing the information contained in the request\&. This is used for debug an can be called by requesting /debug as path\&. "
 .ti -1c
 .RI "\fBhttp_response\fP * \fBgenerateResponse\fP (\fBhttp_request\fP *request)"
 .br
+.RI "Creates a response for the given request\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBhttpResponseToString\fP (\fBhttp_response\fP *response)"
 .br
+.RI "Generates a string representing the gven response to be sent to the client\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBgetMimeType\fP (\fBstring\fP *path)"
 .br
+.RI "Returns the string containing the content/mime type of the resource\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -81,18 +95,16 @@ Process raw message by calling parseRequest to save all informations in a reques
 .IP "2." 4
 Put the struct into generateResponse to build a response struct
 .IP "3." 4
-Put the response_struct into httpResponseToString to get the response as string 
+Put the response_struct into httpResponseToString to get the response as string
+.IP "4." 4
+This string can then be converted to bytes, and be sent over the network socket\&. 
 .PP
-
-.SH "Typedef Documentation"
-.PP 
-.SS "typedef struct \fBhttp_request\fP  \fBhttp_request\fP"
-
-.SS "typedef struct \fBhttp_response\fP  \fBhttp_response\fP"
 
 .SH "Function Documentation"
 .PP 
 .SS "void free_httpRequest (\fBhttp_request\fP * request)"
+
+.PP
 Frees the memory allocated for the httpRequest pointer\&. 
 .PP
 \fBParameters:\fP
@@ -102,6 +114,8 @@ Frees the memory allocated for the httpRequest pointer\&.
 .PP
 
 .SS "void free_httpResponse (\fBhttp_response\fP * response)"
+
+.PP
 Frees the memory allocated for the httpResponse pointer\&. 
 .PP
 \fBParameters:\fP
@@ -111,7 +125,9 @@ Frees the memory allocated for the httpResponse pointer\&.
 .PP
 
 .SS "\fBhttp_response\fP* generateDebugResponse (\fBhttp_request\fP * request)"
-Creates a response with an HTML site containing the information contained in the request\&. This is used for debug an can be called by requesting /debug as path\&.
+
+.PP
+Creates a response with an HTML site containing the information contained in the request\&. This is used for debug an can be called by requesting /debug as path\&. The returned response has to be freed, when its no longer needed by calling \fBfree_httpResponse()\fP!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -125,7 +141,9 @@ The debug response to the given request\&.
 .PP
 
 .SS "\fBhttp_response\fP* generateResponse (\fBhttp_request\fP * request)"
-Creates a response for the given request\&.
+
+.PP
+Creates a response for the given request\&. The returned response has to be freed, when its no longer needed by calling \fBfree_httpResponse()\fP!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -139,7 +157,9 @@ The response to the given request\&.
 .PP
 
 .SS "\fBhttp_response\fP* generateStandardResponse (int statusCode)"
-Returns a pointer to a response with servername, http-version, and status already set\&.
+
+.PP
+Returns a pointer to a response with servername, http-version, and status already set\&. The returned response has to be freed, when its no longer needed by calling \fBfree_httpResponse()\fP!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -153,7 +173,9 @@ The generated and pre-initialized http-response\&.
 .PP
 
 .SS "\fBhttp_response\fP* generateStatusResponse (int statusCode)"
-Returns a pointer to a response with servername, http-version, status, and the corresponding html-site already set\&.
+
+.PP
+Returns a pointer to a response with servername, http-version, status, and the corresponding html-site already set\&. The returned response has to be freed, when its no longer needed by calling \fBfree_httpResponse()\fP!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -167,7 +189,9 @@ The generated and pre-initialized http-response\&.
 .PP
 
 .SS "\fBstring\fP* getMimeType (\fBstring\fP * path)"
-Returns the string containing the content/mime type of the resource\&.
+
+.PP
+Returns the string containing the content/mime type of the resource\&. Allocates memory for the returned string\&. This has to be freed by calling free_str!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -181,7 +205,9 @@ A string containing the MIME-Type of the resource\&.
 .PP
 
 .SS "\fBstring\fP* httpResponseToString (\fBhttp_response\fP * response)"
-Generates a string representing the gven response to be sent to the client\&.
+
+.PP
+Generates a string representing the gven response to be sent to the client\&. Allocates memory for the returned string\&. This has to be freed by calling free_str!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -195,7 +221,9 @@ The pointer to the string to be sent\&.
 .PP
 
 .SS "\fBhttp_request\fP* new_httpRequest ()"
-Creates (allocates) a new httpRequest and returns a pointer to it\&. 
+
+.PP
+Creates (allocates) a new httpRequest and returns a pointer to it\&. The returned allocated memory has to be freed, when its no longer needed by calling \fBfree_httpRequest()\fP! 
 .PP
 \fBReturns:\fP
 .RS 4
@@ -204,7 +232,9 @@ The pointer to the allocated httpRequest\&.
 .PP
 
 .SS "\fBhttp_response\fP* new_httpResponse ()"
-Creates (allocates) a new httpResponse and returns a pointer to it\&. 
+
+.PP
+Creates (allocates) a new httpResponse and returns a pointer to it\&. The returned allocated memory has to be freed, when its no longer needed by calling \fBfree_httpResponse()\fP! 
 .PP
 \fBReturns:\fP
 .RS 4
@@ -213,7 +243,9 @@ The pointer to the allocated httpResponse\&.
 .PP
 
 .SS "\fBhttp_request\fP* parseRequest (\fBstring\fP * strRequest)"
-Parses the raw string that came over the network\&. Creates and returns a new \fBhttp_request\fP struct pointer, containing all information needed to respond\&. Returns NULL if something is bad about the message\&.
+
+.PP
+Parses the raw string that came over the network\&. Creates and returns a new \fBhttp_request\fP struct pointer, containing all information needed to respond\&. Returns NULL if something is bad about the message\&. The returned request has to be freed, when its no longer needed by calling \fBfree_httpRequest()\fP!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -227,6 +259,8 @@ A parseRequest pointer containing all information send in the message\&. NULL if
 .PP
 
 .SS "void printRequest (\fBhttp_request\fP * request)"
+
+.PP
 Prints a request formatted to the console\&. 
 .PP
 \fBParameters:\fP
@@ -237,4 +271,4 @@ Prints a request formatted to the console\&.
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Dokumentation from the source code\&.
+Generated automatically by Doxygen for Documentation from the source code\&.

@@ -1,8 +1,8 @@
-.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_fileIO.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.TH "include/http_fileIO.h" 3 "Mon Jun 10 2019" "Documentation" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_fileIO.h \- All file functions required for reading, writing, etc\&. are accommodated here\&.  
+include/http_fileIO.h \- All file functions required for reading, writing, etc\&. are accommodated here\&.  
 
 .SH SYNOPSIS
 .br
@@ -18,31 +18,39 @@ C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_fileIO.h \- Al
 .ti -1c
 .RI "\fBstring\fP * \fBtoRealPath\fP (\fBstring\fP *path)"
 .br
+.RI "Converts a path with /\&.\&./ etc to an absolute path\&. If file is not found, an empty string is returned (Length = 0)\&. "
 .ti -1c
 .RI "char \fBisInDocumentRoot\fP (\fBstring\fP *filepath, \fBstring\fP *root)"
 .br
+.RI "Checks if a path lays in the document root\&. "
 .ti -1c
 .RI "size_t \fBgetFilesize\fP (\fBstring\fP *filepath)"
 .br
+.RI "Returns the size of a file\&. "
 .ti -1c
 .RI "void * \fBloadFileToBuffer\fP (\fBstring\fP *filepath)"
 .br
+.RI "Loads a file at a given path into a buffer and returns it\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBgetMimeType\fP (\fBstring\fP *path)"
 .br
+.RI "Returns the string containing the content/mime type of the resource\&. Returns an empty string with lenth 0, if information could not be found\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBgetMimeEncoding\fP (\fBstring\fP *path)"
 .br
+.RI "Returns the string containing the content/mime encoding of the resource\&. Returns an empty string with lenth 0, if information could not be found\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
 All file functions required for reading, writing, etc\&. are accommodated here\&. 
 
-Also here you can define the different filepaths and document roots\&. 
+This file contains functions and data structures to implement basic HTTP authentication and SHA1 encryption\&.
 .SH "Function Documentation"
 .PP 
 .SS "size_t getFilesize (\fBstring\fP * filepath)"
-Returns the size of a file\&.
+
+.PP
+Returns the size of a file\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -56,7 +64,9 @@ The size of the file at the given path\&. 0 if file is empty or not available\&.
 .PP
 
 .SS "\fBstring\fP* getMimeEncoding (\fBstring\fP * path)"
-Returns the string containing the content/mime encoding of the resource\&. Returns an empty string with lenth 0, if information could not be found\&.
+
+.PP
+Returns the string containing the content/mime encoding of the resource\&. Returns an empty string with lenth 0, if information could not be found\&. Allocates memory for the returned string\&. This has to be freed by calling free_str!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -70,7 +80,9 @@ A string containing the MIME-Encoding of the resource\&. Empty string if informa
 .PP
 
 .SS "\fBstring\fP* getMimeType (\fBstring\fP * path)"
-Returns the string containing the content/mime type of the resource\&. Returns an empty string with lenth 0, if information could not be found\&.
+
+.PP
+Returns the string containing the content/mime type of the resource\&. Returns an empty string with lenth 0, if information could not be found\&. Allocates memory for the returned string\&. This has to be freed by calling free_str!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -84,7 +96,9 @@ A string containing the MIME-Type of the resource\&. Empty string if information
 .PP
 
 .SS "char isInDocumentRoot (\fBstring\fP * filepath, \fBstring\fP * root)"
-Checks if a path lays in the document root\&.
+
+.PP
+Checks if a path lays in the document root\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -100,7 +114,9 @@ Checks if a path lays in the document root\&.
 .PP
 
 .SS "void* loadFileToBuffer (\fBstring\fP * filepath)"
-Loads a file at a given path into a buffer and returns it\&.
+
+.PP
+Loads a file at a given path into a buffer and returns it\&. Allocates memory for the returned void * buffer\&. This has to be freed!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -114,7 +130,9 @@ The file in a buffer\&. NULL if file was not found\&.
 .PP
 
 .SS "\fBstring\fP* toRealPath (\fBstring\fP * path)"
-Converts a path with /\&.\&./ etc to an absolute path\&. If file is not found, an empty string is returned\&. (Length = 0)
+
+.PP
+Converts a path with /\&.\&./ etc to an absolute path\&. If file is not found, an empty string is returned (Length = 0)\&. Allocates memory for the returned string\&. This has to be freed by calling free_str!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -129,4 +147,4 @@ The converted, absolute path\&. Returns an empty string if path is not found\&.
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Dokumentation from the source code\&.
+Generated automatically by Doxygen for Documentation from the source code\&.

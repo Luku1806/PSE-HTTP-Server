@@ -1,8 +1,9 @@
-.TH "http_request" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.TH "http_request" 3 "Mon Jun 10 2019" "Documentation" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-http_request
+http_request \- Used to bundle all information about a request\&. Contains all header fields, used by the program and can be expanded to the needs\&. None of this fields has to be set, it depends on the information, the client sent\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -14,50 +15,40 @@ http_request
 .ti -1c
 .RI "\fBstring\fP * \fBmethod\fP"
 .br
+.RI "The HTTP Method\&. For example 'GET'\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBresource\fP"
 .br
+.RI "The requested ressource\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBhttp_version\fP"
 .br
+.RI "The HTTP version, the client says it speaks\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBhost\fP"
 .br
+.RI "The host, the client tries to reach\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBuser_agent\fP"
 .br
+.RI "The textual description, the client gives us about itself\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBauthentication\fP"
 .br
+.RI "The authentication information the client gives us\&. "
 .ti -1c
 .RI "size_t \fBcontent_length\fP"
 .br
+.RI "The length of the content/payload, the client sent us\&. "
 .ti -1c
 .RI "void * \fBcontent\fP"
 .br
+.RI "The content/payload that the client sent\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
-Used to bundle all information about a request\&. Contains all header fields, used by the program and can be expanded to the needs\&. 
-.SH "Field Documentation"
-.PP 
-.SS "\fBstring\fP* authentication"
-
-.SS "void* content"
-
-.SS "size_t content_length"
-
-.SS "\fBstring\fP* host"
-
-.SS "\fBstring\fP* http_version"
-
-.SS "\fBstring\fP* method"
-
-.SS "\fBstring\fP* resource"
-
-.SS "\fBstring\fP* user_agent"
-
+Used to bundle all information about a request\&. Contains all header fields, used by the program and can be expanded to the needs\&. None of this fields has to be set, it depends on the information, the client sent\&. 
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Dokumentation from the source code\&.
+Generated automatically by Doxygen for Documentation from the source code\&.

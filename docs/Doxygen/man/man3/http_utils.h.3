@@ -1,8 +1,8 @@
-.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_utils.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.TH "include/http_utils.h" 3 "Mon Jun 10 2019" "Documentation" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_utils.h \- This file provides all functions that are needed for utility\&.  
+include/http_utils.h \- This file provides all functions that are needed for utility\&.  
 
 .SH SYNOPSIS
 .br
@@ -18,15 +18,19 @@ C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_utils.h \- Thi
 .ti -1c
 .RI "char * \fBintToString\fP (int value, char *buf, size_t bufsize)"
 .br
+.RI "Converts an integer value to a null-terminated string using the specified base and stores the result in the char pointer given by buf parameter\&. Returns null if buffer would overflow\&. "
 .ti -1c
 .RI "char \fBisAscii\fP (char c)"
 .br
+.RI "Returns if an ascii character is a valid hexadecimal digit, so if is 0-9, a-f or A-F\&. "
 .ti -1c
 .RI "char \fBhexStringToChar\fP (\fBstring\fP *hex)"
 .br
+.RI "Converts a string of hexadecimal digits to a char\&. Used to convert the two hexadecimal digits behind the % in url encoding to the corresponding character in the ascii table\&. For example: %20: hex:20 --> dez:32 --> ascii:' ' (space)\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBdecodeURL\fP (\fBstring\fP *url)"
 .br
+.RI "Removes URL-encoding from a string and returns the decoded string\&. Return NULL if encoding is invalid\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -36,7 +40,9 @@ This file provides all functions that are needed for utility\&.
 .SH "Function Documentation"
 .PP 
 .SS "\fBstring\fP* decodeURL (\fBstring\fP * url)"
-Removes URL-encoding from a string and returns the decoded string\&. Return NULL if encoding is invalid\&.
+
+.PP
+Removes URL-encoding from a string and returns the decoded string\&. Return NULL if encoding is invalid\&. Allocates memory for the returned string\&. This has to be freed by calling free_str!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -50,9 +56,9 @@ The new decoded string\&. NULL if encoding is invalid\&.
 .PP
 
 .SS "char hexStringToChar (\fBstring\fP * hex)"
-Converts a string of hexadecimal digits to a char\&. Used to convert the two hexadecimal digits behind the % in url encoding to the corresponding character in the ascii table\&. For example: %20: hex:20 --> dez:32 --> ascii:' ' (space)\&.
+
 .PP
-Returns -1 if the string contains digits, that do not belong to the hexadezimal alphabet\&.
+Converts a string of hexadecimal digits to a char\&. Used to convert the two hexadecimal digits behind the % in url encoding to the corresponding character in the ascii table\&. For example: %20: hex:20 --> dez:32 --> ascii:' ' (space)\&. Returns -1 if the string contains digits, that do not belong to the hexadezimal alphabet\&.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -66,7 +72,9 @@ The corresponding character\&. -1 if its not a valid hex string\&.
 .PP
 
 .SS "char* intToString (int value, char * buf, size_t bufsize)"
-Converts an integer value to a null-terminated string using the specified base and stores the result in the char pointer given by buf parameter\&. Returns null if buffer would overflow
+
+.PP
+Converts an integer value to a null-terminated string using the specified base and stores the result in the char pointer given by buf parameter\&. Returns null if buffer would overflow\&. Because buf is the same as the return value, either buf or the returned pointer have to be freed, when the string is no longer needed, by calling free\&.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -79,12 +87,14 @@ Converts an integer value to a null-terminated string using the specified base a
 .PP
 \fBReturns:\fP
 .RS 4
-A pointer to the resulting null-terminated string, same as parameter str\&. NULL if 
+A pointer to the resulting null-terminated string, same as parameter str\&. 
 .RE
 .PP
 
 .SS "char isAscii (char c)"
-Returns if an ascii character is a valid hexadecimal digit, so if is 0-9, a-f or A-F\&.
+
+.PP
+Returns if an ascii character is a valid hexadecimal digit, so if is 0-9, a-f or A-F\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -99,4 +109,4 @@ Returns if an ascii character is a valid hexadecimal digit, so if is 0-9, a-f or
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Dokumentation from the source code\&.
+Generated automatically by Doxygen for Documentation from the source code\&.

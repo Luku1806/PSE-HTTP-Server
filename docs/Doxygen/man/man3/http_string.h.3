@@ -1,8 +1,8 @@
-.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_string.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.TH "include/http_string.h" 3 "Mon Jun 10 2019" "Documentation" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_string.h \- This file contains all string functions that are currently needed and may need later\&.  
+include/http_string.h \- This file contains all string functions that are currently needed and may need later\&.  
 
 .SH SYNOPSIS
 .br
@@ -30,71 +30,87 @@ C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_string.h \- Th
 .ti -1c
 .RI "\fBstring\fP * \fBnew_string\fP (size_t len)"
 .br
+.RI "Allocates a new string pointer and returns it\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .ti -1c
 .RI "void \fBfree_str\fP (\fBstring\fP *str)"
 .br
+.RI "Frees the allocated memory of a string\&. "
 .ti -1c
 .RI "void \fBprint_string\fP (\fBstring\fP *str)"
 .br
+.RI "Prints a string to the console\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBcpy_str\fP (const char *src)"
 .br
+.RI "Copies a C-string into a new string struct and returns this\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .ti -1c
 .RI "\fBstring\fP * \fBclone_str\fP (\fBstring\fP *src)"
 .br
+.RI "Clones everything stored in src, to a new string pointer\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .ti -1c
 .RI "char * \fBtoCString_str\fP (\fBstring\fP *str)"
 .br
+.RI "Returns a null terminated char pointer (c-string) version of a string\&. Allocates memory for the returned char pointer\&. This has to be freed by calling free! "
 .ti -1c
 .RI "\fBstring\fP * \fBcat_str\fP (\fBstring\fP *dest, const char *src)"
 .br
+.RI "Combines a string and a c-string to a new string Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .ti -1c
 .RI "\fBstring\fP * \fBcat_str_len\fP (\fBstring\fP *dest, void *src, size_t len)"
 .br
+.RI "Combines a string and a generic pointer with a given length Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .ti -1c
 .RI "\fBstring\fP * \fBstr_cat_str\fP (\fBstring\fP *dest, \fBstring\fP *src)"
 .br
+.RI "Combines two strings to a new string Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .ti -1c
 .RI "char \fBequals_str\fP (\fBstring\fP *str1, \fBstring\fP *str2)"
 .br
+.RI "Determines if 2 strings are equal\&. "
 .ti -1c
 .RI "char \fBchars_equal_str\fP (\fBstring\fP *str, char *chars)"
 .br
+.RI "Determines if a strings is equal to a char pointer (c-string)\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBsub_str\fP (\fBstring\fP *str, size_t start, int len)"
 .br
+.RI "Return a substring with the length len of str starting at start\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .ti -1c
 .RI "int \fBfind_str\fP (\fBstring\fP *str1, \fBstring\fP *str2)"
 .br
+.RI "Finds the first occurence of str2 in str1\&. "
 .ti -1c
 .RI "int \fBfind_chars\fP (\fBstring\fP *str1, char *chars)"
 .br
+.RI "Finds the first occurence of chars in str\&. "
 .ti -1c
 .RI "char \fBendsWith_str\fP (\fBstring\fP *str, char *ending)"
 .br
+.RI "Returns if a string ends with a set of chars(c-string)\&. "
 .ti -1c
 .RI "char \fBstartsWith_str\fP (\fBstring\fP *str, char *starting)"
 .br
+.RI "Returns if a string starts with a set of chars(c-string)\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBtoUpper_str\fP (\fBstring\fP *str)"
 .br
+.RI "Returns a string, converted to capital letters only\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .ti -1c
 .RI "\fBstring\fP * \fBremoveTrailingChars\fP (\fBstring\fP *\fBstring\fP, char toRemove)"
 .br
+.RI "Removes all trailing charcters\&. For example if toRemove is a, '12345aaa' becomes '12345' Allocates memory for the returned string\&. This has to be freed by calling free_str! "
 .in -1c
 .SH "Detailed Description"
 .PP 
 This file contains all string functions that are currently needed and may need later\&. 
 
 
-.SH "Typedef Documentation"
-.PP 
-.SS "typedef struct \fBstring\fP  \fBstring\fP"
-
 .SH "Function Documentation"
 .PP 
 .SS "\fBstring\fP* cat_str (\fBstring\fP * dest, const char * src)"
-Combines a string and a c-string to a new string 
+
+.PP
+Combines a string and a c-string to a new string Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -110,7 +126,9 @@ Either Returns a new String or NULL depending on whether the condition is met or
 .PP
 
 .SS "\fBstring\fP* cat_str_len (\fBstring\fP * dest, void * src, size_t len)"
-Combines a string and a generic pointer with a given length 
+
+.PP
+Combines a string and a generic pointer with a given length Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -128,7 +146,9 @@ Either Returns a new String or NULL depending on whether the condition is met or
 .PP
 
 .SS "char chars_equal_str (\fBstring\fP * str, char * chars)"
-Determines if a strings is equal to a char pointer (c-string)\&.
+
+.PP
+Determines if a strings is equal to a char pointer (c-string)\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -144,7 +164,9 @@ Returns 0 if the strings are different, 1 if they are equal\&.
 .PP
 
 .SS "\fBstring\fP* clone_str (\fBstring\fP * src)"
-Clones everything stored in src, to a new string pointer\&.
+
+.PP
+Clones everything stored in src, to a new string pointer\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -158,7 +180,9 @@ The new string pointer, containing all information of src\&.
 .PP
 
 .SS "\fBstring\fP* cpy_str (const char * src)"
-Copies a C-string into a new string struct and returns this\&.
+
+.PP
+Copies a C-string into a new string struct and returns this\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -172,7 +196,9 @@ The string struct pointer with the C-string in it
 .PP
 
 .SS "char endsWith_str (\fBstring\fP * str, char * ending)"
-Returns if a string ends with a set of chars(c-string)\&.
+
+.PP
+Returns if a string ends with a set of chars(c-string)\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -188,6 +214,8 @@ Returns if a string ends with a set of chars(c-string)\&.
 .PP
 
 .SS "char equals_str (\fBstring\fP * str1, \fBstring\fP * str2)"
+
+.PP
 Determines if 2 strings are equal\&. 
 .PP
 \fBParameters:\fP
@@ -204,7 +232,9 @@ Returns 0 if the strings are different, 1 if they are equal\&.
 .PP
 
 .SS "int find_chars (\fBstring\fP * str1, char * chars)"
-Finds the first occurence of chars in str
+
+.PP
+Finds the first occurence of chars in str\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -220,7 +250,9 @@ The index of the first occurence of chars in str\&. Returns -1 if not found\&.
 .PP
 
 .SS "int find_str (\fBstring\fP * str1, \fBstring\fP * str2)"
-Finds the first occurence of str2 in str1
+
+.PP
+Finds the first occurence of str2 in str1\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -236,7 +268,9 @@ The index of the first occurence of str2 in str1\&. Returns -1 if not found\&.
 .PP
 
 .SS "void free_str (\fBstring\fP * str)"
-Frees the allocated memory of a string\&.
+
+.PP
+Frees the allocated memory of a string\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -245,7 +279,9 @@ Frees the allocated memory of a string\&.
 .PP
 
 .SS "\fBstring\fP* new_string (size_t len)"
-Allocates a new string pointer and returns it\&.
+
+.PP
+Allocates a new string pointer and returns it\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -259,7 +295,9 @@ The pointer to the nwe allocated string\&.
 .PP
 
 .SS "void print_string (\fBstring\fP * str)"
-Prints a string to the console\&.
+
+.PP
+Prints a string to the console\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -268,7 +306,9 @@ Prints a string to the console\&.
 .PP
 
 .SS "\fBstring\fP* removeTrailingChars (\fBstring\fP * string, char toRemove)"
-Removes all trailing charcters\&. For example if toRemove is a, '12345aaa' becomes '12345'
+
+.PP
+Removes all trailing charcters\&. For example if toRemove is a, '12345aaa' becomes '12345' Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -284,7 +324,9 @@ The trimmed string\&.
 .PP
 
 .SS "char startsWith_str (\fBstring\fP * str, char * starting)"
-Returns if a string starts with a set of chars(c-string)\&.
+
+.PP
+Returns if a string starts with a set of chars(c-string)\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -300,7 +342,9 @@ Returns if a string starts with a set of chars(c-string)\&.
 .PP
 
 .SS "\fBstring\fP* str_cat_str (\fBstring\fP * dest, \fBstring\fP * src)"
-Combines two strings to a new string 
+
+.PP
+Combines two strings to a new string Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -316,7 +360,9 @@ Either Returns a new String or NULL depending on whether the condition is met or
 .PP
 
 .SS "\fBstring\fP* sub_str (\fBstring\fP * str, size_t start, int len)"
-Return a substring with the length len of str starting at start\&.
+
+.PP
+Return a substring with the length len of str starting at start\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -334,7 +380,9 @@ The substring of str\&. If start + length is greater than the string, NULL is re
 .PP
 
 .SS "char* toCString_str (\fBstring\fP * str)"
-Returns a null terminated char pointer (c-string) version of a string\&.
+
+.PP
+Returns a null terminated char pointer (c-string) version of a string\&. Allocates memory for the returned char pointer\&. This has to be freed by calling free! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -348,7 +396,9 @@ The string as char pointer\&.
 .PP
 
 .SS "\fBstring\fP* toUpper_str (\fBstring\fP * str)"
-Returns a string, converted to capital letters only\&.
+
+.PP
+Returns a string, converted to capital letters only\&. Allocates memory for the returned string\&. This has to be freed by calling free_str! 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -363,4 +413,4 @@ A pointer to the string converted to capital letters only\&.
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Dokumentation from the source code\&.
+Generated automatically by Doxygen for Documentation from the source code\&.

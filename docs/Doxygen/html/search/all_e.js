@@ -7,6 +7,6 @@ var searchData=
   ['status_5fsite_5fpath',['STATUS_SITE_PATH',['../http__settings_8h.html#a07ac8a76cb8c4b8f9baf93b02d52f719',1,'http_settings.h']]],
   ['str',['str',['../structstring.html#ab50d783982593ef993ea0b68f7ad8b80',1,'string']]],
   ['str_5fcat_5fstr',['str_cat_str',['../http__string_8h.html#ad9c626adb421d785be1b9e94c1490dfc',1,'http_string.h']]],
-  ['string',['string',['../structstring.html',1,'string'],['../http__string_8h.html#ad5629a6456deb7d0338d634236565499',1,'string():&#160;http_string.h']]],
+  ['string',['string',['../structstring.html',1,'']]],
   ['sub_5fstr',['sub_str',['../http__string_8h.html#adf5b7c2c912b8e14445153ac03216799',1,'http_string.h']]]
 ];

@@ -1,8 +1,8 @@
-.TH "C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_base64.h" 3 "Mon Jun 10 2019" "Dokumentation" \" -*- nroff -*-
+.TH "include/http_base64.h" 3 "Mon Jun 10 2019" "Documentation" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_base64.h \- This file provides functions to encode and decode c-strings/char pointers from and to base64 encoded text\&.  
+include/http_base64.h \- This file provides functions to encode and decode c-strings/char pointers from and to base64 encoded text\&.  
 
 .SH SYNOPSIS
 .br
@@ -18,21 +18,27 @@ C:/Users/Leon Franke/Desktop/pse2019-gruppe09-master/include/http_base64.h \- Th
 .ti -1c
 .RI "void \fBbuild_decoding_table\fP ()"
 .br
+.RI "Builds up the internal decoding table\&. Is called by base64_decode\&. Anywhere in the program base64_cleanup has to be called to free the memory allocated for the table\&. "
 .ti -1c
 .RI "void \fBbase64_cleanup\fP ()"
 .br
+.RI "Frees the memory allocated for the decoding table\&. Has to be called anywhere after base64_decode to prevent memory leaks\&. "
 .ti -1c
 .RI "char * \fBbase64_encode\fP (const unsigned char *data, size_t input_length, size_t *output_length)"
 .br
+.RI "Encodes a normal c-string into base64 encoded text\&. "
 .ti -1c
 .RI "unsigned char * \fBbase64_decode\fP (const char *data, size_t input_length, size_t *output_length)"
 .br
+.RI "Decodes a base64 encoded c-string into normal decoded text\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBbase64_encode_string\fP (\fBstring\fP *toEncode)"
 .br
+.RI "Encodes a normal string into base64 encoded text\&. "
 .ti -1c
 .RI "\fBstring\fP * \fBbase64_decode_string\fP (\fBstring\fP *toDecode)"
 .br
+.RI "Decodes a base64 encoded c-string into normal decoded text\&. Returns NULL if string toDecode is not base64\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -41,10 +47,10 @@ This file provides functions to encode and decode c-strings/char pointers from a
 
 .SH "Function Documentation"
 .PP 
-.SS "void base64_cleanup ()"
-Frees the memory allocated for the decoding table\&. Has to be called anywhere after base64_decode to prevent memory leaks\&. 
 .SS "unsigned char* base64_decode (const char * data, size_t input_length, size_t * output_length)"
-Decodes a base64 encoded c-string into normal decoded text\&.
+
+.PP
+Decodes a base64 encoded c-string into normal decoded text\&. Allocates memory for the return value\&. This has to be freed!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -62,7 +68,9 @@ The char* (c-string) containing the decoded text\&. It has the length *output_le
 .PP
 
 .SS "\fBstring\fP* base64_decode_string (\fBstring\fP * toDecode)"
-Decodes a base64 encoded c-string into normal decoded text\&. Returns NULL if string toDecode is not base64\&.
+
+.PP
+Decodes a base64 encoded c-string into normal decoded text\&. Returns NULL if string toDecode is not base64\&. Allocates memory for the returned string\&. This has to freed be by calling free_str!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -76,7 +84,9 @@ The string containing the decoded text\&. NULL if toDecode is not base64\&.
 .PP
 
 .SS "char* base64_encode (const unsigned char * data, size_t input_length, size_t * output_length)"
-Encodes a normal c-string into base64 encoded text\&.
+
+.PP
+Encodes a normal c-string into base64 encoded text\&. Allocates memory for the return value\&. This has to be freed!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -94,7 +104,9 @@ The char* (c-string) containing the encoded text\&. It has the length *output_le
 .PP
 
 .SS "\fBstring\fP* base64_encode_string (\fBstring\fP * toEncode)"
-Encodes a normal string into base64 encoded text\&.
+
+.PP
+Encodes a normal string into base64 encoded text\&. Allocates memory for the returned string\&. This has to be freed by calling free_str!
 .PP
 \fBParameters:\fP
 .RS 4
@@ -107,8 +119,6 @@ The string containing the encoded text\&.
 .RE
 .PP
 
-.SS "void build_decoding_table ()"
-Builds up the internal decoding table\&. Is called by base64_decode\&. Anywhere in the program base64_cleanup has to be called to free the memory allocated for the table\&. 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Dokumentation from the source code\&.
+Generated automatically by Doxygen for Documentation from the source code\&.
