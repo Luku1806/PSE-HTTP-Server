@@ -31,10 +31,10 @@
 
 
 /**
- * Returns a string, containing the status code and the human readable description.
- * For example "200 OK".
+ * @brief Returns a string, containing the status code and the human readable description.
+ * For example if statutscode == 200: "200 OK".
  *
- * @param statusCode Rhe status code to generate string for.
+ * @param statusCode The status code to generate a string for.
  * @return The status string.
  */
 string *getStatusString(int statusCode);

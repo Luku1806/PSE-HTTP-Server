@@ -191,7 +191,7 @@ http_credential_array *loadCredentials() {
         fclose(file);
         return credentialArray;
     } else {
-        fprintf(stderr, "Could not load htpasswd file from '%s'\n", HTPASSWD_PATH);
+        fprintf(stderr, "Could not load htpasswd file from '%s'\n Does it even exist?\n", HTPASSWD_PATH);
         return NULL;
     }
 }

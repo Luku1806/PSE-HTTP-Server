@@ -8,7 +8,7 @@
 
 
 /**
- * Prints a message to the standard error output and exits.
+ * @brief Prints a message to the standard error output and exits.
  *
  * @param message The message to print before exiting.
  */
