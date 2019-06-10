@@ -1,0 +1,101 @@
+.TH "include/http_status.h" 3 "Mon Jun 10 2019" "Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/http_status.h \- This is where all status messages are defined and set as required\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'http_string\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBHTTP_STATUS_OK\fP   200"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_CREATED\fP   201"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_ACCEPTED\fP   202"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_NO_CONTENT\fP   204"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_MOVED_PERMANENTLY\fP   301"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_MOVED_TEMPORARELY\fP   302"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_NOT_MODIFIED\fP   304"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_BAD_REQUEST\fP   400"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_UNAUTHORIZED\fP   401"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_FORBIDDEN\fP   403"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_NOT_FOUND\fP   404"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_URI_TOO_LONG\fP   414"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_INTERNAL_SERVER_ERROR\fP   500"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_NOT_IMPLEMENTED\fP   501"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_BAD_GATEWAY\fP   502"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_SERVICE_UNAVAILABLE\fP   503"
+.br
+.ti -1c
+.RI "#define \fBHTTP_STATUS_SERVICE_VERSION_NOT_SUPPORTED\fP   505"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBstring\fP * \fBgetStatusString\fP (int statusCode)"
+.br
+.RI "Returns a string, containing the status code and the human readable description\&. For example if statutscode == 200: '200 OK'\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is where all status messages are defined and set as required\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "\fBstring\fP* getStatusString (int statusCode)"
+
+.PP
+Returns a string, containing the status code and the human readable description\&. For example if statutscode == 200: '200 OK'\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatusCode\fP The status code to generate a string for\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The status string\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Documentation from the source code\&.

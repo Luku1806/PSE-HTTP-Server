@@ -1,0 +1,112 @@
+.TH "include/http_utils.h" 3 "Mon Jun 10 2019" "Documentation" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/http_utils.h \- This file provides all functions that are needed for utility\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include 'http_string\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "char * \fBintToString\fP (int value, char *buf, size_t bufsize)"
+.br
+.RI "Converts an integer value to a null-terminated string using the specified base and stores the result in the char pointer given by buf parameter\&. Returns null if buffer would overflow\&. "
+.ti -1c
+.RI "char \fBisAscii\fP (char c)"
+.br
+.RI "Returns if an ascii character is a valid hexadecimal digit, so if is 0-9, a-f or A-F\&. "
+.ti -1c
+.RI "char \fBhexStringToChar\fP (\fBstring\fP *hex)"
+.br
+.RI "Converts a string of hexadecimal digits to a char\&. Used to convert the two hexadecimal digits behind the % in url encoding to the corresponding character in the ascii table\&. For example: %20: hex:20 --> dez:32 --> ascii:' ' (space)\&. "
+.ti -1c
+.RI "\fBstring\fP * \fBdecodeURL\fP (\fBstring\fP *url)"
+.br
+.RI "Removes URL-encoding from a string and returns the decoded string\&. Return NULL if encoding is invalid\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This file provides all functions that are needed for utility\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "\fBstring\fP* decodeURL (\fBstring\fP * url)"
+
+.PP
+Removes URL-encoding from a string and returns the decoded string\&. Return NULL if encoding is invalid\&. Allocates memory for the returned string\&. This has to be freed by calling free_str!
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstring\fP *url The coded string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new decoded string\&. NULL if encoding is invalid\&. 
+.RE
+.PP
+
+.SS "char hexStringToChar (\fBstring\fP * hex)"
+
+.PP
+Converts a string of hexadecimal digits to a char\&. Used to convert the two hexadecimal digits behind the % in url encoding to the corresponding character in the ascii table\&. For example: %20: hex:20 --> dez:32 --> ascii:' ' (space)\&. Returns -1 if the string contains digits, that do not belong to the hexadezimal alphabet\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhex\fP The string with hexadecimal digits\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The corresponding character\&. -1 if its not a valid hex string\&. 
+.RE
+.PP
+
+.SS "char* intToString (int value, char * buf, size_t bufsize)"
+
+.PP
+Converts an integer value to a null-terminated string using the specified base and stores the result in the char pointer given by buf parameter\&. Returns null if buffer would overflow\&. Because buf is the same as the return value, either buf or the returned pointer have to be freed, when the string is no longer needed, by calling free\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The integer value to convert to string 
+.br
+\fIbuf\fP The buffer to store the resulting string in\&. 
+.br
+\fIbufsize\fP The size of the buffer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A pointer to the resulting null-terminated string, same as parameter str\&. 
+.RE
+.PP
+
+.SS "char isAscii (char c)"
+
+.PP
+Returns if an ascii character is a valid hexadecimal digit, so if is 0-9, a-f or A-F\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP The character to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+1 if its a hex-digit, 0 if not\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Documentation from the source code\&.
