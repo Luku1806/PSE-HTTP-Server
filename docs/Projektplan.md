@@ -34,6 +34,10 @@ Es handelt sich hierbei um das Repository der Gruppe 09, welche aus den Mitglied
 | Implementierung von **Server Authentifizierung** | Lukas Reining | 26.05.2019  | ✔ |
 | Implementierung von **Base64 Kodierung** | Florian Galz | 26.05.2019  | ✔ |
 | Implementierung von **http_security** | Leon Franke | 26.05.2019  | ✔ |
+| Erstellung der **Präsentation** | Florian Galz | 11.06.2019  | ✔ |
+| Aktualisierung der **Dokumenation** | Leon Franke | 26.05.2019  | 🔨 |
+| Letzte Korrekturen und Feinheiten am Projekt vornehmen | FG, LF, LR | 11.06.2019  | 🔨 |
+
 
 Legende: 
 - Erledigt: ✔
