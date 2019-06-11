@@ -50,7 +50,7 @@
  *
  * Should be big enough to be able to handle larger requests.
  */
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 1000000
 
 
 

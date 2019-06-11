@@ -219,11 +219,14 @@ To change the settings, open [http_settings.h](include/http_settings.h) and edit
   Choose an appropriate size, if it is to small, longer messages can not be responded to.
   But keep in mind that the memory has to be allocated, so it also can not be infinitely huge.
   
+  Default this is set to 1 MB, because we are not handling any received content,
+  so the messages should not be larger than that. 
+  
   The value has to be given in bytes.
   
   Default:
   
-      #define PORT 31337
+      #define BUFFER_SIZE 1000000
   	
   	
   	
